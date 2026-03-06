@@ -680,90 +680,61 @@ import LogoCard from '../components/cards/LogoCard.astro';
     <hr class="divider" />
 
     <!-- Contract Address -->
-    <section class="reveal particles relative">
-      <!-- Floating elements -->
-      <div class="absolute top-10 right-20 w-4 h-4 bg-indigo rounded-full opacity-20 float-fast hidden md:block"></div>
-      <div class="absolute bottom-20 left-10 w-3 h-3 bg-purple rounded-full opacity-30 float hidden md:block"></div>
-
+    <section class="reveal">
       <span class="section-label section-label-animated">contract</span>
       <h2><span class="gradient-text-animated">Contract Address</span></h2>
-      <p class="text-text-secondary max-w-2xl">
-        Verda Protocol smart contracts are deployed on blockchain. Verify our contracts on the block explorer.
+      <p class="text-text-secondary max-w-2xl text-sm sm:text-base">
+        VERDA token is deployed on Solana blockchain.
       </p>
 
-      <div class="grid-2 mt-6 gap-6">
-        <!-- Main Contract -->
-        <div class="card card-dark relative overflow-hidden gradient-border hover-lift" style="grid-column: span 2;">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-green-light/10 to-transparent rounded-bl-full morph"></div>
-          <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-indigo/5 to-transparent rounded-tr-full"></div>
-
-          <div class="flex items-start gap-4 mb-4">
-            <div class="feature-icon feature-icon-lg green glow-pulse">
-              <FileCode class="icon-lg" />
+      <div class="mt-6">
+        <!-- Main Contract Card -->
+        <div class="card p-4 sm:p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-green-bg flex items-center justify-center">
+                <FileCode class="w-5 h-5 sm:w-6 sm:h-6 text-green" />
+              </div>
+              <div>
+                <h3 class="text-sm sm:text-base font-medium text-text mb-0.5">VERDA Token</h3>
+                <span class="text-xs text-text-muted">Official Contract</span>
+              </div>
             </div>
-            <div>
-              <span class="badge new mb-2">Solana</span>
-              <h3 class="text-base mb-1" style="color: var(--color-text) !important;">VERDA Token Contract</h3>
-              <p class="text-xs mb-0" style="color: var(--color-text-secondary) !important;">Official Token Contract</p>
-            </div>
+            <span class="badge new w-fit">Solana</span>
           </div>
 
           <!-- Contract Address Display -->
-          <div class="bg-surface-darker rounded-lg p-3 sm:p-4">
-            <code class="font-mono text-xs sm:text-sm text-green-light break-all select-all">
-              61iFzNmT71zBu1bJLuuuyGki8uc8RnykeyBBQUYVpump
-            </code>
+          <div class="bg-surface-2 rounded-lg p-3 sm:p-4 border border-border">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-3">
+              <code id="contract-address" class="font-mono text-xs sm:text-sm text-green break-all flex-1 select-all">61iFzNmT71zBu1bJLuuuyGki8uc8RnykeyBBQUYVpump</code>
+              <button
+                onclick="navigator.clipboard.writeText('61iFzNmT71zBu1bJLuuuyGki8uc8RnykeyBBQUYVpump'); this.textContent='Copied!'; setTimeout(() => this.textContent='Copy', 2000);"
+                class="btn btn-sm bg-surface hover:bg-surface-dark text-text border border-border w-full sm:w-auto"
+              >
+                Copy
+              </button>
+            </div>
           </div>
-        </div>
 
-        <!-- Additional Contracts -->
-        <div class="card card-shine card-3d p-5 hover-lift spotlight">
-          <div class="flex items-start gap-3 mb-3">
-            <div class="feature-icon indigo feature-icon-animated float-slow">
-              <Coins class="icon-md" />
-            </div>
-            <div>
-              <h4 class="text-sm font-medium mb-1 underline-animated">Staking Contract</h4>
-              <p class="text-xs text-text-muted mb-0">Coming Soon</p>
-            </div>
+          <!-- Quick Links -->
+          <div class="flex flex-wrap gap-2 mt-4">
+            <a href="https://solscan.io/token/61iFzNmT71zBu1bJLuuuyGki8uc8RnykeyBBQUYVpump" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline text-xs">
+              View on Solscan
+              <ArrowRight class="w-3 h-3" />
+            </a>
+            <a href="https://pump.fun/coin/61iFzNmT71zBu1bJLuuuyGki8uc8RnykeyBBQUYVpump" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline text-xs">
+              View on Pump.fun
+              <ArrowRight class="w-3 h-3" />
+            </a>
           </div>
-          <div class="bg-surface-2 rounded p-3 border-animated">
-            <code class="font-mono text-xs text-text-muted">
-              TBA
-            </code>
-          </div>
-          <span class="tag tag-animated tag-indigo mt-3">Q2 2026</span>
-        </div>
-
-        <div class="card card-shine card-3d p-5 hover-lift spotlight">
-          <div class="flex items-start gap-3 mb-3">
-            <div class="feature-icon purple feature-icon-animated float-slow" style="animation-delay: 0.3s;">
-              <Database class="icon-md" />
-            </div>
-            <div>
-              <h4 class="text-sm font-medium mb-1 underline-animated">Registry Contract</h4>
-              <p class="text-xs text-text-muted mb-0">Coming Soon</p>
-            </div>
-          </div>
-          <div class="bg-surface-2 rounded p-3 border-animated">
-            <code class="font-mono text-xs text-text-muted">
-              TBA
-            </code>
-          </div>
-          <span class="tag tag-animated tag-purple mt-3">Q3 2026</span>
         </div>
       </div>
 
-      <!-- Disclaimer -->
-      <div class="callout mt-6 gradient-border">
-        <div class="flex items-center gap-3">
-          <div class="feature-icon amber feature-icon-animated wiggle">
-            <Shield class="icon-md" />
-          </div>
-          <p class="text-xs text-text-muted mb-0">
-            <strong class="text-text">Security Notice:</strong> Always verify contract addresses before interacting. Only use official links from verda.so.
-          </p>
-        </div>
+      <!-- Security Notice -->
+      <div class="callout mt-4 sm:mt-6">
+        <p class="text-xs text-text-muted mb-0">
+          <strong class="text-text">Security Notice:</strong> Always verify contract addresses before interacting. Only use official links.
+        </p>
       </div>
     </section>
 

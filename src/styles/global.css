@@ -2688,7 +2688,7 @@ code:not(.code-block code) {
 
 /* Mobile Footer */
 @media (max-width: 640px) {
-  footer .flex-col.sm\\:flex-row {
+  footer {
     text-align: center;
   }
   footer .social-links {

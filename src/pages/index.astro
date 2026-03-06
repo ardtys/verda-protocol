@@ -706,7 +706,13 @@ import LogoCard from '../components/cards/LogoCard.astro';
           <!-- Contract Address Display -->
           <div class="bg-surface-2 rounded-lg p-3 sm:p-4 border border-border">
             <div class="flex flex-col sm:flex-row sm:items-center gap-3">
-              <code id="contract-address" class="font-mono text-xs sm:text-sm text-text-muted break-all flex-1">Coming Soon...</code>
+              <code id="contract-address" class="font-mono text-xs sm:text-sm text-green break-all flex-1 select-all">Hn1r6DCQPmjTpLpFeMGs3YM6Ng75KCJXpuokcGNXpump</code>
+              <button
+                onclick="navigator.clipboard.writeText('Hn1r6DCQPmjTpLpFeMGs3YM6Ng75KCJXpuokcGNXpump'); this.textContent='Copied!'; setTimeout(() => this.textContent='Copy', 2000);"
+                class="btn btn-sm bg-surface hover:bg-surface-dark text-text border border-border w-full sm:w-auto"
+              >
+                Copy
+              </button>
             </div>
           </div>
         </div>

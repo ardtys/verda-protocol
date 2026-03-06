@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm create:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm remove:*)",
+      "Bash(pnpm run build:*)",
+      "Bash(find:*)",
+      "Bash(cat:*)",
+      "WebFetch(domain:afn.im)",
+      "Bash(curl:*)",
+      "Bash(grep:*)",
+      "Bash(npm run build:*)",
+      "Bash(pnpm install)",
+      "Bash(pnpm dev)",
+      "Bash(timeout:*)",
+      "Bash(pnpm build:*)"
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+---
+import Card from '../shared/Card.astro';
+import SectionLabel from '../shared/SectionLabel.astro';
+
+interface Phase {
+  phase: string;
+  title: string;
+  timeline: string;
+  metric: string;
+  color: 'green' | 'amber' | 'earth' | 'green-light';
+}
+
+interface Props {
+  phases?: Phase[];
+  colspan?: 1 | 2 | 3;
+  stagger?: number;
+}
+
+const defaultPhases: Phase[] = [
+  {
+    phase: 'Phase 1',
+    title: 'Single Chain Pilot',
+    timeline: 'Mo 1-6',
+    metric: '100 products',
+    color: 'green'
+  },
+  {
+    phase: 'Phase 2',
+    title: 'Multi-Brand',
+    timeline: 'Mo 7-12',
+    metric: '10K products',
+    color: 'amber'
+  },
+  {
+    phase: 'Phase 3',
+    title: 'Industry Platform',
+    timeline: 'Year 2',
+    metric: '100+ brands',
+    color: 'earth'
+  },
+  {
+    phase: 'Phase 4',
+    title: 'Open Protocol',
+    timeline: 'Year 3+',
+    metric: '20+ countries',
+    color: 'green-light'
+  }
+];
+
+const { phases = defaultPhases, colspan = 3, stagger } = Astro.props;
+
+const colorClasses = {
+  green: 'bg-green-deep',
+  amber: 'bg-amber',
+  earth: 'bg-earth',
+  'green-light': 'bg-green-light'
+};
+---
+
+<Card colspan={colspan} stagger={stagger}>
+  <SectionLabel label="Roadmap" class="mb-6" />
+
+  <div class="relative">
+    <!-- Connection line -->
+    <div class="absolute top-4 left-0 right-0 h-0.5 bg-border hidden sm:block"></div>
+
+    <!-- Phases -->
+    <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 sm:gap-4">
+      {phases.map((phase, index) => (
+        <div class="relative flex flex-col items-start sm:items-center text-left sm:text-center">
+          <!-- Dot -->
+          <div class:list={[
+            'w-3 h-3 rounded-full mb-3 relative z-10',
+            colorClasses[phase.color]
+          ]} />
+
+          <!-- Phase label -->
+          <span class="font-mono text-[10px] uppercase tracking-wider text-text-muted mb-1">
+            {phase.phase}
+          </span>
+
+          <!-- Title -->
+          <h4 class="font-display text-sm font-medium text-text mb-1">
+            {phase.title}
+          </h4>
+
+          <!-- Timeline -->
+          <span class="font-mono text-xs text-text-secondary mb-1">
+            {phase.timeline}
+          </span>
+
+          <!-- Metric -->
+          <span class="font-mono text-[10px] text-text-muted">
+            {phase.metric}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</Card>

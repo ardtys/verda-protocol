@@ -1,0 +1,22 @@
+---
+import Card from '../shared/Card.astro';
+import Mascot from '../decorative/Mascot.astro';
+
+interface Props {
+  colspan?: 1 | 2 | 3;
+  stagger?: number;
+}
+
+const { colspan = 2, stagger } = Astro.props;
+---
+
+<Card colspan={colspan} stagger={stagger} class="relative min-h-[320px] flex flex-col justify-between">
+  <div class="flex items-start justify-between gap-6">
+    <div class="flex-1">
+      <slot />
+    </div>
+    <div class="hidden sm:block shrink-0">
+      <Mascot pose="standing" size="lg" />
+    </div>
+  </div>
+</Card>

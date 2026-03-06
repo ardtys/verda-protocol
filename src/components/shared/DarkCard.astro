@@ -1,0 +1,31 @@
+---
+interface Props {
+  colspan?: 1 | 2 | 3;
+  interactive?: boolean;
+  class?: string;
+  stagger?: number;
+}
+
+const {
+  colspan = 1,
+  interactive = false,
+  class: className = '',
+  stagger
+} = Astro.props;
+
+const colspanClass = `col-span-${colspan}`;
+const interactiveClass = interactive ? 'card-interactive' : '';
+const staggerClass = stagger ? `stagger-${stagger}` : '';
+---
+
+<div
+  class:list={[
+    'card card-dark reveal',
+    colspanClass,
+    interactiveClass,
+    staggerClass,
+    className
+  ]}
+>
+  <slot />
+</div>

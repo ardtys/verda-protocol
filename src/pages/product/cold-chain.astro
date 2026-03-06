@@ -1,0 +1,330 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Thermometer, Wifi, MapPin, Bell, Shield, Clock, ArrowRight, AlertTriangle, CheckCircle, Activity } from '@lucide/astro';
+---
+
+<BaseLayout
+  title="Cold Chain Monitoring"
+  description="Real-time IoT sensors track temperature, humidity, and location throughout the entire supply chain. Instant alerts on excursions."
+>
+  <div class="container">
+    <!-- Hero -->
+    <section class="py-8">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="feature-icon amber">
+          <Thermometer class="icon-md" />
+        </div>
+        <span class="badge">IoT Platform</span>
+      </div>
+      <h1>Cold Chain Monitoring</h1>
+      <p class="max-w-lg">
+        $35 billion lost annually to temperature excursions. Vaccines spoil, seafood rots,
+        dairy goes bad — all while paperwork says everything's fine. We fix that with
+        real-time IoT monitoring.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-6">
+        <a href="mailto:hello@verda.so" class="btn btn-lg">
+          Request Demo
+          <ArrowRight class="icon-sm" />
+        </a>
+        <a href="/technology" class="btn btn-outline btn-lg">
+          Technical Specs
+        </a>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- The Problem -->
+    <section class="reveal">
+      <span class="section-label">the problem</span>
+      <h2>Why Cold Chains Fail</h2>
+
+      <div class="grid-2 mt-6 stagger-children">
+        <div class="card card-no-hover">
+          <div class="flex items-start gap-3">
+            <AlertTriangle class="icon-md text-red-soft flex-shrink-0" />
+            <div>
+              <h3 class="text-base mb-1">Manual Logging</h3>
+              <p class="text-sm mb-0">
+                Drivers write down "2°C" because that's what's expected.
+                No one checks until it's too late.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-no-hover">
+          <div class="flex items-start gap-3">
+            <AlertTriangle class="icon-md text-red-soft flex-shrink-0" />
+            <div>
+              <h3 class="text-base mb-1">Point-in-Time Checks</h3>
+              <p class="text-sm mb-0">
+                Temperature checked at loading and unloading.
+                What happens in between? Unknown.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-no-hover">
+          <div class="flex items-start gap-3">
+            <AlertTriangle class="icon-md text-red-soft flex-shrink-0" />
+            <div>
+              <h3 class="text-base mb-1">Delayed Alerts</h3>
+              <p class="text-sm mb-0">
+                Problems discovered days later during audits.
+                Product already consumed or distributed.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-no-hover">
+          <div class="flex items-start gap-3">
+            <AlertTriangle class="icon-md text-red-soft flex-shrink-0" />
+            <div>
+              <h3 class="text-base mb-1">Perverse Incentives</h3>
+              <p class="text-sm mb-0">
+                Reporting a breach means losing money.
+                System incentivizes hiding problems.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Our Solution -->
+    <section class="reveal">
+      <span class="section-label">our solution</span>
+      <h2>Continuous Monitoring</h2>
+
+      <div class="timeline mt-6">
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">IoT Sensors</h3>
+          <p class="text-sm mb-2">
+            Compact BLE 5.0 sensors attach to pallets or individual packages.
+            Temperature, humidity, light exposure, shock detection.
+          </p>
+          <div class="flex gap-1">
+            <span class="tag">-40°C to +85°C</span>
+            <span class="tag">±0.2°C accuracy</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Gateway Network</h3>
+          <p class="text-sm mb-2">
+            LoRaWAN gateways in trucks, warehouses, and retail locations.
+            NB-IoT fallback for areas without gateway coverage.
+          </p>
+          <div class="flex gap-1">
+            <span class="tag">LoRaWAN</span>
+            <span class="tag">NB-IoT</span>
+            <span class="tag">Satellite</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Real-Time Processing</h3>
+          <p class="text-sm mb-2">
+            Readings ingested every 60 seconds. ML models detect anomalies
+            before they become excursions.
+          </p>
+          <div class="flex gap-1">
+            <span class="tag">TimescaleDB</span>
+            <span class="tag">Stream Processing</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Instant Alerts</h3>
+          <p class="text-sm mb-2">
+            SMS, WhatsApp, email, webhook. Multiple escalation levels.
+            Alert the driver first, then supervisor, then quality team.
+          </p>
+          <div class="flex gap-1">
+            <span class="tag">Multi-channel</span>
+            <span class="tag">Escalation</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Immutable Record</h3>
+          <p class="text-sm mb-2">
+            Every reading anchored to blockchain. No one — not even us —
+            can alter historical data. Complete audit trail.
+          </p>
+          <div class="flex gap-1">
+            <span class="tag">Blockchain</span>
+            <span class="tag">Tamper-proof</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Sensor Specs -->
+    <section class="reveal">
+      <span class="section-label">hardware</span>
+      <h2>Sensor Specifications</h2>
+
+      <div class="grid-2 mt-6">
+        <div class="card">
+          <h3 class="text-base mb-3">VRD-T100 Temperature Logger</h3>
+          <ul class="list-dash">
+            <li>Range: -40°C to +85°C</li>
+            <li>Accuracy: ±0.2°C</li>
+            <li>Battery: 2 years (readings every 60s)</li>
+            <li>Size: 45mm × 45mm × 12mm</li>
+            <li>IP67 water resistant</li>
+            <li>FDA 21 CFR Part 11 compliant</li>
+          </ul>
+          <p class="text-xs text-text-muted mt-3 mb-0">
+            Ideal for: Vaccines, dairy, meat, seafood
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="text-base mb-3">VRD-TH200 Temp + Humidity</h3>
+          <ul class="list-dash">
+            <li>Temp: -40°C to +85°C (±0.2°C)</li>
+            <li>Humidity: 0-100% RH (±2%)</li>
+            <li>Battery: 18 months</li>
+            <li>Size: 50mm × 50mm × 15mm</li>
+            <li>IP67 water resistant</li>
+            <li>Shock detection (3-axis accelerometer)</li>
+          </ul>
+          <p class="text-xs text-text-muted mt-3 mb-0">
+            Ideal for: Produce, pharmaceuticals, flowers
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="text-base mb-3">VRD-GPS300 Location Tracker</h3>
+          <ul class="list-dash">
+            <li>GPS + GLONASS + Galileo</li>
+            <li>Accuracy: 2.5m CEP</li>
+            <li>Battery: 6 months (hourly updates)</li>
+            <li>Geofencing support</li>
+            <li>Motion-activated tracking</li>
+            <li>LTE-M / NB-IoT connectivity</li>
+          </ul>
+          <p class="text-xs text-text-muted mt-3 mb-0">
+            Ideal for: High-value shipments, international transit
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="text-base mb-3">VRD-GATE100 Gateway</h3>
+          <ul class="list-dash">
+            <li>LoRaWAN 1.0.3 compatible</li>
+            <li>Range: 2km urban, 10km rural</li>
+            <li>Supports 1000+ sensors</li>
+            <li>4G LTE backhaul</li>
+            <li>12V or solar powered</li>
+            <li>Operating temp: -20°C to +60°C</li>
+          </ul>
+          <p class="text-xs text-text-muted mt-3 mb-0">
+            Ideal for: Warehouses, trucks, distribution centers
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Dashboard -->
+    <section class="reveal">
+      <span class="section-label">software</span>
+      <h2>Monitoring Dashboard</h2>
+
+      <p>
+        Real-time visibility into every shipment. From the warehouse manager to the
+        quality team to the C-suite — everyone sees what they need.
+      </p>
+
+      <div class="card mt-6">
+        <h3 class="text-base mb-3">Dashboard Features</h3>
+        <div class="grid-2">
+          <ul class="list-dash">
+            <li>Live temperature graphs</li>
+            <li>Shipment map view</li>
+            <li>Excursion history</li>
+            <li>Alert configuration</li>
+          </ul>
+          <ul class="list-dash">
+            <li>Compliance reports</li>
+            <li>Export to CSV/PDF</li>
+            <li>API access</li>
+            <li>Role-based access control</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout mt-4">
+        <p class="text-sm mb-0">
+          <strong>Mobile app:</strong> Android and iOS apps for field teams.
+          Works offline, syncs when connected.
+        </p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ROI -->
+    <section class="reveal">
+      <span class="section-label">impact</span>
+      <h2>Measured Results</h2>
+
+      <div class="grid-3 mt-6 stagger-children">
+        <div class="card card-no-hover text-center">
+          <span class="stat-number green">87%</span>
+          <p class="text-sm mt-2 mb-0">Reduction in spoilage claims</p>
+        </div>
+        <div class="card card-no-hover text-center">
+          <span class="stat-number amber">94%</span>
+          <p class="text-sm mt-2 mb-0">Faster excursion response</p>
+        </div>
+        <div class="card card-no-hover text-center">
+          <span class="stat-number earth">3.2x</span>
+          <p class="text-sm mt-2 mb-0">ROI in first year</p>
+        </div>
+      </div>
+
+      <div class="card card-dark mt-6">
+        <span class="badge new mb-3">Case Study</span>
+        <h3 class="text-base mb-2" style="color: #faf8f4">Indonesian Seafood Exporter</h3>
+        <p class="text-sm mb-0">
+          "Before Verda, we lost 12% of shipments to cold chain failures.
+          Now it's under 1%. The sensors paid for themselves in the first month.
+          More importantly, our buyers trust us now."
+        </p>
+        <p class="text-xs text-text-muted mt-3 mb-0">
+          — Operations Director, PT Laut Nusantara
+        </p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- CTA -->
+    <section class="reveal pb-8">
+      <span class="section-label">get started</span>
+      <h2>Stop Losing Product to Temperature Failures</h2>
+      <p>
+        Pilot program: 50 sensors, 3 months, one supply chain.
+        See the difference real-time monitoring makes.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-4">
+        <a href="mailto:hello@verda.so" class="btn btn-lg">
+          Start Pilot Program
+          <ArrowRight class="icon-sm" />
+        </a>
+        <a href="/product/recall" class="btn btn-outline btn-lg">
+          Explore Smart Recall
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

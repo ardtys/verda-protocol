@@ -1,0 +1,61 @@
+---
+import Card from '../shared/Card.astro';
+
+interface TechItem {
+  name: string;
+  percentage: number;
+  description: string;
+}
+
+interface Props {
+  title?: string;
+  items: TechItem[];
+  colspan?: 1 | 2 | 3;
+  stagger?: number;
+}
+
+const { title = 'System Performance', items, colspan = 2, stagger } = Astro.props;
+
+const colors = [
+  'bg-green',
+  'bg-teal',
+  'bg-cyan',
+  'bg-indigo'
+];
+---
+
+<Card colspan={colspan} stagger={stagger} class="overflow-hidden">
+  <div class="flex items-center justify-between mb-4">
+    <span class="section-label m-0">{title}</span>
+    <span class="text-[10px] text-green font-mono flex items-center gap-1">
+      <span class="w-1.5 h-1.5 bg-green rounded-full animate-pulse"></span>
+      All systems operational
+    </span>
+  </div>
+
+  <div class="space-y-4">
+    {items.map((item, index) => (
+      <div class="space-y-1.5">
+        <div class="flex items-center justify-between">
+          <span class="font-mono text-xs text-text font-medium">
+            {item.name}
+          </span>
+          <span class="font-mono text-xs text-text-muted">
+            {item.description}
+          </span>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="flex-1 h-2 bg-surface-2 rounded-full overflow-hidden">
+            <div
+              class:list={['h-full rounded-full transition-all duration-500', colors[index % colors.length]]}
+              style={`width: ${item.percentage}%`}
+            />
+          </div>
+          <span class="font-mono text-xs text-text-secondary w-12 text-right">
+            {item.percentage}%
+          </span>
+        </div>
+      </div>
+    ))}
+  </div>
+</Card>

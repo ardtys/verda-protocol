@@ -1,0 +1,1270 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowLeft, ArrowRight, Shield, AlertTriangle, Search, Package, Users, MapPin, Clock, CheckCircle, XCircle, Bell, Mail, MessageSquare, FileText } from '@lucide/astro';
+---
+
+<BaseLayout
+  title="Smart Recall Demo"
+  description="See how Verda enables surgical-precision recalls in minutes. Trace contaminated products instantly and notify affected consumers directly."
+>
+  <div class="container">
+    <!-- Back Link -->
+    <a href="/demo" class="inline-flex items-center gap-2 text-sm text-text-muted hover:text-green-deep mb-6">
+      <ArrowLeft class="icon-sm" />
+      Back to Demos
+    </a>
+
+    <!-- Demo Header -->
+    <section class="reveal">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="feature-icon feature-icon-md rose feature-icon-animated glow-pulse">
+          <Shield class="icon-md" />
+        </div>
+        <span class="badge badge-pulse">Safety Demo</span>
+      </div>
+      <h1 class="text-shimmer"><span class="gradient-text-animated">Smart Recall System</span></h1>
+      <p class="text-base max-w-2xl text-text-secondary">
+        When contamination is detected, every minute counts. This demo shows how Verda
+        enables surgical-precision recalls that complete in hours, not weeks.
+      </p>
+    </section>
+
+    <hr class="divider-gradient" />
+
+    <!-- Comparison -->
+    <section class="reveal">
+      <span class="section-label section-label-animated">the difference</span>
+      <h2><span class="highlight">Traditional vs. Verda Recall</span></h2>
+
+      <div class="grid-2 mt-6" style="gap: 2rem;">
+        <div class="card comparison-card traditional">
+          <div class="comparison-header">
+            <XCircle class="icon-lg text-rose" />
+            <h3 class="text-lg mb-0">Traditional Recall</h3>
+          </div>
+          <div class="comparison-stats">
+            <div class="stat-row negative">
+              <Clock class="icon-md" />
+              <div>
+                <span class="stat-value">2-3 weeks</span>
+                <span class="stat-label">Average execution time</span>
+              </div>
+            </div>
+            <div class="stat-row negative">
+              <Package class="icon-md" />
+              <div>
+                <span class="stat-value">100%</span>
+                <span class="stat-label">Entire batches destroyed</span>
+              </div>
+            </div>
+            <div class="stat-row negative">
+              <Users class="icon-md" />
+              <div>
+                <span class="stat-value">~20%</span>
+                <span class="stat-label">Consumer notification rate</span>
+              </div>
+            </div>
+            <div class="stat-row negative">
+              <FileText class="icon-md" />
+              <div>
+                <span class="stat-value">Paper-based</span>
+                <span class="stat-label">Documentation & tracking</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card comparison-card verda gradient-border">
+          <div class="comparison-header">
+            <CheckCircle class="icon-lg text-green-deep" />
+            <h3 class="text-lg mb-0">Verda Recall</h3>
+          </div>
+          <div class="comparison-stats">
+            <div class="stat-row positive">
+              <Clock class="icon-md" />
+              <div>
+                <span class="stat-value">2-4 hours</span>
+                <span class="stat-label">Average execution time</span>
+              </div>
+            </div>
+            <div class="stat-row positive">
+              <Package class="icon-md" />
+              <div>
+                <span class="stat-value">Only affected</span>
+                <span class="stat-label">Surgical precision targeting</span>
+              </div>
+            </div>
+            <div class="stat-row positive">
+              <Users class="icon-md" />
+              <div>
+                <span class="stat-value">85%+</span>
+                <span class="stat-label">Direct consumer notification</span>
+              </div>
+            </div>
+            <div class="stat-row positive">
+              <FileText class="icon-md" />
+              <div>
+                <span class="stat-value">Blockchain</span>
+                <span class="stat-label">Immutable audit trail</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Recall Scenario -->
+    <section class="reveal">
+      <span class="section-label section-label-animated">live scenario</span>
+      <h2><span class="gradient-text">Simulated Recall: Salmonella Detection</span></h2>
+
+      <!-- Simulation Controls -->
+      <div class="simulation-controls mt-6 mb-4">
+        <button class="btn btn-lg glow-rose ripple" id="startRecallBtn">
+          <AlertTriangle class="icon-sm" />
+          Start Recall Simulation
+        </button>
+        <button class="btn btn-outline btn-lg ripple" id="resetRecallBtn" style="display: none;">
+          Reset Simulation
+        </button>
+        <div class="simulation-timer" id="simulationTimer" style="display: none;">
+          <Clock class="icon-sm" />
+          <span>Total Time: <strong id="totalTimeDisplay">0:00</strong></span>
+        </div>
+      </div>
+
+      <!-- Alert Banner -->
+      <div class="alert-banner critical" id="alertBanner" style="display: none;">
+        <AlertTriangle class="icon-lg" />
+        <div>
+          <h3 class="text-base mb-1">RECALL INITIATED: Batch FCM-2024-0312</h3>
+          <p class="text-sm mb-0">Salmonella detected in routine testing. Initiated by Quality Control at 10:32 AM.</p>
+        </div>
+      </div>
+
+      <!-- Recall Dashboard -->
+      <div class="recall-dashboard mt-6" id="recallDashboard">
+        <!-- Step 1: Detection -->
+        <div class="recall-step upcoming" id="step1" data-step="1">
+          <div class="step-marker">
+            <CheckCircle class="icon-sm step-check" />
+            <div class="step-spinner"></div>
+            <span class="step-number">1</span>
+          </div>
+          <div class="step-content">
+            <h3 class="text-base mb-2">Contamination Detected</h3>
+            <div class="step-details">
+              <div class="detail-row">
+                <span class="detail-label">Source</span>
+                <span class="detail-value">Lab Test #LT-2024-8823</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Pathogen</span>
+                <span class="detail-value text-rose">Salmonella enterica</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Detected At</span>
+                <span class="detail-value">10:32 AM, Today</span>
+              </div>
+            </div>
+            <div class="step-time">
+              <Clock class="icon-xs" />
+              <span id="step1Time">Waiting...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Trace -->
+        <div class="recall-step upcoming" id="step2" data-step="2">
+          <div class="step-marker">
+            <CheckCircle class="icon-sm step-check" />
+            <div class="step-spinner"></div>
+            <span class="step-number">2</span>
+          </div>
+          <div class="step-content">
+            <h3 class="text-base mb-2">Affected Products Traced</h3>
+            <div class="step-details">
+              <div class="trace-results">
+                <div class="trace-stat">
+                  <span class="trace-number" id="productsTraced">0</span>
+                  <span class="trace-label">Products traced</span>
+                </div>
+                <div class="trace-stat">
+                  <span class="trace-number" id="retailLocations">0</span>
+                  <span class="trace-label">Retail locations</span>
+                </div>
+                <div class="trace-stat">
+                  <span class="trace-number" id="alreadySold">0</span>
+                  <span class="trace-label">Already sold</span>
+                </div>
+                <div class="trace-stat">
+                  <span class="trace-number" id="onShelves">0</span>
+                  <span class="trace-label">Still on shelves</span>
+                </div>
+              </div>
+            </div>
+            <div class="step-time">
+              <Clock class="icon-xs" />
+              <span id="step2Time">Waiting...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Locate -->
+        <div class="recall-step upcoming" id="step3" data-step="3">
+          <div class="step-marker">
+            <CheckCircle class="icon-sm step-check" />
+            <div class="step-spinner"></div>
+            <span class="step-number">3</span>
+          </div>
+          <div class="step-content">
+            <h3 class="text-base mb-2">Product Locations Identified</h3>
+            <div class="location-map" id="locationMap">
+              <div class="map-header">
+                <MapPin class="icon-sm text-rose" />
+                <span class="text-sm font-medium"><span id="locationCount">0</span> Affected Locations</span>
+              </div>
+              <div class="location-list" id="locationList">
+                <!-- Locations will be populated dynamically -->
+              </div>
+            </div>
+            <div class="step-time">
+              <Clock class="icon-xs" />
+              <span id="step3Time">Waiting...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Notify Retailers -->
+        <div class="recall-step upcoming" id="step4" data-step="4">
+          <div class="step-marker">
+            <CheckCircle class="icon-sm step-check" />
+            <div class="step-spinner"></div>
+            <span class="step-number">4</span>
+          </div>
+          <div class="step-content">
+            <h3 class="text-base mb-2">Retailers Notified</h3>
+            <div class="notification-stats">
+              <div class="notif-channel">
+                <Mail class="icon-md text-cyan" />
+                <div>
+                  <span class="notif-count" id="emailCount">0</span>
+                  <span class="notif-label">Emails sent</span>
+                </div>
+              </div>
+              <div class="notif-channel">
+                <MessageSquare class="icon-md text-indigo" />
+                <div>
+                  <span class="notif-count" id="smsCount">0</span>
+                  <span class="notif-label">SMS alerts</span>
+                </div>
+              </div>
+              <div class="notif-channel">
+                <Bell class="icon-md text-orange" />
+                <div>
+                  <span class="notif-count" id="pushCount">0</span>
+                  <span class="notif-label">App notifications</span>
+                </div>
+              </div>
+            </div>
+            <div class="notif-sample card-dark" id="smsPreview" style="display: none;">
+              <p class="text-xs text-text-muted mb-1">Sample SMS to Retailers:</p>
+              <p class="text-sm mb-0 font-mono">
+                "[URGENT] VERDA RECALL: Remove batch FCM-2024-0312 from shelves immediately.
+                Salmonella detected. Scan products to confirm. Reply DONE when complete."
+              </p>
+            </div>
+            <div class="step-time">
+              <Clock class="icon-xs" />
+              <span id="step4Time">Waiting...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5: Notify Consumers -->
+        <div class="recall-step upcoming" id="step5" data-step="5">
+          <div class="step-marker">
+            <CheckCircle class="icon-sm step-check" />
+            <div class="step-spinner"></div>
+            <span class="step-number">5</span>
+          </div>
+          <div class="step-content">
+            <h3 class="text-base mb-2">Consumers Notified</h3>
+            <div class="step-details">
+              <p class="text-sm text-text-secondary mb-3">
+                Consumers who scanned this product's QR code previously are notified directly.
+                Anonymous tracking means we know the device, not the person.
+              </p>
+              <div class="consumer-stats">
+                <div class="consumer-stat">
+                  <span class="consumer-number text-cyan" id="consumerPushSent">0</span>
+                  <span class="consumer-label">Push notifications sent</span>
+                </div>
+                <div class="consumer-stat">
+                  <span class="consumer-number text-green" id="consumerDelivered">0</span>
+                  <span class="consumer-label">Delivered & opened</span>
+                </div>
+              </div>
+            </div>
+            <div class="step-time">
+              <Clock class="icon-xs" />
+              <span id="step5Time">Waiting...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 6: Confirm Removal -->
+        <div class="recall-step upcoming" id="step6" data-step="6">
+          <div class="step-marker">
+            <CheckCircle class="icon-sm step-check" />
+            <div class="step-spinner"></div>
+            <span class="step-number">6</span>
+          </div>
+          <div class="step-content">
+            <h3 class="text-base mb-2">Confirming Removal</h3>
+            <div class="removal-progress">
+              <div class="removal-header">
+                <span class="text-sm">Retailer Confirmations</span>
+                <span class="text-sm font-medium"><span id="confirmedCount">0</span>/23 locations confirmed</span>
+              </div>
+              <div class="progress-bar progress-bar-animated">
+                <div class="progress-fill" id="confirmProgressBar" style="width: 0%;"></div>
+              </div>
+              <div class="removal-list" id="removalList">
+                <!-- Will be populated dynamically -->
+              </div>
+            </div>
+            <div class="step-time pending">
+              <Clock class="icon-xs" />
+              <span id="step6Time">Waiting...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 7: Complete -->
+        <div class="recall-step upcoming" id="step7" data-step="7">
+          <div class="step-marker">
+            <CheckCircle class="icon-sm step-check" />
+            <div class="step-spinner"></div>
+            <span class="step-number">7</span>
+          </div>
+          <div class="step-content">
+            <h3 class="text-base mb-2">Generate Report & Close</h3>
+            <p class="text-sm text-text-muted" id="reportStatus">
+              Final audit trail, regulatory report, and insurance documentation will be generated automatically.
+            </p>
+            <div class="report-success" id="reportSuccess" style="display: none;">
+              <div class="success-icon">
+                <CheckCircle class="icon-lg text-green" />
+              </div>
+              <h4 class="text-base text-green mb-2">Recall Completed Successfully</h4>
+              <p class="text-sm text-text-secondary mb-0">
+                All products removed, consumers notified, and documentation filed.
+              </p>
+            </div>
+            <div class="step-time">
+              <Clock class="icon-xs" />
+              <span id="step7Time">Waiting...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Key Metrics -->
+    <section class="reveal gradient-bg-animated section-full">
+      <span class="section-label section-label-animated">results</span>
+      <h2><span class="gradient-text">Recall Performance Metrics</span></h2>
+
+      <div class="grid-4 mt-6 stagger-children">
+        <div class="card card-3d glass text-center">
+          <span class="stat-number cyan text-shimmer">28s</span>
+          <p class="text-sm mt-2 mb-1">Time to Trace</p>
+          <p class="text-xs text-text-muted mb-0">vs. 3-5 days traditional</p>
+        </div>
+        <div class="card card-3d glass text-center">
+          <span class="stat-number green">89%</span>
+          <p class="text-sm mt-2 mb-1">Products Recovered</p>
+          <p class="text-xs text-text-muted mb-0">vs. 30-40% traditional</p>
+        </div>
+        <div class="card card-3d glass text-center">
+          <span class="stat-number indigo">92%</span>
+          <p class="text-sm mt-2 mb-1">Consumer Reached</p>
+          <p class="text-xs text-text-muted mb-0">vs. 15-20% traditional</p>
+        </div>
+        <div class="card card-3d glass text-center">
+          <span class="stat-number orange">$2.1M</span>
+          <p class="text-sm mt-2 mb-1">Savings</p>
+          <p class="text-xs text-text-muted mb-0">Reduced waste & liability</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- CTA -->
+    <section class="reveal pb-8">
+      <h2><span class="gradient-text-animated">Try More Demos</span></h2>
+      <div class="flex flex-wrap gap-3 mt-4">
+        <a href="/demo/dashboard" class="btn btn-lg glow-green ripple">
+          Dashboard Demo
+          <ArrowRight class="icon-sm" />
+        </a>
+        <a href="/demo" class="btn btn-outline btn-lg ripple">
+          All Demos
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Comparison Cards */
+  .comparison-card {
+    padding: 2rem;
+  }
+
+  .comparison-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .comparison-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .stat-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .stat-row svg {
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+  }
+
+  .stat-row.negative svg {
+    color: var(--color-rose);
+  }
+
+  .stat-row.positive svg {
+    color: var(--color-green-deep);
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+
+  .stat-label {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* Alert Banner */
+  .alert-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--color-rose-bg);
+    border: 2px solid var(--color-rose);
+    border-radius: 12px;
+  }
+
+  .alert-banner svg {
+    color: var(--color-rose);
+    flex-shrink: 0;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* Recall Dashboard */
+  .recall-dashboard {
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .recall-dashboard::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-border);
+  }
+
+  .recall-step {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+  .step-marker {
+    position: absolute;
+    left: -3rem;
+    width: 2rem;
+    height: 2rem;
+    background: var(--color-surface);
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .recall-step.completed .step-marker {
+    background: var(--color-green-bg);
+    border-color: var(--color-green-deep);
+  }
+
+  .recall-step.completed .step-marker svg {
+    color: var(--color-green-deep);
+  }
+
+  .recall-step.in-progress .step-marker {
+    background: var(--color-orange-bg);
+    border-color: var(--color-orange);
+  }
+
+  .step-spinner {
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid var(--color-orange-bg);
+    border-top-color: var(--color-orange);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .step-number {
+    position: absolute;
+    font-size: 0.625rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+
+  .recall-step.completed .step-number {
+    display: none;
+  }
+
+  .step-content {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .recall-step.upcoming .step-content {
+    opacity: 0.6;
+  }
+
+  .step-details {
+    margin-bottom: 1rem;
+  }
+
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .detail-row:last-child {
+    border-bottom: none;
+  }
+
+  .detail-label {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  .detail-value {
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+
+  .step-time {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-green-deep);
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .step-time.pending {
+    color: var(--color-orange);
+  }
+
+  /* Trace Results */
+  .trace-results {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .trace-results {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .trace-stat {
+    text-align: center;
+    padding: 1rem;
+    background: var(--color-surface-2);
+    border-radius: 8px;
+  }
+
+  .trace-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: var(--font-display);
+    color: var(--color-rose);
+  }
+
+  .trace-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+  }
+
+  /* Location Map */
+  .location-map {
+    background: var(--color-surface-2);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .map-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .location-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .location-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    background: var(--color-surface);
+    border-radius: 6px;
+    font-size: 0.8125rem;
+  }
+
+  .location-item.muted {
+    background: transparent;
+    color: var(--color-text-muted);
+  }
+
+  .location-name {
+    flex: 1;
+  }
+
+  .location-count {
+    color: var(--color-text-muted);
+  }
+
+  /* Notification Stats */
+  .notification-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .notif-channel {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--color-surface-2);
+    border-radius: 8px;
+  }
+
+  .notif-count {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .notif-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .notif-sample {
+    padding: 1rem;
+    border-radius: 8px;
+    background: var(--color-surface-dark);
+  }
+
+  /* Consumer Stats */
+  .consumer-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .consumer-stat {
+    text-align: center;
+    padding: 1rem;
+    background: var(--color-surface-2);
+    border-radius: 8px;
+  }
+
+  .consumer-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: var(--font-display);
+  }
+
+  .consumer-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+  }
+
+  /* Removal Progress */
+  .removal-progress {
+    background: var(--color-surface-2);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .removal-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+
+  .removal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .removal-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    padding: 0.5rem;
+    background: var(--color-surface);
+    border-radius: 6px;
+  }
+
+  .icon-xs {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* Simulation Controls */
+  .simulation-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .simulation-timer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 0.875rem;
+  }
+
+  .glow-rose {
+    box-shadow: 0 0 20px rgba(var(--color-rose-rgb), 0.3);
+  }
+
+  /* Step states for animation */
+  .recall-step.upcoming .step-check {
+    display: none;
+  }
+
+  .recall-step.upcoming .step-spinner {
+    display: none;
+  }
+
+  .recall-step.in-progress .step-check {
+    display: none;
+  }
+
+  .recall-step.in-progress .step-spinner {
+    display: block;
+  }
+
+  .recall-step.in-progress .step-number {
+    display: none;
+  }
+
+  .recall-step.completed .step-check {
+    display: block;
+  }
+
+  .recall-step.completed .step-spinner {
+    display: none;
+  }
+
+  /* Count up animation */
+  .counting {
+    animation: countPulse 0.3s ease-out;
+  }
+
+  @keyframes countPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+  /* Report success */
+  .report-success {
+    text-align: center;
+    padding: 2rem;
+    background: var(--color-green-bg);
+    border-radius: 12px;
+    margin-top: 1rem;
+  }
+
+  .success-icon {
+    margin-bottom: 1rem;
+  }
+
+  .success-icon svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Location item animation */
+  .location-item {
+    animation: slideInLocation 0.3s ease-out;
+  }
+
+  @keyframes slideInLocation {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Removal item styles */
+  .removal-item.confirmed svg {
+    color: var(--color-green-deep);
+  }
+
+  .removal-item.pending svg {
+    color: var(--color-orange);
+  }
+
+  /* Step completion animation */
+  .recall-step.just-completed .step-content {
+    animation: stepComplete 0.5s ease-out;
+  }
+
+  @keyframes stepComplete {
+    0% { border-color: var(--color-green-deep); box-shadow: 0 0 20px rgba(var(--color-green-rgb), 0.3); }
+    100% { border-color: var(--color-border); box-shadow: none; }
+  }
+</style>
+
+<script>
+  // Simulation state
+  let isRunning = false;
+  let totalSeconds = 0;
+  let timerInterval: ReturnType<typeof setInterval> | null = null;
+  let currentStep = 0;
+
+  // Element references
+  const startRecallBtn = document.getElementById('startRecallBtn');
+  const resetRecallBtn = document.getElementById('resetRecallBtn');
+  const simulationTimer = document.getElementById('simulationTimer');
+  const totalTimeDisplay = document.getElementById('totalTimeDisplay');
+  const alertBanner = document.getElementById('alertBanner');
+
+  // Step elements
+  const steps = [
+    document.getElementById('step1'),
+    document.getElementById('step2'),
+    document.getElementById('step3'),
+    document.getElementById('step4'),
+    document.getElementById('step5'),
+    document.getElementById('step6'),
+    document.getElementById('step7')
+  ];
+
+  // Locations data
+  const locationData = [
+    { name: 'AEON Mall Shibuya, Tokyo', count: 34 },
+    { name: 'Don Quijote Shinjuku, Tokyo', count: 28 },
+    { name: 'Isetan Singapore', count: 42 },
+    { name: 'K-Mart Seoul Station', count: 31 },
+    { name: 'Lotte Mart Gangnam, Seoul', count: 25 }
+  ];
+
+  // Animate number count up
+  function animateNumber(element: HTMLElement, target: number, duration: number = 1000) {
+    const start = 0;
+    const increment = target / (duration / 50);
+    let current = start;
+
+    const interval = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(interval);
+      }
+      element.textContent = Math.floor(current).toLocaleString();
+      element.classList.add('counting');
+      setTimeout(() => element.classList.remove('counting'), 100);
+    }, 50);
+  }
+
+  // Complete a step
+  function completeStep(stepIndex: number, time: string) {
+    const step = steps[stepIndex];
+    if (!step) return;
+
+    step.classList.remove('upcoming', 'in-progress');
+    step.classList.add('completed', 'just-completed');
+
+    const timeEl = document.getElementById(`step${stepIndex + 1}Time`);
+    if (timeEl) timeEl.textContent = `Completed in ${time}`;
+
+    setTimeout(() => step.classList.remove('just-completed'), 500);
+  }
+
+  // Start step in progress
+  function startStep(stepIndex: number) {
+    const step = steps[stepIndex];
+    if (!step) return;
+
+    step.classList.remove('upcoming');
+    step.classList.add('in-progress');
+    step.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // Format time
+  function formatTime(seconds: number): string {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  }
+
+  // Step 1: Detection
+  async function runStep1() {
+    startStep(0);
+    await new Promise(r => setTimeout(r, 500));
+    completeStep(0, '0 seconds');
+  }
+
+  // Step 2: Trace
+  async function runStep2() {
+    startStep(1);
+
+    const productsTraced = document.getElementById('productsTraced');
+    const retailLocations = document.getElementById('retailLocations');
+    const alreadySold = document.getElementById('alreadySold');
+    const onShelves = document.getElementById('onShelves');
+
+    if (productsTraced) animateNumber(productsTraced, 1247, 2000);
+    await new Promise(r => setTimeout(r, 500));
+    if (retailLocations) animateNumber(retailLocations, 23, 1500);
+    await new Promise(r => setTimeout(r, 500));
+    if (alreadySold) animateNumber(alreadySold, 847, 1500);
+    await new Promise(r => setTimeout(r, 500));
+    if (onShelves) animateNumber(onShelves, 400, 1000);
+
+    await new Promise(r => setTimeout(r, 1500));
+    completeStep(1, '12 seconds');
+  }
+
+  // Step 3: Locate
+  async function runStep3() {
+    startStep(2);
+
+    const locationList = document.getElementById('locationList');
+    const locationCount = document.getElementById('locationCount');
+
+    if (locationList) locationList.innerHTML = '';
+
+    for (let i = 0; i < locationData.length; i++) {
+      await new Promise(r => setTimeout(r, 300));
+
+      if (locationCount) locationCount.textContent = (i + 1).toString();
+
+      if (locationList) {
+        const item = document.createElement('div');
+        item.className = 'location-item';
+        item.innerHTML = `
+          <span class="location-name">${locationData[i].name}</span>
+          <span class="location-count">${locationData[i].count} units</span>
+          <span class="tag tag-sm tag-rose">On Shelf</span>
+        `;
+        locationList.appendChild(item);
+      }
+    }
+
+    // Add "more" item
+    await new Promise(r => setTimeout(r, 300));
+    if (locationList) {
+      const moreItem = document.createElement('div');
+      moreItem.className = 'location-item muted';
+      moreItem.innerHTML = `
+        <span class="location-name">+ 18 more locations</span>
+        <span class="location-count">240 units</span>
+      `;
+      locationList.appendChild(moreItem);
+    }
+    if (locationCount) locationCount.textContent = '23';
+
+    await new Promise(r => setTimeout(r, 500));
+    completeStep(2, '8 seconds');
+  }
+
+  // Step 4: Notify Retailers
+  async function runStep4() {
+    startStep(3);
+
+    const emailCount = document.getElementById('emailCount');
+    const smsCount = document.getElementById('smsCount');
+    const pushCount = document.getElementById('pushCount');
+    const smsPreview = document.getElementById('smsPreview');
+
+    if (emailCount) animateNumber(emailCount, 23, 1000);
+    await new Promise(r => setTimeout(r, 400));
+    if (smsCount) animateNumber(smsCount, 23, 1000);
+    await new Promise(r => setTimeout(r, 400));
+    if (pushCount) animateNumber(pushCount, 23, 1000);
+
+    await new Promise(r => setTimeout(r, 800));
+    if (smsPreview) smsPreview.style.display = 'block';
+
+    await new Promise(r => setTimeout(r, 500));
+    completeStep(3, '3 seconds');
+  }
+
+  // Step 5: Notify Consumers
+  async function runStep5() {
+    startStep(4);
+
+    const consumerPushSent = document.getElementById('consumerPushSent');
+    const consumerDelivered = document.getElementById('consumerDelivered');
+
+    if (consumerPushSent) animateNumber(consumerPushSent, 312, 1500);
+    await new Promise(r => setTimeout(r, 1000));
+    if (consumerDelivered) animateNumber(consumerDelivered, 287, 1200);
+
+    await new Promise(r => setTimeout(r, 1000));
+    completeStep(4, '5 seconds');
+  }
+
+  // Step 6: Confirm Removal
+  async function runStep6() {
+    startStep(5);
+
+    const confirmedCount = document.getElementById('confirmedCount');
+    const confirmProgressBar = document.getElementById('confirmProgressBar');
+    const removalList = document.getElementById('removalList');
+
+    if (removalList) removalList.innerHTML = '';
+
+    const retailers = [
+      'AEON Mall Shibuya, Tokyo',
+      'Don Quijote Shinjuku, Tokyo',
+      'Isetan Singapore',
+      'K-Mart Seoul Station',
+      'Lotte Mart Gangnam, Seoul'
+    ];
+
+    let confirmed = 0;
+
+    for (let i = 0; i < retailers.length; i++) {
+      await new Promise(r => setTimeout(r, 800));
+
+      confirmed++;
+      if (confirmedCount) confirmedCount.textContent = confirmed.toString();
+      if (confirmProgressBar) confirmProgressBar.style.width = `${(confirmed / 23) * 100}%`;
+
+      if (removalList) {
+        const time = new Date();
+        time.setMinutes(time.getMinutes() + i * 2);
+        const timeStr = time.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+
+        const item = document.createElement('div');
+        item.className = 'removal-item confirmed';
+        item.innerHTML = `
+          <svg class="icon-sm text-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <span>${retailers[i]} - Confirmed ${timeStr}</span>
+        `;
+        removalList.appendChild(item);
+      }
+    }
+
+    // Add remaining progress
+    await new Promise(r => setTimeout(r, 500));
+    if (confirmedCount) confirmedCount.textContent = '23';
+    if (confirmProgressBar) confirmProgressBar.style.width = '100%';
+
+    await new Promise(r => setTimeout(r, 500));
+    completeStep(5, '45 seconds');
+  }
+
+  // Step 7: Generate Report
+  async function runStep7() {
+    startStep(6);
+
+    const reportStatus = document.getElementById('reportStatus');
+    const reportSuccess = document.getElementById('reportSuccess');
+
+    if (reportStatus) reportStatus.textContent = 'Generating audit trail and documentation...';
+
+    await new Promise(r => setTimeout(r, 2000));
+
+    if (reportStatus) reportStatus.style.display = 'none';
+    if (reportSuccess) reportSuccess.style.display = 'block';
+
+    completeStep(6, '2 seconds');
+  }
+
+  // Main simulation
+  async function startSimulation() {
+    isRunning = true;
+
+    if (startRecallBtn) startRecallBtn.style.display = 'none';
+    if (resetRecallBtn) resetRecallBtn.style.display = 'inline-flex';
+    if (simulationTimer) simulationTimer.style.display = 'flex';
+    if (alertBanner) alertBanner.style.display = 'flex';
+
+    // Start timer
+    totalSeconds = 0;
+    timerInterval = setInterval(() => {
+      totalSeconds++;
+      if (totalTimeDisplay) totalTimeDisplay.textContent = formatTime(totalSeconds);
+    }, 1000);
+
+    // Run steps
+    await runStep1();
+    await runStep2();
+    await runStep3();
+    await runStep4();
+    await runStep5();
+    await runStep6();
+    await runStep7();
+
+    // Stop timer
+    if (timerInterval) clearInterval(timerInterval);
+    isRunning = false;
+  }
+
+  // Reset simulation
+  function resetSimulation() {
+    if (timerInterval) clearInterval(timerInterval);
+    isRunning = false;
+    totalSeconds = 0;
+
+    if (startRecallBtn) startRecallBtn.style.display = 'inline-flex';
+    if (resetRecallBtn) resetRecallBtn.style.display = 'none';
+    if (simulationTimer) simulationTimer.style.display = 'none';
+    if (alertBanner) alertBanner.style.display = 'none';
+    if (totalTimeDisplay) totalTimeDisplay.textContent = '0:00';
+
+    // Reset all steps
+    steps.forEach(step => {
+      if (step) {
+        step.classList.remove('completed', 'in-progress', 'just-completed');
+        step.classList.add('upcoming');
+      }
+    });
+
+    // Reset counters
+    const counters = ['productsTraced', 'retailLocations', 'alreadySold', 'onShelves',
+                      'emailCount', 'smsCount', 'pushCount', 'consumerPushSent',
+                      'consumerDelivered', 'confirmedCount', 'locationCount'];
+    counters.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = '0';
+    });
+
+    // Reset other elements
+    const locationList = document.getElementById('locationList');
+    if (locationList) locationList.innerHTML = '';
+
+    const removalList = document.getElementById('removalList');
+    if (removalList) removalList.innerHTML = '';
+
+    const smsPreview = document.getElementById('smsPreview');
+    if (smsPreview) smsPreview.style.display = 'none';
+
+    const reportStatus = document.getElementById('reportStatus');
+    if (reportStatus) {
+      reportStatus.style.display = 'block';
+      reportStatus.textContent = 'Final audit trail, regulatory report, and insurance documentation will be generated automatically.';
+    }
+
+    const reportSuccess = document.getElementById('reportSuccess');
+    if (reportSuccess) reportSuccess.style.display = 'none';
+
+    const confirmProgressBar = document.getElementById('confirmProgressBar');
+    if (confirmProgressBar) confirmProgressBar.style.width = '0%';
+
+    // Reset step times
+    for (let i = 1; i <= 7; i++) {
+      const timeEl = document.getElementById(`step${i}Time`);
+      if (timeEl) timeEl.textContent = 'Waiting...';
+    }
+  }
+
+  // Event listeners
+  startRecallBtn?.addEventListener('click', startSimulation);
+  resetRecallBtn?.addEventListener('click', resetSimulation);
+</script>

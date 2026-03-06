@@ -1,0 +1,79 @@
+---
+import Card from '../shared/Card.astro';
+import SectionLabel from '../shared/SectionLabel.astro';
+
+interface Step {
+  title: string;
+  description: string;
+  color: string;
+}
+
+interface Props {
+  title?: string;
+  steps?: Step[];
+  colspan?: 1 | 2 | 3;
+  stagger?: number;
+}
+
+const defaultSteps: Step[] = [
+  {
+    title: 'Farm Registration',
+    description: 'Farmer logs crop, location, inputs via mobile',
+    color: 'bg-green-deep'
+  },
+  {
+    title: 'Harvest & Handoff',
+    description: 'NFC scan records custody transfer, temp logger activated',
+    color: 'bg-green'
+  },
+  {
+    title: 'Processing',
+    description: 'Factory logs transformation, QR code generated on packaging',
+    color: 'bg-green-light'
+  },
+  {
+    title: 'Cold Chain Transit',
+    description: 'IoT sensors monitor temperature, GPS tracks route',
+    color: 'bg-amber'
+  },
+  {
+    title: 'Retail Arrival',
+    description: 'Receiving scan, cold chain status badge assigned',
+    color: 'bg-earth'
+  },
+  {
+    title: 'Consumer Scan',
+    description: 'QR scan shows full journey in 2 seconds',
+    color: 'bg-green-deep'
+  },
+  {
+    title: 'On-Chain Proof',
+    description: 'Merkle batch anchored to Blockchain every 60 seconds',
+    color: 'bg-text-secondary'
+  }
+];
+
+const { title = 'From Seed to Shelf to Scan', steps = defaultSteps, colspan = 2, stagger } = Astro.props;
+---
+
+<Card colspan={colspan} stagger={stagger}>
+  <h3 class="font-display text-lg font-medium text-text mb-4">
+    {title}
+  </h3>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    {steps.map((step, index) => (
+      <div class="flex items-start gap-3">
+        <div class:list={['w-2 h-2 rounded-full mt-1.5 shrink-0', step.color]} />
+        <div class="min-w-0">
+          <span class="font-mono text-xs font-medium text-text block">
+            {index + 1}. {step.title}
+          </span>
+          <span class="font-mono text-[11px] text-text-muted block leading-relaxed">
+            {step.description}
+          </span>
+        </div>
+      </div>
+    ))}
+  </div>
+</Card>

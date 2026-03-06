@@ -1,0 +1,198 @@
+---
+interface Props {
+  pose?: 'standing' | 'waving' | 'peeking' | 'speaking';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const { pose = 'standing', size = 'md', class: className = '' } = Astro.props;
+
+const sizeClasses = {
+  sm: 'w-12 h-16',
+  md: 'w-20 h-28',
+  lg: 'w-32 h-44'
+};
+---
+
+{pose === 'standing' && (
+  <svg
+    class:list={[sizeClasses[size], className]}
+    viewBox="0 0 64 88"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-label="Verda mascot"
+    role="img"
+  >
+    <!-- Body (leaf shape) -->
+    <path
+      d="M32 20 C12 30 8 55 20 72 C26 80 38 80 44 72 C56 55 52 30 32 20 Z"
+      fill="#2d5a27"
+    />
+    <!-- Stem/sprout on top -->
+    <path
+      d="M32 8 C30 8 28 12 28 16 C28 20 30 24 32 24 C34 24 36 20 36 16 C36 12 34 8 32 8"
+      fill="#3a7d32"
+    />
+    <path
+      d="M32 16 L32 24"
+      stroke="#2d5a27"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+    <!-- Eyes -->
+    <ellipse cx="24" cy="42" rx="3" ry="4" fill="#1a1f16" />
+    <ellipse cx="40" cy="42" rx="3" ry="4" fill="#1a1f16" />
+    <!-- Eye highlights -->
+    <ellipse cx="25" cy="40" rx="1" ry="1.5" fill="#faf8f4" />
+    <ellipse cx="41" cy="40" rx="1" ry="1.5" fill="#faf8f4" />
+    <!-- Subtle smile -->
+    <path
+      d="M26 52 Q32 56 38 52"
+      stroke="#1a1f16"
+      stroke-width="2"
+      stroke-linecap="round"
+      fill="none"
+    />
+    <!-- Leaf vein detail -->
+    <path
+      d="M32 30 L32 65"
+      stroke="rgba(26, 31, 22, 0.1)"
+      stroke-width="1"
+      fill="none"
+    />
+  </svg>
+)}
+
+{pose === 'waving' && (
+  <svg
+    class:list={[sizeClasses[size], className]}
+    viewBox="0 0 80 88"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-label="Verda mascot waving"
+    role="img"
+  >
+    <!-- Body (leaf shape) -->
+    <path
+      d="M40 20 C20 30 16 55 28 72 C34 80 46 80 52 72 C64 55 60 30 40 20 Z"
+      fill="#2d5a27"
+    />
+    <!-- Stem/sprout on top -->
+    <path
+      d="M40 8 C38 8 36 12 36 16 C36 20 38 24 40 24 C42 24 44 20 44 16 C44 12 42 8 40 8"
+      fill="#3a7d32"
+    />
+    <path
+      d="M40 16 L40 24"
+      stroke="#2d5a27"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+    <!-- Waving arm/leaf -->
+    <path
+      d="M52 40 Q62 35 70 25"
+      stroke="#3a7d32"
+      stroke-width="4"
+      stroke-linecap="round"
+      fill="none"
+    />
+    <path
+      d="M70 25 Q74 22 76 18"
+      stroke="#3a7d32"
+      stroke-width="3"
+      stroke-linecap="round"
+      fill="none"
+    />
+    <!-- Eyes -->
+    <ellipse cx="32" cy="42" rx="3" ry="4" fill="#1a1f16" />
+    <ellipse cx="48" cy="42" rx="3" ry="4" fill="#1a1f16" />
+    <!-- Eye highlights -->
+    <ellipse cx="33" cy="40" rx="1" ry="1.5" fill="#faf8f4" />
+    <ellipse cx="49" cy="40" rx="1" ry="1.5" fill="#faf8f4" />
+    <!-- Happy smile -->
+    <path
+      d="M34 52 Q40 58 46 52"
+      stroke="#1a1f16"
+      stroke-width="2"
+      stroke-linecap="round"
+      fill="none"
+    />
+  </svg>
+)}
+
+{pose === 'peeking' && (
+  <svg
+    class:list={[sizeClasses[size], className]}
+    viewBox="0 0 64 50"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-label="Verda mascot peeking"
+    role="img"
+  >
+    <!-- Top of body visible (peeking from bottom) -->
+    <path
+      d="M32 50 C12 50 8 35 12 20 C18 10 46 10 52 20 C56 35 52 50 32 50 Z"
+      fill="#2d5a27"
+    />
+    <!-- Stem/sprout on top -->
+    <path
+      d="M32 0 C30 0 28 4 28 8 C28 12 30 16 32 16 C34 16 36 12 36 8 C36 4 34 0 32 0"
+      fill="#3a7d32"
+    />
+    <path
+      d="M32 8 L32 16"
+      stroke="#2d5a27"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+    <!-- Eyes (curious, looking up) -->
+    <ellipse cx="24" cy="30" rx="3" ry="4" fill="#1a1f16" />
+    <ellipse cx="40" cy="30" rx="3" ry="4" fill="#1a1f16" />
+    <!-- Eye highlights -->
+    <ellipse cx="25" cy="28" rx="1" ry="1.5" fill="#faf8f4" />
+    <ellipse cx="41" cy="28" rx="1" ry="1.5" fill="#faf8f4" />
+  </svg>
+)}
+
+{pose === 'speaking' && (
+  <svg
+    class:list={[sizeClasses[size], className]}
+    viewBox="0 0 100 88"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-label="Verda mascot speaking"
+    role="img"
+  >
+    <!-- Body (leaf shape) -->
+    <path
+      d="M32 20 C12 30 8 55 20 72 C26 80 38 80 44 72 C56 55 52 30 32 20 Z"
+      fill="#2d5a27"
+    />
+    <!-- Stem/sprout on top -->
+    <path
+      d="M32 8 C30 8 28 12 28 16 C28 20 30 24 32 24 C34 24 36 20 36 16 C36 12 34 8 32 8"
+      fill="#3a7d32"
+    />
+    <path
+      d="M32 16 L32 24"
+      stroke="#2d5a27"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+    <!-- Eyes -->
+    <ellipse cx="24" cy="42" rx="3" ry="4" fill="#1a1f16" />
+    <ellipse cx="40" cy="42" rx="3" ry="4" fill="#1a1f16" />
+    <!-- Eye highlights -->
+    <ellipse cx="25" cy="40" rx="1" ry="1.5" fill="#faf8f4" />
+    <ellipse cx="41" cy="40" rx="1" ry="1.5" fill="#faf8f4" />
+    <!-- Open mouth (speaking) -->
+    <ellipse cx="32" cy="54" rx="4" ry="3" fill="#1a1f16" />
+    <!-- Speech bubble -->
+    <path
+      d="M60 15 L95 15 Q100 15 100 20 L100 45 Q100 50 95 50 L70 50 L60 60 L62 50 L60 50 Q55 50 55 45 L55 20 Q55 15 60 15 Z"
+      fill="#faf8f4"
+      stroke="#e5e0d5"
+      stroke-width="1"
+    />
+  </svg>
+)}

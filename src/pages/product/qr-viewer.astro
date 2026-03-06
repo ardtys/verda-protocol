@@ -1,0 +1,243 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { QrCode, Smartphone, Clock, Shield, Globe, Zap, ArrowRight, CheckCircle, Eye } from '@lucide/astro';
+---
+
+<BaseLayout
+  title="QR Journey Viewer"
+  description="Scan any Verda-enabled product and see its complete journey in 2 seconds. No app required. Works on any smartphone browser."
+>
+  <div class="container">
+    <!-- Hero -->
+    <section class="py-8">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="feature-icon green">
+          <QrCode class="icon-md" />
+        </div>
+        <span class="badge new">Core Product</span>
+      </div>
+      <h1>QR Journey Viewer</h1>
+      <p class="max-w-lg">
+        Every Verda-enabled product carries a unique QR code. One scan reveals the complete
+        journey — from farm to shelf — in under 2 seconds. No app download required.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-6">
+        <a href="mailto:hello@verda.so" class="btn btn-lg">
+          Request Demo
+          <ArrowRight class="icon-sm" />
+        </a>
+        <a href="/technology" class="btn btn-outline btn-lg">
+          Technical Docs
+        </a>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Key Features -->
+    <section class="reveal">
+      <span class="section-label">features</span>
+      <h2>Instant Transparency</h2>
+
+      <div class="grid-2 mt-6">
+        <div class="card">
+          <div class="feature-icon green mb-3">
+            <Smartphone class="icon-md" />
+          </div>
+          <h3 class="text-base mb-2">No App Required</h3>
+          <p class="text-sm mb-0">
+            Works in any smartphone browser. iOS, Android, even basic feature phones
+            with camera. Zero friction for consumers.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="feature-icon amber mb-3">
+            <Clock class="icon-md" />
+          </div>
+          <h3 class="text-base mb-2">2-Second Load</h3>
+          <p class="text-sm mb-0">
+            Optimized for slow networks. Core journey data loads in under 2 seconds
+            even on 3G connections common in rural areas.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="feature-icon earth mb-3">
+            <Globe class="icon-md" />
+          </div>
+          <h3 class="text-base mb-2">Multi-Language</h3>
+          <p class="text-sm mb-0">
+            Auto-detects browser language. Currently supports English, Indonesian,
+            Vietnamese, Thai, and Mandarin. More coming.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="feature-icon red mb-3">
+            <Shield class="icon-md" />
+          </div>
+          <h3 class="text-base mb-2">Tamper-Evident</h3>
+          <p class="text-sm mb-0">
+            Each QR code cryptographically signed. Counterfeit codes detected instantly.
+            Consumers see verification status immediately.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- What Users See -->
+    <section class="reveal">
+      <span class="section-label">user experience</span>
+      <h2>What Consumers See</h2>
+
+      <div class="timeline mt-6">
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Product Identity</h3>
+          <p class="text-sm mb-2">Name, batch number, production date, expiry date, and certifications at a glance.</p>
+          <div class="flex gap-1">
+            <span class="tag">Verified</span>
+            <span class="tag">Real-time</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Origin Story</h3>
+          <p class="text-sm mb-2">Farm location, farmer name (with consent), growing conditions, harvest date.</p>
+          <div class="flex gap-1">
+            <span class="tag">GPS Verified</span>
+            <span class="tag">Photos</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Processing Details</h3>
+          <p class="text-sm mb-2">Factory location, processing method, quality checks passed, packaging date.</p>
+          <div class="flex gap-1">
+            <span class="tag">Batch Linked</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Cold Chain Status</h3>
+          <p class="text-sm mb-2">Temperature history graph. Green checkmark if maintained, warning if excursion detected.</p>
+          <div class="flex gap-1">
+            <span class="tag">IoT Sensors</span>
+            <span class="tag">Real-time</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Certifications</h3>
+          <p class="text-sm mb-2">Organic, fair trade, halal, kosher — all linked to issuing authority for verification.</p>
+          <div class="flex gap-1">
+            <span class="tag">Third-party</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Blockchain Proof</h3>
+          <p class="text-sm mb-2">Link to on-chain transaction. Merkle proof for cryptographic verification.</p>
+          <div class="flex gap-1">
+            <span class="tag">Blockchain</span>
+            <span class="tag">Immutable</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Technical Specs -->
+    <section class="reveal">
+      <span class="section-label">technical</span>
+      <h2>Under the Hood</h2>
+
+      <div class="card mb-4">
+        <h3 class="text-base mb-2">QR Code Structure</h3>
+        <p class="text-sm mb-3">
+          Each code encodes a unique product identifier (UPI) using a compressed format.
+          Error correction level H ensures readability even when partially damaged.
+        </p>
+        <div class="code-block">
+          <pre><code>verda://p/[company-id]/[product-id]/[batch]/[serial]
+Example: verda://p/VRD001/COFFEE-01/B2024-0315/00001234</code></pre>
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <h3 class="text-base mb-2">Verification Flow</h3>
+        <ul class="list-dash">
+          <li>Scan triggers lookup against Verda API</li>
+          <li>Server returns journey data + Merkle proof</li>
+          <li>Client verifies proof against Blockchain state</li>
+          <li>Results cached locally for offline access</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="text-base mb-2">Performance</h3>
+        <div class="grid-3 mt-3">
+          <div class="text-center">
+            <span class="stat-number green text-xl">&lt;2s</span>
+            <p class="text-xs text-text-muted mt-1 mb-0">Load time (3G)</p>
+          </div>
+          <div class="text-center">
+            <span class="stat-number amber text-xl">50KB</span>
+            <p class="text-xs text-text-muted mt-1 mb-0">Payload size</p>
+          </div>
+          <div class="text-center">
+            <span class="stat-number earth text-xl">99.9%</span>
+            <p class="text-xs text-text-muted mt-1 mb-0">Uptime SLA</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Brand Integration -->
+    <section class="reveal">
+      <span class="section-label">for brands</span>
+      <h2>White-Label Options</h2>
+
+      <p>
+        Verda's QR viewer can be customized to match your brand identity.
+        Consumers see your brand, powered by Verda's infrastructure.
+      </p>
+
+      <ul class="list-dash mt-4">
+        <li><strong>Custom domains:</strong> scan.yourbrand.com</li>
+        <li><strong>Brand colors:</strong> Match your visual identity</li>
+        <li><strong>Logo placement:</strong> Your logo, your experience</li>
+        <li><strong>Custom fields:</strong> Add brand-specific journey data</li>
+        <li><strong>Analytics:</strong> See who's scanning, when, where</li>
+      </ul>
+
+      <div class="callout mt-6">
+        <p class="text-sm mb-0">
+          <strong>Enterprise plan:</strong> Full white-label with dedicated support,
+          custom integrations, and SLA guarantees.
+        </p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- CTA -->
+    <section class="reveal pb-8">
+      <span class="section-label">get started</span>
+      <h2>Ready to Add Transparency to Your Products?</h2>
+      <p>
+        Start with a pilot batch. See how consumers engage with product journeys.
+        No long-term commitment required.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-4">
+        <a href="mailto:hello@verda.so" class="btn btn-lg">
+          Request Demo
+          <ArrowRight class="icon-sm" />
+        </a>
+        <a href="/product/cold-chain" class="btn btn-outline btn-lg">
+          Explore Cold Chain
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

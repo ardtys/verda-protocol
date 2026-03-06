@@ -1,0 +1,1282 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowLeft, ArrowRight, Thermometer, Droplets, MapPin, AlertTriangle, CheckCircle, Clock, Truck, Battery, Signal, RefreshCw } from '@lucide/astro';
+---
+
+<BaseLayout
+  title="Cold Chain Monitoring Demo"
+  description="See real-time cold chain monitoring in action. Watch temperature, humidity, and GPS data from IoT sensors tracking a seafood shipment."
+>
+  <div class="container">
+    <!-- Back Link -->
+    <a href="/demo" class="inline-flex items-center gap-2 text-sm text-text-muted hover:text-green-deep mb-6">
+      <ArrowLeft class="icon-sm" />
+      Back to Demos
+    </a>
+
+    <!-- Demo Header -->
+    <section class="reveal">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="feature-icon feature-icon-md orange feature-icon-animated glow-pulse">
+          <Thermometer class="icon-md" />
+        </div>
+        <span class="badge badge-pulse">Live Monitoring</span>
+      </div>
+      <h1 class="text-shimmer"><span class="gradient-text-animated">Cold Chain Monitoring</span></h1>
+      <p class="text-base max-w-2xl text-text-secondary">
+        Watch real-time sensor data from a live seafood shipment traveling from
+        Busan to Tokyo. This demo shows actual IoT monitoring capabilities.
+      </p>
+    </section>
+
+    <hr class="divider-gradient" />
+
+    <!-- Live Dashboard -->
+    <section class="reveal">
+      <div class="dashboard-header">
+        <div class="flex items-center gap-3">
+          <h2 class="text-lg mb-0">Shipment: SHP-2024-08823</h2>
+          <span class="status-badge online">
+            <span class="status-dot online"></span>
+            Live
+          </span>
+        </div>
+        <div class="flex items-center gap-2 text-sm text-text-muted">
+          <RefreshCw class="icon-sm animate-spin-slow" />
+          <span>Updates every 30s</span>
+        </div>
+      </div>
+
+      <!-- Shipment Info Card -->
+      <div class="info-card gradient-border mb-6">
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">Product</span>
+            <span class="info-value">Fresh Tuna (Yellowfin)</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Quantity</span>
+            <span class="info-value">500 kg</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Origin</span>
+            <span class="info-value">Busan Fish Market, Korea</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Destination</span>
+            <span class="info-value">Tsukiji Market, Tokyo</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Departure</span>
+            <span class="info-value">Today, 04:30 AM</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">ETA</span>
+            <span class="info-value">Today, 06:45 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sensor Cards Grid -->
+      <div class="sensor-grid">
+        <!-- Temperature Sensor -->
+        <div class="sensor-card temp-card card-3d" id="tempCard">
+          <div class="sensor-header">
+            <div class="sensor-icon temp">
+              <Thermometer class="icon-md" />
+            </div>
+            <div class="sensor-status good" id="tempStatus">
+              <CheckCircle class="icon-sm" />
+              <span id="tempStatusText">Normal</span>
+            </div>
+          </div>
+          <div class="sensor-value">
+            <span class="value-number temp" id="tempValue">2.3</span>
+            <span class="value-unit">°C</span>
+          </div>
+          <div class="sensor-range">
+            <span class="range-label">Safe Range</span>
+            <span class="range-value">0°C - 4°C</span>
+          </div>
+          <div class="sensor-chart temp-chart">
+            <svg viewBox="0 0 200 60" class="chart-svg">
+              <defs>
+                <linearGradient id="tempGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style="stop-color:var(--color-cyan);stop-opacity:0.3" />
+                  <stop offset="100%" style="stop-color:var(--color-cyan);stop-opacity:0" />
+                </linearGradient>
+              </defs>
+              <path d="M0,30 Q20,28 40,32 T80,28 T120,35 T160,30 T200,32"
+                    fill="none"
+                    stroke="var(--color-cyan)"
+                    stroke-width="2"/>
+              <path d="M0,30 Q20,28 40,32 T80,28 T120,35 T160,30 T200,32 L200,60 L0,60 Z"
+                    fill="url(#tempGradient)"/>
+            </svg>
+          </div>
+          <div class="sensor-footer">
+            <span class="text-xs text-text-muted">Last 6 hours</span>
+            <span class="text-xs text-cyan" id="tempAvg">Avg: 2.1°C</span>
+          </div>
+        </div>
+
+        <!-- Humidity Sensor -->
+        <div class="sensor-card humid-card card-3d" id="humidCard">
+          <div class="sensor-header">
+            <div class="sensor-icon humid">
+              <Droplets class="icon-md" />
+            </div>
+            <div class="sensor-status good" id="humidStatus">
+              <CheckCircle class="icon-sm" />
+              <span id="humidStatusText">Normal</span>
+            </div>
+          </div>
+          <div class="sensor-value">
+            <span class="value-number humid" id="humidValue">85</span>
+            <span class="value-unit">%</span>
+          </div>
+          <div class="sensor-range">
+            <span class="range-label">Safe Range</span>
+            <span class="range-value">80% - 95%</span>
+          </div>
+          <div class="sensor-chart humid-chart">
+            <svg viewBox="0 0 200 60" class="chart-svg">
+              <defs>
+                <linearGradient id="humidGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style="stop-color:var(--color-indigo);stop-opacity:0.3" />
+                  <stop offset="100%" style="stop-color:var(--color-indigo);stop-opacity:0" />
+                </linearGradient>
+              </defs>
+              <path d="M0,25 Q25,30 50,22 T100,28 T150,24 T200,26"
+                    fill="none"
+                    stroke="var(--color-indigo)"
+                    stroke-width="2"/>
+              <path d="M0,25 Q25,30 50,22 T100,28 T150,24 T200,26 L200,60 L0,60 Z"
+                    fill="url(#humidGradient)"/>
+            </svg>
+          </div>
+          <div class="sensor-footer">
+            <span class="text-xs text-text-muted">Last 6 hours</span>
+            <span class="text-xs text-indigo" id="humidAvg">Avg: 84%</span>
+          </div>
+        </div>
+
+        <!-- GPS Location -->
+        <div class="sensor-card location-card card-3d" id="locationCard">
+          <div class="sensor-header">
+            <div class="sensor-icon location">
+              <MapPin class="icon-md" />
+            </div>
+            <div class="sensor-status good">
+              <Signal class="icon-sm" />
+              GPS Lock
+            </div>
+          </div>
+          <div class="location-info">
+            <div class="location-coords">
+              <span class="coord-label">Lat</span>
+              <span class="coord-value" id="latValue">-5.1477</span>
+              <span class="coord-label">Lng</span>
+              <span class="coord-value" id="lngValue">119.4327</span>
+            </div>
+            <div class="location-place">
+              <span class="text-sm font-medium" id="placeName">Near Fukuoka</span>
+              <span class="text-xs text-text-muted" id="placeRegion">Japan Sea</span>
+            </div>
+          </div>
+          <div class="location-map">
+            <div class="map-placeholder">
+              <div class="map-route">
+                <div class="route-point start">
+                  <span class="text-xs">Busan</span>
+                </div>
+                <div class="route-line"></div>
+                <div class="route-point current pulse-ring">
+                  <Truck class="icon-sm" />
+                </div>
+                <div class="route-line dashed"></div>
+                <div class="route-point end">
+                  <span class="text-xs">Tokyo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sensor-footer">
+            <span class="text-xs text-text-muted"><span id="kmTraveled">342</span> km traveled</span>
+            <span class="text-xs text-green"><span id="kmRemaining">1,523</span> km remaining</span>
+          </div>
+        </div>
+
+        <!-- Device Status -->
+        <div class="sensor-card device-card card-3d" id="deviceCard">
+          <div class="sensor-header">
+            <div class="sensor-icon device">
+              <Battery class="icon-md" />
+            </div>
+            <div class="sensor-status good">
+              <CheckCircle class="icon-sm" />
+              Healthy
+            </div>
+          </div>
+          <div class="device-info">
+            <div class="device-row">
+              <span class="device-label">Sensor ID</span>
+              <code class="device-value">VRD-SNS-08823-A</code>
+            </div>
+            <div class="device-row">
+              <span class="device-label">Battery</span>
+              <div class="battery-indicator">
+                <div class="battery-level" id="batteryLevel" style="width: 78%;"></div>
+              </div>
+              <span class="device-value" id="batteryPercent">78%</span>
+            </div>
+            <div class="device-row">
+              <span class="device-label">Signal</span>
+              <div class="signal-bars" id="signalBars">
+                <div class="signal-bar active"></div>
+                <div class="signal-bar active"></div>
+                <div class="signal-bar active"></div>
+                <div class="signal-bar"></div>
+              </div>
+              <span class="device-value" id="signalStatus">Good</span>
+            </div>
+            <div class="device-row">
+              <span class="device-label">Last Ping</span>
+              <span class="device-value" id="lastPing">12 sec ago</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Alert History -->
+    <section class="reveal">
+      <span class="section-label section-label-animated">alert history</span>
+      <h2><span class="highlight">Recent Events</span></h2>
+
+      <div class="alert-timeline mt-6">
+        <!-- Normal reading -->
+        <div class="alert-item normal">
+          <div class="alert-icon">
+            <CheckCircle class="icon-sm" />
+          </div>
+          <div class="alert-content">
+            <div class="alert-header">
+              <span class="alert-title">Temperature Normal</span>
+              <span class="alert-time">2 min ago</span>
+            </div>
+            <p class="alert-text">Reading: 2.3°C - Within safe range (0-4°C)</p>
+          </div>
+        </div>
+
+        <!-- Warning -->
+        <div class="alert-item warning">
+          <div class="alert-icon">
+            <AlertTriangle class="icon-sm" />
+          </div>
+          <div class="alert-content">
+            <div class="alert-header">
+              <span class="alert-title">Temperature Rising</span>
+              <span class="alert-time">45 min ago</span>
+            </div>
+            <p class="alert-text">Reading: 3.8°C - Approaching upper limit. Door opened briefly during checkpoint.</p>
+            <div class="alert-action">
+              <span class="tag tag-sm tag-orange">Auto-resolved</span>
+              <span class="text-xs text-text-muted">Returned to 2.1°C after 8 minutes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Normal -->
+        <div class="alert-item normal">
+          <div class="alert-icon">
+            <MapPin class="icon-sm" />
+          </div>
+          <div class="alert-content">
+            <div class="alert-header">
+              <span class="alert-title">Checkpoint Passed</span>
+              <span class="alert-time">1 hr ago</span>
+            </div>
+            <p class="alert-text">Vehicle passed Pare-Pare checkpoint. GPS confirmed.</p>
+          </div>
+        </div>
+
+        <!-- Normal -->
+        <div class="alert-item normal">
+          <div class="alert-icon">
+            <Truck class="icon-sm" />
+          </div>
+          <div class="alert-content">
+            <div class="alert-header">
+              <span class="alert-title">Shipment Departed</span>
+              <span class="alert-time">10 hrs ago</span>
+            </div>
+            <p class="alert-text">Left Busan Fish Market at 04:30 AM. Cold chain activated.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Alert Simulation -->
+    <section class="reveal gradient-bg-animated section-full">
+      <span class="section-label section-label-animated">simulation</span>
+      <h2><span class="gradient-text">What Happens When Cold Chain Breaks?</span></h2>
+      <p class="max-w-2xl mb-4">
+        Click the button below to simulate a cold chain breach. Watch how the system
+        responds with real-time alerts and automated actions.
+      </p>
+
+      <div class="simulation-controls mb-6">
+        <button class="btn btn-lg glow-rose ripple" id="triggerBreachBtn">
+          <AlertTriangle class="icon-sm" />
+          Simulate Breach
+        </button>
+        <button class="btn btn-outline btn-lg ripple" id="resetBreachBtn" style="display: none;">
+          <RefreshCw class="icon-sm" />
+          Reset Simulation
+        </button>
+      </div>
+
+      <div class="breach-simulation" id="breachSimulation" style="display: none;">
+        <div class="breach-card critical" id="breachCard">
+          <div class="breach-header">
+            <AlertTriangle class="icon-lg" />
+            <div>
+              <h3 class="text-base mb-0 text-rose">CRITICAL: Temperature Excursion</h3>
+              <p class="text-sm text-text-muted mb-0">Simulated breach - Demo only</p>
+            </div>
+          </div>
+          <div class="breach-details">
+            <div class="breach-row">
+              <span class="breach-label">Current Temp</span>
+              <span class="breach-value critical" id="breachTemp">8.7°C</span>
+            </div>
+            <div class="breach-row">
+              <span class="breach-label">Safe Max</span>
+              <span class="breach-value">4.0°C</span>
+            </div>
+            <div class="breach-row">
+              <span class="breach-label">Duration</span>
+              <span class="breach-value critical" id="breachDuration">0 minutes</span>
+            </div>
+            <div class="breach-row">
+              <span class="breach-label">Location</span>
+              <span class="breach-value" id="breachLocation">Near Kobe, Japan Sea</span>
+            </div>
+          </div>
+          <div class="breach-actions">
+            <h4 class="text-sm font-medium mb-3">Automated Actions Triggered:</h4>
+            <div class="action-list" id="actionList">
+              <div class="action-item pending" data-action="1">
+                <div class="action-spinner"></div>
+                <span>Sending SMS to driver: +62 812-XXX-XXXX</span>
+              </div>
+              <div class="action-item pending" data-action="2">
+                <div class="action-spinner"></div>
+                <span>Sending email alert to operations@client.com</span>
+              </div>
+              <div class="action-item pending" data-action="3">
+                <div class="action-spinner"></div>
+                <span>Pushing dashboard notification</span>
+              </div>
+              <div class="action-item pending" data-action="4">
+                <div class="action-spinner"></div>
+                <span>Logging event to blockchain</span>
+              </div>
+              <div class="action-item pending" data-action="5">
+                <div class="action-spinner"></div>
+                <span>Scheduling escalation to supervisor</span>
+              </div>
+            </div>
+            <div class="breach-progress">
+              <div class="breach-progress-bar" id="breachProgressBar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- CTA -->
+    <section class="reveal pb-8">
+      <h2><span class="gradient-text-animated">Try More Demos</span></h2>
+      <div class="flex flex-wrap gap-3 mt-4">
+        <a href="/demo/recall" class="btn btn-lg glow-green ripple">
+          Smart Recall Demo
+          <ArrowRight class="icon-sm" />
+        </a>
+        <a href="/demo" class="btn btn-outline btn-lg ripple">
+          All Demos
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    background: var(--color-green-bg);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-green-deep);
+  }
+
+  .info-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .info-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .info-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .info-value {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  /* Sensor Grid */
+  .sensor-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .sensor-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .sensor-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+  }
+
+  .sensor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .sensor-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sensor-icon.temp {
+    background: var(--color-cyan-bg);
+    color: var(--color-cyan);
+  }
+
+  .sensor-icon.humid {
+    background: var(--color-indigo-bg);
+    color: var(--color-indigo);
+  }
+
+  .sensor-icon.location {
+    background: var(--color-green-bg);
+    color: var(--color-green-deep);
+  }
+
+  .sensor-icon.device {
+    background: var(--color-orange-bg);
+    color: var(--color-orange);
+  }
+
+  .sensor-status {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+  }
+
+  .sensor-status.good {
+    background: var(--color-green-bg);
+    color: var(--color-green-deep);
+  }
+
+  .sensor-value {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .value-number {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .value-number.temp {
+    color: var(--color-cyan);
+  }
+
+  .value-number.humid {
+    color: var(--color-indigo);
+  }
+
+  .value-unit {
+    font-size: 1.5rem;
+    color: var(--color-text-muted);
+  }
+
+  .sensor-range {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background: var(--color-surface-2);
+    border-radius: 6px;
+  }
+
+  .range-label {
+    color: var(--color-text-muted);
+  }
+
+  .range-value {
+    color: var(--color-green-deep);
+    font-weight: 500;
+  }
+
+  .sensor-chart {
+    height: 60px;
+    margin-bottom: 0.75rem;
+  }
+
+  .chart-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .sensor-footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  /* Location Card */
+  .location-info {
+    margin-bottom: 1rem;
+  }
+
+  .location-coords {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+  }
+
+  .coord-label {
+    color: var(--color-text-muted);
+  }
+
+  .coord-value {
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .location-place {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .location-map {
+    background: var(--color-surface-2);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .map-placeholder {
+    height: 80px;
+  }
+
+  .map-route {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .route-point {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.625rem;
+    text-align: center;
+  }
+
+  .route-point.start {
+    background: var(--color-green-bg);
+    color: var(--color-green-deep);
+  }
+
+  .route-point.current {
+    background: var(--color-cyan);
+    color: white;
+  }
+
+  .route-point.end {
+    background: var(--color-surface-3);
+    color: var(--color-text-muted);
+  }
+
+  .route-line {
+    flex: 1;
+    height: 2px;
+    background: var(--color-green-light);
+  }
+
+  .route-line.dashed {
+    background: repeating-linear-gradient(
+      90deg,
+      var(--color-border) 0,
+      var(--color-border) 8px,
+      transparent 8px,
+      transparent 12px
+    );
+  }
+
+  /* Device Card */
+  .device-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .device-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .device-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    width: 70px;
+  }
+
+  .device-value {
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .battery-indicator {
+    flex: 1;
+    height: 8px;
+    background: var(--color-surface-3);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .battery-level {
+    height: 100%;
+    background: var(--color-green);
+    border-radius: 4px;
+  }
+
+  .signal-bars {
+    display: flex;
+    gap: 2px;
+    align-items: flex-end;
+  }
+
+  .signal-bar {
+    width: 4px;
+    background: var(--color-surface-3);
+    border-radius: 1px;
+  }
+
+  .signal-bar:nth-child(1) { height: 6px; }
+  .signal-bar:nth-child(2) { height: 10px; }
+  .signal-bar:nth-child(3) { height: 14px; }
+  .signal-bar:nth-child(4) { height: 18px; }
+
+  .signal-bar.active {
+    background: var(--color-green);
+  }
+
+  /* Alert Timeline */
+  .alert-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .alert-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+  }
+
+  .alert-item.warning {
+    border-left: 3px solid var(--color-orange);
+  }
+
+  .alert-item.critical {
+    border-left: 3px solid var(--color-rose);
+  }
+
+  .alert-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .alert-item.normal .alert-icon {
+    background: var(--color-green-bg);
+    color: var(--color-green-deep);
+  }
+
+  .alert-item.warning .alert-icon {
+    background: var(--color-orange-bg);
+    color: var(--color-orange);
+  }
+
+  .alert-content {
+    flex: 1;
+  }
+
+  .alert-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+  }
+
+  .alert-title {
+    font-weight: 500;
+    font-size: 0.875rem;
+  }
+
+  .alert-time {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .alert-text {
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0;
+  }
+
+  .alert-action {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Breach Simulation */
+  .breach-simulation {
+    max-width: 600px;
+  }
+
+  .breach-card {
+    background: var(--color-surface);
+    border: 2px solid var(--color-rose);
+    border-radius: 16px;
+    padding: 1.5rem;
+  }
+
+  .breach-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .breach-header svg {
+    color: var(--color-rose);
+    animation: pulse 1s infinite;
+  }
+
+  .breach-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .breach-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .breach-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .breach-value {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .breach-value.critical {
+    color: var(--color-rose);
+  }
+
+  .breach-actions {
+    background: var(--color-surface-2);
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .action-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .action-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+  }
+
+  .animate-spin-slow {
+    animation: spin 3s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* Simulation Controls */
+  .simulation-controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .glow-rose {
+    box-shadow: 0 0 20px rgba(var(--color-rose-rgb), 0.3);
+  }
+
+  .glow-rose:hover {
+    box-shadow: 0 0 30px rgba(var(--color-rose-rgb), 0.5);
+  }
+
+  /* Action Items Animation */
+  .action-item.pending {
+    opacity: 0.5;
+  }
+
+  .action-item.pending .action-spinner {
+    display: block;
+  }
+
+  .action-item.completed {
+    opacity: 1;
+  }
+
+  .action-item.completed .action-spinner {
+    display: none;
+  }
+
+  .action-item.completed::before {
+    content: '✓';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    background: var(--color-green-bg);
+    color: var(--color-green-deep);
+    border-radius: 50%;
+    font-size: 0.625rem;
+    margin-right: 0.5rem;
+  }
+
+  .action-spinner {
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid var(--color-border);
+    border-top-color: var(--color-orange);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  /* Breach Progress Bar */
+  .breach-progress {
+    margin-top: 1rem;
+    height: 4px;
+    background: var(--color-surface-3);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .breach-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--color-orange), var(--color-rose));
+    transition: width 0.3s ease-out;
+  }
+
+  /* Sensor value updates animation */
+  .value-number.updating {
+    animation: valueUpdate 0.3s ease-out;
+  }
+
+  @keyframes valueUpdate {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+  /* Warning state for sensor cards */
+  .sensor-card.warning {
+    border-color: var(--color-orange);
+    box-shadow: 0 0 20px rgba(var(--color-orange-rgb), 0.2);
+  }
+
+  .sensor-card.critical {
+    border-color: var(--color-rose);
+    box-shadow: 0 0 20px rgba(var(--color-rose-rgb), 0.3);
+    animation: criticalPulse 1s infinite;
+  }
+
+  @keyframes criticalPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(var(--color-rose-rgb), 0.3); }
+    50% { box-shadow: 0 0 40px rgba(var(--color-rose-rgb), 0.5); }
+  }
+
+  .sensor-status.warning {
+    background: var(--color-orange-bg);
+    color: var(--color-orange);
+  }
+
+  .sensor-status.critical {
+    background: var(--color-rose-bg);
+    color: var(--color-rose);
+  }
+
+  /* Pulse ring animation for truck */
+  .pulse-ring {
+    position: relative;
+  }
+
+  .pulse-ring::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 2px solid var(--color-cyan);
+    border-radius: 50%;
+    animation: pulseRing 2s infinite;
+  }
+
+  @keyframes pulseRing {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+
+  /* Live update indicator */
+  .live-update-flash {
+    animation: flashUpdate 0.5s ease-out;
+  }
+
+  @keyframes flashUpdate {
+    0% { background: var(--color-green-bg); }
+    100% { background: transparent; }
+  }
+</style>
+
+<script>
+  // Sensor data simulation
+  let temperature = 2.3;
+  let humidity = 85;
+  let battery = 78;
+  let kmTraveled = 342;
+  let lastPingSeconds = 12;
+  let isBreaching = false;
+  let breachDuration = 0;
+  let breachInterval: ReturnType<typeof setInterval> | null = null;
+
+  // Element references
+  const tempValue = document.getElementById('tempValue');
+  const tempAvg = document.getElementById('tempAvg');
+  const tempCard = document.getElementById('tempCard');
+  const tempStatus = document.getElementById('tempStatus');
+  const tempStatusText = document.getElementById('tempStatusText');
+
+  const humidValue = document.getElementById('humidValue');
+  const humidAvg = document.getElementById('humidAvg');
+  const humidCard = document.getElementById('humidCard');
+
+  const latValue = document.getElementById('latValue');
+  const lngValue = document.getElementById('lngValue');
+  const placeName = document.getElementById('placeName');
+  const kmTraveledEl = document.getElementById('kmTraveled');
+  const kmRemainingEl = document.getElementById('kmRemaining');
+
+  const batteryLevel = document.getElementById('batteryLevel');
+  const batteryPercent = document.getElementById('batteryPercent');
+  const lastPing = document.getElementById('lastPing');
+  const signalBars = document.getElementById('signalBars');
+
+  const triggerBreachBtn = document.getElementById('triggerBreachBtn');
+  const resetBreachBtn = document.getElementById('resetBreachBtn');
+  const breachSimulation = document.getElementById('breachSimulation');
+  const breachTemp = document.getElementById('breachTemp');
+  const breachDurationEl = document.getElementById('breachDuration');
+  const breachProgressBar = document.getElementById('breachProgressBar');
+  const actionList = document.getElementById('actionList');
+
+  // Route locations
+  const locations = [
+    { lat: 33.8847, lng: 130.8752, name: 'Near Fukuoka', region: 'Japan Sea', km: 342 },
+    { lat: 34.2534, lng: 132.4567, name: 'Approaching Hiroshima', region: 'Seto Inland Sea', km: 410 },
+    { lat: 34.6937, lng: 135.5023, name: 'Near Osaka', region: 'Osaka Bay', km: 478 },
+    { lat: 35.0116, lng: 137.0034, name: 'Approaching Nagoya', region: 'Pacific Coast', km: 545 },
+    { lat: 35.4437, lng: 139.6380, name: 'Near Yokohama', region: 'Tokyo Bay', km: 612 }
+  ];
+  let locationIndex = 0;
+
+  // Update temperature with random fluctuation
+  function updateTemperature() {
+    if (isBreaching) return;
+
+    const fluctuation = (Math.random() - 0.5) * 0.4;
+    temperature = Math.max(1.5, Math.min(3.8, temperature + fluctuation));
+
+    if (tempValue) {
+      tempValue.textContent = temperature.toFixed(1);
+      tempValue.classList.add('updating');
+      setTimeout(() => tempValue.classList.remove('updating'), 300);
+    }
+
+    // Check if approaching warning
+    if (temperature > 3.5 && tempCard) {
+      tempCard.classList.add('warning');
+      if (tempStatus) tempStatus.className = 'sensor-status warning';
+      if (tempStatusText) tempStatusText.textContent = 'Warning';
+    } else if (tempCard) {
+      tempCard.classList.remove('warning', 'critical');
+      if (tempStatus) tempStatus.className = 'sensor-status good';
+      if (tempStatusText) tempStatusText.textContent = 'Normal';
+    }
+  }
+
+  // Update humidity
+  function updateHumidity() {
+    const fluctuation = (Math.random() - 0.5) * 2;
+    humidity = Math.max(80, Math.min(95, humidity + fluctuation));
+
+    if (humidValue) {
+      humidValue.textContent = Math.round(humidity).toString();
+      humidValue.classList.add('updating');
+      setTimeout(() => humidValue.classList.remove('updating'), 300);
+    }
+  }
+
+  // Update location
+  function updateLocation() {
+    if (locationIndex < locations.length - 1 && Math.random() > 0.7) {
+      locationIndex++;
+      const loc = locations[locationIndex];
+
+      if (latValue) latValue.textContent = loc.lat.toFixed(4);
+      if (lngValue) lngValue.textContent = loc.lng.toFixed(4);
+      if (placeName) placeName.textContent = loc.name;
+      if (kmTraveledEl) kmTraveledEl.textContent = loc.km.toString();
+      if (kmRemainingEl) kmRemainingEl.textContent = (1865 - loc.km).toLocaleString();
+    }
+  }
+
+  // Update battery and signal
+  function updateDevice() {
+    // Battery drain
+    if (battery > 20 && Math.random() > 0.8) {
+      battery -= 0.1;
+      if (batteryLevel) batteryLevel.style.width = `${battery}%`;
+      if (batteryPercent) batteryPercent.textContent = `${Math.round(battery)}%`;
+    }
+
+    // Last ping update
+    lastPingSeconds++;
+    if (lastPingSeconds > 30) lastPingSeconds = 1;
+    if (lastPing) lastPing.textContent = `${lastPingSeconds} sec ago`;
+
+    // Random signal fluctuation
+    if (signalBars && Math.random() > 0.9) {
+      const bars = signalBars.querySelectorAll('.signal-bar');
+      const activeCount = Math.floor(Math.random() * 2) + 2; // 2-3 bars
+      bars.forEach((bar, i) => {
+        if (i < activeCount) {
+          bar.classList.add('active');
+        } else {
+          bar.classList.remove('active');
+        }
+      });
+    }
+  }
+
+  // Breach simulation
+  function startBreach() {
+    isBreaching = true;
+    let breachTemp_val = 4.5;
+
+    if (triggerBreachBtn) triggerBreachBtn.style.display = 'none';
+    if (resetBreachBtn) resetBreachBtn.style.display = 'inline-flex';
+    if (breachSimulation) {
+      breachSimulation.style.display = 'block';
+      breachSimulation.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // Update temperature card to critical
+    if (tempCard) tempCard.classList.add('critical');
+    if (tempStatus) tempStatus.className = 'sensor-status critical';
+    if (tempStatusText) tempStatusText.textContent = 'CRITICAL';
+
+    // Start breach animation
+    let actionIndex = 0;
+    const actions = actionList?.querySelectorAll('.action-item') || [];
+
+    breachInterval = setInterval(() => {
+      breachDuration++;
+
+      // Update breach temperature
+      if (breachTemp_val < 8.7) {
+        breachTemp_val += 0.3;
+      }
+      if (breachTemp) breachTemp.textContent = `${breachTemp_val.toFixed(1)}°C`;
+      if (tempValue) tempValue.textContent = breachTemp_val.toFixed(1);
+
+      // Update duration
+      if (breachDurationEl) breachDurationEl.textContent = `${breachDuration} minutes`;
+
+      // Progress bar
+      const progress = Math.min((breachDuration / 5) * 100, 100);
+      if (breachProgressBar) breachProgressBar.style.width = `${progress}%`;
+
+      // Complete actions one by one
+      if (actionIndex < actions.length && breachDuration % 1 === 0) {
+        const action = actions[actionIndex] as HTMLElement;
+        action.classList.remove('pending');
+        action.classList.add('completed');
+        actionIndex++;
+      }
+    }, 1000);
+  }
+
+  function resetBreach() {
+    isBreaching = false;
+    breachDuration = 0;
+
+    if (breachInterval) {
+      clearInterval(breachInterval);
+      breachInterval = null;
+    }
+
+    if (triggerBreachBtn) triggerBreachBtn.style.display = 'inline-flex';
+    if (resetBreachBtn) resetBreachBtn.style.display = 'none';
+    if (breachSimulation) breachSimulation.style.display = 'none';
+
+    // Reset temperature
+    temperature = 2.3;
+    if (tempValue) tempValue.textContent = temperature.toFixed(1);
+    if (tempCard) tempCard.classList.remove('warning', 'critical');
+    if (tempStatus) tempStatus.className = 'sensor-status good';
+    if (tempStatusText) tempStatusText.textContent = 'Normal';
+
+    // Reset actions
+    const actions = actionList?.querySelectorAll('.action-item') || [];
+    actions.forEach(action => {
+      action.classList.remove('completed');
+      action.classList.add('pending');
+    });
+
+    if (breachProgressBar) breachProgressBar.style.width = '0%';
+  }
+
+  // Event listeners
+  triggerBreachBtn?.addEventListener('click', startBreach);
+  resetBreachBtn?.addEventListener('click', resetBreach);
+
+  // Start live updates
+  setInterval(updateTemperature, 3000);
+  setInterval(updateHumidity, 4000);
+  setInterval(updateLocation, 10000);
+  setInterval(updateDevice, 1000);
+
+  // Initial updates
+  updateTemperature();
+  updateHumidity();
+</script>

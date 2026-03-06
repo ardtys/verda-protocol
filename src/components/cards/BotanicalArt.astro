@@ -1,0 +1,30 @@
+---
+import Card from '../shared/Card.astro';
+import BotanicalPattern from '../decorative/BotanicalPattern.astro';
+
+interface Props {
+  variant?: 'leaf' | 'root' | 'grain';
+  label?: string;
+  colspan?: 1 | 2 | 3;
+  stagger?: number;
+  class?: string;
+}
+
+const {
+  variant = 'leaf',
+  label,
+  colspan = 1,
+  stagger,
+  class: className = ''
+} = Astro.props;
+---
+
+<Card colspan={colspan} stagger={stagger} class:list={['relative overflow-hidden min-h-[200px]', className]}>
+  <BotanicalPattern variant={variant} class="absolute inset-0" />
+
+  {label && (
+    <span class="absolute bottom-4 left-4 font-mono text-[10px] uppercase tracking-widest text-text-muted">
+      {label}
+    </span>
+  )}
+</Card>

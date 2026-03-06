@@ -1,0 +1,28 @@
+---
+import { Twitter, FileText } from '@lucide/astro';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="py-8 mt-12">
+  <div class="container">
+    <hr class="divider" />
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <!-- Credits -->
+      <p class="text-text-muted text-sm m-0">
+        &copy; {currentYear} verda — <span class="text-text-muted/60">made with care</span>
+      </p>
+
+      <!-- Social links -->
+      <div class="social-links m-0">
+        <a href="https://x.com/verdaprotocol" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+          <Twitter class="icon-md" />
+        </a>
+        <a href="/docs" aria-label="Documentation">
+          <FileText class="icon-md" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

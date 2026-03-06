@@ -1,0 +1,49 @@
+---
+import DarkCard from '../shared/DarkCard.astro';
+import { ArrowUpRight, Link } from '@lucide/astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  href?: string;
+  colspan?: 1 | 2 | 3;
+  stagger?: number;
+}
+
+const {
+  title = 'Built on Blockchain',
+  subtitle,
+  href = '#',
+  colspan = 1,
+  stagger
+} = Astro.props;
+---
+
+<a href={href} target="_blank" rel="noopener noreferrer" class="block no-underline">
+  <DarkCard colspan={colspan} interactive stagger={stagger} class="relative flex flex-col items-center justify-center text-center min-h-[140px] gap-3">
+    <!-- Decorative circles -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -top-4 -right-4 w-16 h-16 rounded-full border border-green-light/20"></div>
+      <div class="absolute -bottom-6 -left-6 w-20 h-20 rounded-full border border-green-light/10"></div>
+    </div>
+
+    <!-- Chain link icon -->
+    <div class="w-12 h-12 rounded-full bg-green-bg flex items-center justify-center relative z-10">
+      <Link class="w-6 h-6 text-green-light" />
+    </div>
+
+    <span class="font-mono text-sm relative z-10">
+      {title}
+    </span>
+
+    {subtitle && (
+      <span class="font-mono text-xs text-muted relative z-10">
+        {subtitle}
+      </span>
+    )}
+
+    <div class="external-link-arrow absolute bottom-3 right-3">
+      <ArrowUpRight class="w-4 h-4" />
+    </div>
+  </DarkCard>
+</a>

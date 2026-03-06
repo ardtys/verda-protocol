@@ -1,0 +1,280 @@
+---
+interface Props {
+  variant?: 'leaf' | 'root' | 'grain';
+  class?: string;
+}
+
+const { variant = 'leaf', class: className = '' } = Astro.props;
+---
+
+{variant === 'leaf' && (
+  <svg
+    class:list={['w-full h-full', className]}
+    viewBox="0 0 200 300"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <!-- Central stem -->
+    <path
+      d="M100 20 Q100 150 100 280"
+      stroke="rgba(45, 90, 39, 0.05)"
+      stroke-width="1.5"
+      fill="none"
+    />
+    <!-- Left veins -->
+    <path
+      d="M100 40 Q70 50 40 45"
+      stroke="rgba(45, 90, 39, 0.04)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M100 70 Q60 85 25 75"
+      stroke="rgba(45, 90, 39, 0.05)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M100 100 Q55 120 15 105"
+      stroke="rgba(45, 90, 39, 0.06)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M100 130 Q50 155 20 145"
+      stroke="rgba(45, 90, 39, 0.05)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M100 160 Q55 185 30 175"
+      stroke="rgba(45, 90, 39, 0.04)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M100 190 Q60 210 35 205"
+      stroke="rgba(45, 90, 39, 0.05)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M100 220 Q65 240 45 235"
+      stroke="rgba(45, 90, 39, 0.04)"
+      stroke-width="1"
+      fill="none"
+    />
+    <!-- Right veins -->
+    <path
+      d="M100 50 Q130 60 160 55"
+      stroke="rgba(45, 90, 39, 0.04)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M100 80 Q140 95 175 85"
+      stroke="rgba(45, 90, 39, 0.05)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M100 110 Q145 130 185 115"
+      stroke="rgba(45, 90, 39, 0.06)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M100 140 Q150 165 180 155"
+      stroke="rgba(45, 90, 39, 0.05)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M100 170 Q145 195 170 185"
+      stroke="rgba(45, 90, 39, 0.04)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M100 200 Q140 220 165 215"
+      stroke="rgba(45, 90, 39, 0.05)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M100 230 Q135 250 155 245"
+      stroke="rgba(45, 90, 39, 0.04)"
+      stroke-width="1"
+      fill="none"
+    />
+    <!-- Secondary branches -->
+    <path
+      d="M70 50 Q55 55 45 60"
+      stroke="rgba(45, 90, 39, 0.03)"
+      stroke-width="0.75"
+      fill="none"
+    />
+    <path
+      d="M55 120 Q40 130 30 140"
+      stroke="rgba(45, 90, 39, 0.03)"
+      stroke-width="0.75"
+      fill="none"
+    />
+    <path
+      d="M130 80 Q145 85 155 95"
+      stroke="rgba(45, 90, 39, 0.03)"
+      stroke-width="0.75"
+      fill="none"
+    />
+    <path
+      d="M145 155 Q160 165 170 180"
+      stroke="rgba(45, 90, 39, 0.03)"
+      stroke-width="0.75"
+      fill="none"
+    />
+  </svg>
+)}
+
+{variant === 'root' && (
+  <svg
+    class:list={['w-full h-full', className]}
+    viewBox="0 0 200 300"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <!-- Main roots from top -->
+    <path
+      d="M100 0 Q100 50 90 100 Q80 150 70 200 Q60 250 50 300"
+      stroke="rgba(45, 90, 39, 0.06)"
+      stroke-width="1.5"
+      fill="none"
+    />
+    <path
+      d="M100 0 Q100 40 110 90 Q120 140 130 190 Q140 240 150 300"
+      stroke="rgba(45, 90, 39, 0.05)"
+      stroke-width="1.5"
+      fill="none"
+    />
+    <path
+      d="M100 0 Q100 60 100 120 Q100 180 100 240 Q100 270 100 300"
+      stroke="rgba(45, 90, 39, 0.04)"
+      stroke-width="1"
+      fill="none"
+    />
+    <!-- Branch roots -->
+    <path
+      d="M90 100 Q70 120 50 130"
+      stroke="rgba(45, 90, 39, 0.04)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M70 200 Q50 220 30 240"
+      stroke="rgba(45, 90, 39, 0.04)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M110 90 Q130 110 150 120"
+      stroke="rgba(45, 90, 39, 0.04)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M130 190 Q150 210 170 220"
+      stroke="rgba(45, 90, 39, 0.04)"
+      stroke-width="1"
+      fill="none"
+    />
+    <!-- Fine root hairs -->
+    <path
+      d="M50 130 Q35 140 25 155"
+      stroke="rgba(45, 90, 39, 0.03)"
+      stroke-width="0.75"
+      fill="none"
+    />
+    <path
+      d="M30 240 Q20 255 15 275"
+      stroke="rgba(45, 90, 39, 0.03)"
+      stroke-width="0.75"
+      fill="none"
+    />
+    <path
+      d="M150 120 Q165 135 175 150"
+      stroke="rgba(45, 90, 39, 0.03)"
+      stroke-width="0.75"
+      fill="none"
+    />
+    <path
+      d="M170 220 Q180 235 185 255"
+      stroke="rgba(45, 90, 39, 0.03)"
+      stroke-width="0.75"
+      fill="none"
+    />
+  </svg>
+)}
+
+{variant === 'grain' && (
+  <svg
+    class:list={['w-full h-full', className]}
+    viewBox="0 0 200 300"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <!-- Main stalk -->
+    <path
+      d="M100 300 Q100 200 100 100 Q100 50 100 20"
+      stroke="rgba(45, 90, 39, 0.06)"
+      stroke-width="1.5"
+      fill="none"
+    />
+    <!-- Grain heads -->
+    <ellipse cx="100" cy="25" rx="4" ry="8" stroke="rgba(45, 90, 39, 0.05)" stroke-width="1" fill="none" />
+    <ellipse cx="92" cy="35" rx="4" ry="8" stroke="rgba(45, 90, 39, 0.05)" stroke-width="1" fill="none" />
+    <ellipse cx="108" cy="35" rx="4" ry="8" stroke="rgba(45, 90, 39, 0.05)" stroke-width="1" fill="none" />
+    <ellipse cx="88" cy="50" rx="4" ry="8" stroke="rgba(45, 90, 39, 0.04)" stroke-width="1" fill="none" />
+    <ellipse cx="112" cy="50" rx="4" ry="8" stroke="rgba(45, 90, 39, 0.04)" stroke-width="1" fill="none" />
+    <ellipse cx="95" cy="65" rx="3" ry="6" stroke="rgba(45, 90, 39, 0.04)" stroke-width="1" fill="none" />
+    <ellipse cx="105" cy="65" rx="3" ry="6" stroke="rgba(45, 90, 39, 0.04)" stroke-width="1" fill="none" />
+    <!-- Leaf blades -->
+    <path
+      d="M100 120 Q60 100 30 110"
+      stroke="rgba(45, 90, 39, 0.04)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M100 150 Q140 130 170 140"
+      stroke="rgba(45, 90, 39, 0.04)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M100 180 Q55 165 25 175"
+      stroke="rgba(45, 90, 39, 0.04)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M100 210 Q145 195 175 205"
+      stroke="rgba(45, 90, 39, 0.04)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M100 240 Q65 225 40 235"
+      stroke="rgba(45, 90, 39, 0.03)"
+      stroke-width="1"
+      fill="none"
+    />
+    <path
+      d="M100 270 Q135 260 160 270"
+      stroke="rgba(45, 90, 39, 0.03)"
+      stroke-width="1"
+      fill="none"
+    />
+  </svg>
+)}

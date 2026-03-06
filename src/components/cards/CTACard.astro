@@ -1,0 +1,50 @@
+---
+import DarkCard from '../shared/DarkCard.astro';
+import Mascot from '../decorative/Mascot.astro';
+import { ArrowRight } from '@lucide/astro';
+
+interface Props {
+  title?: string;
+  buttonText?: string;
+  buttonHref?: string;
+  email?: string;
+  colspan?: 1 | 2 | 3;
+  stagger?: number;
+}
+
+const {
+  title = 'Ready to make your supply chain transparent?',
+  buttonText = 'Request a Demo',
+  buttonHref = '#',
+  email = 'hello@verda.so',
+  colspan = 1,
+  stagger
+} = Astro.props;
+---
+
+<DarkCard colspan={colspan} stagger={stagger} class="flex flex-col gap-4 relative min-h-[180px]">
+  <p class="font-display text-base font-medium leading-snug pr-16">
+    {title}
+  </p>
+
+  <div class="mt-auto flex flex-col gap-2">
+    <a
+      href={buttonHref}
+      class="btn-primary w-fit no-underline"
+    >
+      {buttonText}
+      <ArrowRight class="w-4 h-4" />
+    </a>
+
+    <span class="text-xs text-muted">
+      Or email us at{' '}
+      <a href={`mailto:${email}`} class="text-green-light underline underline-offset-4">
+        {email}
+      </a>
+    </span>
+  </div>
+
+  <div class="absolute top-4 right-4">
+    <Mascot pose="waving" size="sm" />
+  </div>
+</DarkCard>

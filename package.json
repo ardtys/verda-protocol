@@ -1,0 +1,22 @@
+{
+  "name": "verda-landing",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Verda - Supply chain transparency protocol for the global food industry",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/vercel": "^9.0.4",
+    "@lucide/astro": "^0.576.0",
+    "@tailwindcss/vite": "^4.2.1",
+    "astro": "^5.17.1",
+    "tailwindcss": "^4.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.3"
+  }
+}

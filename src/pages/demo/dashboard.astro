@@ -1,0 +1,1506 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowLeft, ArrowRight, BarChart, Users, Truck, Building, Shield, Package, Thermometer, MapPin, TrendingUp, AlertTriangle, CheckCircle, Clock, Calendar, FileText, QrCode, Leaf } from '@lucide/astro';
+---
+
+<BaseLayout
+  title="Stakeholder Dashboards Demo"
+  description="Explore role-specific dashboards for farmers, processors, distributors, and regulators. See how each actor interacts with Verda's platform."
+>
+  <div class="container">
+    <!-- Back Link -->
+    <a href="/demo" class="inline-flex items-center gap-2 text-sm text-text-muted hover:text-green-deep mb-6">
+      <ArrowLeft class="icon-sm" />
+      Back to Demos
+    </a>
+
+    <!-- Demo Header -->
+    <section class="reveal">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="feature-icon feature-icon-md indigo feature-icon-animated glow-pulse">
+          <BarChart class="icon-md" />
+        </div>
+        <span class="badge badge-pulse">Multi-Role Demo</span>
+      </div>
+      <h1 class="text-shimmer"><span class="gradient-text-animated">Stakeholder Dashboards</span></h1>
+      <p class="text-base max-w-2xl text-text-secondary">
+        Different actors in the supply chain see different views. Explore how farmers, processors,
+        distributors, and regulators each interact with the Verda platform.
+      </p>
+    </section>
+
+    <hr class="divider-gradient" />
+
+    <!-- Role Selector -->
+    <section class="reveal">
+      <span class="section-label section-label-animated">select role</span>
+      <h2><span class="highlight">Choose a Dashboard</span></h2>
+
+      <div class="role-tabs">
+        <button class="role-tab active" data-role="farmer">
+          <Leaf class="icon-md" />
+          <span>Farmer</span>
+        </button>
+        <button class="role-tab" data-role="processor">
+          <Building class="icon-md" />
+          <span>Processor</span>
+        </button>
+        <button class="role-tab" data-role="distributor">
+          <Truck class="icon-md" />
+          <span>Distributor</span>
+        </button>
+        <button class="role-tab" data-role="regulator">
+          <Shield class="icon-md" />
+          <span>Regulator</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- FARMER DASHBOARD -->
+    <section class="dashboard-panel active" id="farmer-dashboard">
+      <div class="dashboard-header-bar green">
+        <div class="dashboard-user">
+          <div class="user-avatar green">
+            <Leaf class="icon-md" />
+          </div>
+          <div>
+            <h3 class="text-base mb-0">Nguyen Van Minh</h3>
+            <p class="text-xs text-text-muted mb-0">Coffee Farmer • Da Lat, Vietnam</p>
+          </div>
+        </div>
+        <div class="dashboard-date">
+          <Calendar class="icon-sm" />
+          <span class="text-sm">Today, March 29, 2024</span>
+        </div>
+      </div>
+
+      <!-- Farmer Stats -->
+      <div class="grid-4 mt-6">
+        <div class="stat-card-mini">
+          <div class="stat-icon green">
+            <Package class="icon-sm" />
+          </div>
+          <div>
+            <span class="stat-val">2,450 kg</span>
+            <span class="stat-lbl">Total Harvest</span>
+          </div>
+        </div>
+        <div class="stat-card-mini">
+          <div class="stat-icon cyan">
+            <QrCode class="icon-sm" />
+          </div>
+          <div>
+            <span class="stat-val">847</span>
+            <span class="stat-lbl">Products Tracked</span>
+          </div>
+        </div>
+        <div class="stat-card-mini">
+          <div class="stat-icon indigo">
+            <TrendingUp class="icon-sm" />
+          </div>
+          <div>
+            <span class="stat-val">+12%</span>
+            <span class="stat-lbl">Price Premium</span>
+          </div>
+        </div>
+        <div class="stat-card-mini">
+          <div class="stat-icon orange">
+            <Users class="icon-sm" />
+          </div>
+          <div>
+            <span class="stat-val">1,234</span>
+            <span class="stat-lbl">Consumer Scans</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Harvests -->
+      <div class="dashboard-section mt-6">
+        <h3 class="section-title">Recent Harvests</h3>
+        <div class="data-table">
+          <div class="table-row header">
+            <span>Batch ID</span>
+            <span>Date</span>
+            <span>Quantity</span>
+            <span>Status</span>
+          </div>
+          <div class="table-row">
+            <span class="font-mono text-sm">HRV-2024-0329</span>
+            <span>Today</span>
+            <span>125 kg</span>
+            <span class="tag tag-sm tag-cyan">Processing</span>
+          </div>
+          <div class="table-row">
+            <span class="font-mono text-sm">HRV-2024-0328</span>
+            <span>Yesterday</span>
+            <span>98 kg</span>
+            <span class="tag tag-sm tag-green">Exported</span>
+          </div>
+          <div class="table-row">
+            <span class="font-mono text-sm">HRV-2024-0327</span>
+            <span>Mar 27</span>
+            <span>142 kg</span>
+            <span class="tag tag-sm tag-green">Exported</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="dashboard-section mt-6">
+        <h3 class="section-title">Quick Actions</h3>
+        <div class="action-grid">
+          <button class="action-btn">
+            <Package class="icon-md" />
+            <span>Log New Harvest</span>
+          </button>
+          <button class="action-btn">
+            <Truck class="icon-md" />
+            <span>Record Handoff</span>
+          </button>
+          <button class="action-btn">
+            <FileText class="icon-md" />
+            <span>View Reports</span>
+          </button>
+          <button class="action-btn">
+            <QrCode class="icon-md" />
+            <span>Scan QR</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="dashboard-note">
+        <p class="text-sm text-text-muted">
+          <strong>Note:</strong> This dashboard is optimized for mobile devices and works offline.
+          Data syncs automatically when connectivity is restored.
+        </p>
+      </div>
+    </section>
+
+    <!-- PROCESSOR DASHBOARD -->
+    <section class="dashboard-panel" id="processor-dashboard">
+      <div class="dashboard-header-bar orange">
+        <div class="dashboard-user">
+          <div class="user-avatar orange">
+            <Building class="icon-md" />
+          </div>
+          <div>
+            <h3 class="text-base mb-0">Highland Coffee Mill</h3>
+            <p class="text-xs text-text-muted mb-0">Processing Facility • Da Lat, Vietnam</p>
+          </div>
+        </div>
+        <div class="dashboard-date">
+          <Calendar class="icon-sm" />
+          <span class="text-sm">Today, March 29, 2024</span>
+        </div>
+      </div>
+
+      <!-- Processor Stats -->
+      <div class="grid-4 mt-6">
+        <div class="stat-card-mini">
+          <div class="stat-icon orange">
+            <Package class="icon-sm" />
+          </div>
+          <div>
+            <span class="stat-val">12,340 kg</span>
+            <span class="stat-lbl">Processed Today</span>
+          </div>
+        </div>
+        <div class="stat-card-mini">
+          <div class="stat-icon cyan">
+            <QrCode class="icon-sm" />
+          </div>
+          <div>
+            <span class="stat-val">4,280</span>
+            <span class="stat-lbl">QRs Generated</span>
+          </div>
+        </div>
+        <div class="stat-card-mini">
+          <div class="stat-icon green">
+            <CheckCircle class="icon-sm" />
+          </div>
+          <div>
+            <span class="stat-val">99.2%</span>
+            <span class="stat-lbl">Quality Pass Rate</span>
+          </div>
+        </div>
+        <div class="stat-card-mini">
+          <div class="stat-icon indigo">
+            <Users class="icon-sm" />
+          </div>
+          <div>
+            <span class="stat-val">23</span>
+            <span class="stat-lbl">Active Suppliers</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Batches -->
+      <div class="dashboard-section mt-6">
+        <h3 class="section-title">Active Batches</h3>
+        <div class="batch-grid">
+          <div class="batch-card">
+            <div class="batch-header">
+              <span class="batch-id">FCM-2024-0329-A</span>
+              <span class="tag tag-sm tag-cyan">Processing</span>
+            </div>
+            <div class="batch-progress">
+              <div class="progress-steps">
+                <div class="progress-step completed">Received</div>
+                <div class="progress-step completed">Sorted</div>
+                <div class="progress-step active">Washing</div>
+                <div class="progress-step">Drying</div>
+                <div class="progress-step">QC</div>
+              </div>
+            </div>
+            <div class="batch-details">
+              <span>1,250 kg • From 3 farmers</span>
+            </div>
+          </div>
+          <div class="batch-card">
+            <div class="batch-header">
+              <span class="batch-id">FCM-2024-0329-B</span>
+              <span class="tag tag-sm tag-orange">Quality Check</span>
+            </div>
+            <div class="batch-progress">
+              <div class="progress-steps">
+                <div class="progress-step completed">Received</div>
+                <div class="progress-step completed">Sorted</div>
+                <div class="progress-step completed">Washing</div>
+                <div class="progress-step completed">Drying</div>
+                <div class="progress-step active">QC</div>
+              </div>
+            </div>
+            <div class="batch-details">
+              <span>980 kg • From 2 farmers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Supplier Performance -->
+      <div class="dashboard-section mt-6">
+        <h3 class="section-title">Top Suppliers This Month</h3>
+        <div class="supplier-list">
+          <div class="supplier-row">
+            <div class="supplier-info">
+              <span class="supplier-name">Nguyen Van Minh</span>
+              <span class="supplier-location">Da Lat</span>
+            </div>
+            <div class="supplier-stats">
+              <span class="supplier-qty">2,450 kg</span>
+              <span class="tag tag-sm tag-green">A Grade</span>
+            </div>
+          </div>
+          <div class="supplier-row">
+            <div class="supplier-info">
+              <span class="supplier-name">Tran Duc Anh</span>
+              <span class="supplier-location">Buon Ma Thuot</span>
+            </div>
+            <div class="supplier-stats">
+              <span class="supplier-qty">1,890 kg</span>
+              <span class="tag tag-sm tag-green">A Grade</span>
+            </div>
+          </div>
+          <div class="supplier-row">
+            <div class="supplier-info">
+              <span class="supplier-name">Le Thi Hoa</span>
+              <span class="supplier-location">Kon Tum</span>
+            </div>
+            <div class="supplier-stats">
+              <span class="supplier-qty">1,654 kg</span>
+              <span class="tag tag-sm tag-cyan">B Grade</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISTRIBUTOR DASHBOARD -->
+    <section class="dashboard-panel" id="distributor-dashboard">
+      <div class="dashboard-header-bar cyan">
+        <div class="dashboard-user">
+          <div class="user-avatar cyan">
+            <Truck class="icon-md" />
+          </div>
+          <div>
+            <h3 class="text-base mb-0">Asia Cold Chain Logistics</h3>
+            <p class="text-xs text-text-muted mb-0">Cold Chain Logistics • Singapore</p>
+          </div>
+        </div>
+        <div class="dashboard-date">
+          <Calendar class="icon-sm" />
+          <span class="text-sm">Today, March 29, 2024</span>
+        </div>
+      </div>
+
+      <!-- Distributor Stats -->
+      <div class="grid-4 mt-6">
+        <div class="stat-card-mini">
+          <div class="stat-icon cyan">
+            <Truck class="icon-sm" />
+          </div>
+          <div>
+            <span class="stat-val">12</span>
+            <span class="stat-lbl">Active Shipments</span>
+          </div>
+        </div>
+        <div class="stat-card-mini">
+          <div class="stat-icon green">
+            <Thermometer class="icon-sm" />
+          </div>
+          <div>
+            <span class="stat-val">100%</span>
+            <span class="stat-lbl">Cold Chain OK</span>
+          </div>
+        </div>
+        <div class="stat-card-mini">
+          <div class="stat-icon orange">
+            <AlertTriangle class="icon-sm" />
+          </div>
+          <div>
+            <span class="stat-val">1</span>
+            <span class="stat-lbl">Active Alert</span>
+          </div>
+        </div>
+        <div class="stat-card-mini">
+          <div class="stat-icon indigo">
+            <Clock class="icon-sm" />
+          </div>
+          <div>
+            <span class="stat-val">98.5%</span>
+            <span class="stat-lbl">On-Time Delivery</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fleet Map -->
+      <div class="dashboard-section mt-6">
+        <h3 class="section-title">Fleet Tracking</h3>
+        <div class="fleet-map">
+          <div class="map-container">
+            <!-- Simplified map visualization -->
+            <div class="truck-marker" style="top: 30%; left: 25%;">
+              <div class="truck-icon green">
+                <Truck class="icon-sm" />
+              </div>
+              <span class="truck-label">TRK-001</span>
+            </div>
+            <div class="truck-marker" style="top: 45%; left: 55%;">
+              <div class="truck-icon green">
+                <Truck class="icon-sm" />
+              </div>
+              <span class="truck-label">TRK-002</span>
+            </div>
+            <div class="truck-marker" style="top: 60%; left: 40%;">
+              <div class="truck-icon orange pulse-ring">
+                <Truck class="icon-sm" />
+              </div>
+              <span class="truck-label">TRK-003</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Shipments -->
+      <div class="dashboard-section mt-6">
+        <h3 class="section-title">Active Shipments</h3>
+        <div class="shipment-list">
+          <div class="shipment-row">
+            <div class="shipment-info">
+              <span class="shipment-id">SHP-2024-08823</span>
+              <span class="shipment-route">Busan → Tokyo</span>
+            </div>
+            <div class="shipment-sensors">
+              <span class="sensor-badge green">2.3°C</span>
+              <span class="sensor-badge green">85%</span>
+            </div>
+            <span class="tag tag-sm tag-cyan">In Transit</span>
+          </div>
+          <div class="shipment-row">
+            <div class="shipment-info">
+              <span class="shipment-id">SHP-2024-08822</span>
+              <span class="shipment-route">Bangkok → Singapore</span>
+            </div>
+            <div class="shipment-sensors">
+              <span class="sensor-badge green">1.8°C</span>
+              <span class="sensor-badge green">82%</span>
+            </div>
+            <span class="tag tag-sm tag-cyan">In Transit</span>
+          </div>
+          <div class="shipment-row alert">
+            <div class="shipment-info">
+              <span class="shipment-id">SHP-2024-08821</span>
+              <span class="shipment-route">Ho Chi Minh → Hong Kong</span>
+            </div>
+            <div class="shipment-sensors">
+              <span class="sensor-badge orange">3.9°C</span>
+              <span class="sensor-badge green">88%</span>
+            </div>
+            <span class="tag tag-sm tag-orange">Warning</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGULATOR DASHBOARD -->
+    <section class="dashboard-panel" id="regulator-dashboard">
+      <div class="dashboard-header-bar rose">
+        <div class="dashboard-user">
+          <div class="user-avatar rose">
+            <Shield class="icon-md" />
+          </div>
+          <div>
+            <h3 class="text-base mb-0">KFDA Inspector</h3>
+            <p class="text-xs text-text-muted mb-0">Food Safety Division • Seoul</p>
+          </div>
+        </div>
+        <div class="dashboard-date">
+          <Calendar class="icon-sm" />
+          <span class="text-sm">Today, March 29, 2024</span>
+        </div>
+      </div>
+
+      <!-- Regulator Stats -->
+      <div class="grid-4 mt-6">
+        <div class="stat-card-mini">
+          <div class="stat-icon rose">
+            <AlertTriangle class="icon-sm" />
+          </div>
+          <div>
+            <span class="stat-val">3</span>
+            <span class="stat-lbl">Active Recalls</span>
+          </div>
+        </div>
+        <div class="stat-card-mini">
+          <div class="stat-icon green">
+            <CheckCircle class="icon-sm" />
+          </div>
+          <div>
+            <span class="stat-val">1,247</span>
+            <span class="stat-lbl">Compliant Products</span>
+          </div>
+        </div>
+        <div class="stat-card-mini">
+          <div class="stat-icon cyan">
+            <Building class="icon-sm" />
+          </div>
+          <div>
+            <span class="stat-val">89</span>
+            <span class="stat-lbl">Registered Facilities</span>
+          </div>
+        </div>
+        <div class="stat-card-mini">
+          <div class="stat-icon indigo">
+            <FileText class="icon-sm" />
+          </div>
+          <div>
+            <span class="stat-val">12</span>
+            <span class="stat-lbl">Pending Audits</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Recalls -->
+      <div class="dashboard-section mt-6">
+        <h3 class="section-title">Active Recalls</h3>
+        <div class="recall-list">
+          <div class="recall-item critical">
+            <div class="recall-header">
+              <span class="recall-id">RCL-2024-0023</span>
+              <span class="tag tag-sm tag-rose">Critical</span>
+            </div>
+            <div class="recall-details">
+              <span>Salmonella in Processed Chicken</span>
+              <span class="recall-progress">78% recovered</span>
+            </div>
+          </div>
+          <div class="recall-item warning">
+            <div class="recall-header">
+              <span class="recall-id">RCL-2024-0022</span>
+              <span class="tag tag-sm tag-orange">Warning</span>
+            </div>
+            <div class="recall-details">
+              <span>Undeclared Allergen in Snacks</span>
+              <span class="recall-progress">92% recovered</span>
+            </div>
+          </div>
+          <div class="recall-item resolved">
+            <div class="recall-header">
+              <span class="recall-id">RCL-2024-0021</span>
+              <span class="tag tag-sm tag-green">Resolved</span>
+            </div>
+            <div class="recall-details">
+              <span>Mislabeled Expiry Date</span>
+              <span class="recall-progress">100% recovered</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compliance Overview -->
+      <div class="dashboard-section mt-6">
+        <h3 class="section-title">Compliance by Region</h3>
+        <div class="compliance-grid">
+          <div class="compliance-region">
+            <span class="region-name">Tokyo</span>
+            <div class="progress-bar-mini">
+              <div class="progress-fill-mini" style="width: 98%;"></div>
+            </div>
+            <span class="compliance-pct green">98%</span>
+          </div>
+          <div class="compliance-region">
+            <span class="region-name">Seoul</span>
+            <div class="progress-bar-mini">
+              <div class="progress-fill-mini" style="width: 95%;"></div>
+            </div>
+            <span class="compliance-pct green">95%</span>
+          </div>
+          <div class="compliance-region">
+            <span class="region-name">Bangkok</span>
+            <div class="progress-bar-mini">
+              <div class="progress-fill-mini warning" style="width: 87%;"></div>
+            </div>
+            <span class="compliance-pct orange">87%</span>
+          </div>
+          <div class="compliance-region">
+            <span class="region-name">Singapore</span>
+            <div class="progress-bar-mini">
+              <div class="progress-fill-mini" style="width: 94%;"></div>
+            </div>
+            <span class="compliance-pct green">94%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="dashboard-section mt-6">
+        <h3 class="section-title">Inspector Tools</h3>
+        <div class="action-grid">
+          <button class="action-btn">
+            <QrCode class="icon-md" />
+            <span>Verify Product</span>
+          </button>
+          <button class="action-btn">
+            <FileText class="icon-md" />
+            <span>Audit Trail</span>
+          </button>
+          <button class="action-btn">
+            <AlertTriangle class="icon-md" />
+            <span>Initiate Recall</span>
+          </button>
+          <button class="action-btn">
+            <Building class="icon-md" />
+            <span>Facility Lookup</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- CTA -->
+    <section class="reveal pb-8">
+      <h2><span class="gradient-text-animated">Explore More</span></h2>
+      <div class="flex flex-wrap gap-3 mt-4">
+        <a href="/demo/qr-viewer" class="btn btn-lg glow-green ripple">
+          QR Viewer Demo
+          <ArrowRight class="icon-sm" />
+        </a>
+        <a href="/demo" class="btn btn-outline btn-lg ripple">
+          All Demos
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Role Tabs */
+  .role-tabs {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: var(--color-surface-2);
+    border-radius: 12px;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+  }
+
+  .role-tab {
+    flex: 1;
+    min-width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .role-tab:hover {
+    background: var(--color-surface);
+    color: var(--color-text);
+  }
+
+  .role-tab.active {
+    background: var(--color-surface);
+    color: var(--color-green-deep);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  /* Dashboard Panels */
+  .dashboard-panel {
+    display: none;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .dashboard-panel.active {
+    display: block;
+  }
+
+  .dashboard-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .dashboard-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .user-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .user-avatar.green { background: var(--color-green-bg); color: var(--color-green-deep); }
+  .user-avatar.orange { background: var(--color-orange-bg); color: var(--color-orange); }
+  .user-avatar.cyan { background: var(--color-cyan-bg); color: var(--color-cyan); }
+  .user-avatar.rose { background: var(--color-rose-bg); color: var(--color-rose); }
+
+  .dashboard-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Stat Cards Mini */
+  .stat-card-mini {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--color-surface-2);
+    border-radius: 12px;
+  }
+
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stat-icon.green { background: var(--color-green-bg); color: var(--color-green-deep); }
+  .stat-icon.cyan { background: var(--color-cyan-bg); color: var(--color-cyan); }
+  .stat-icon.orange { background: var(--color-orange-bg); color: var(--color-orange); }
+  .stat-icon.indigo { background: var(--color-indigo-bg); color: var(--color-indigo); }
+  .stat-icon.rose { background: var(--color-rose-bg); color: var(--color-rose); }
+
+  .stat-val {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-family: var(--font-display);
+  }
+
+  .stat-lbl {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Dashboard Section */
+  .dashboard-section {
+    padding: 1.5rem;
+    background: var(--color-surface-2);
+    border-radius: 12px;
+  }
+
+  .section-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  /* Data Table */
+  .data-table {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .table-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: var(--color-surface);
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    align-items: center;
+  }
+
+  .table-row.header {
+    background: transparent;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+  }
+
+  /* Action Grid */
+  .action-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 768px) {
+    .action-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+  }
+
+  .action-btn:hover {
+    border-color: var(--color-green);
+    color: var(--color-green-deep);
+  }
+
+  .action-btn svg {
+    color: var(--color-text-muted);
+    transition: color 0.2s;
+  }
+
+  .action-btn:hover svg {
+    color: var(--color-green-deep);
+  }
+
+  .dashboard-note {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: var(--color-green-bg);
+    border-radius: 8px;
+  }
+
+  /* Batch Cards */
+  .batch-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .batch-card {
+    padding: 1rem;
+    background: var(--color-surface);
+    border-radius: 8px;
+  }
+
+  .batch-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .batch-id {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .progress-steps {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .progress-step {
+    flex: 1;
+    padding: 0.5rem 0.25rem;
+    text-align: center;
+    font-size: 0.625rem;
+    background: var(--color-surface-3);
+    border-radius: 4px;
+    color: var(--color-text-muted);
+  }
+
+  .progress-step.completed {
+    background: var(--color-green-bg);
+    color: var(--color-green-deep);
+  }
+
+  .progress-step.active {
+    background: var(--color-cyan);
+    color: white;
+  }
+
+  .batch-details {
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Supplier List */
+  .supplier-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .supplier-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: var(--color-surface);
+    border-radius: 8px;
+  }
+
+  .supplier-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .supplier-location {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .supplier-stats {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .supplier-qty {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  /* Fleet Map */
+  .fleet-map {
+    background: var(--color-surface);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .map-container {
+    height: 200px;
+    background: linear-gradient(135deg, var(--color-cyan-bg), var(--color-indigo-bg));
+    border-radius: 8px;
+    position: relative;
+  }
+
+  .truck-marker {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .truck-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  .truck-icon.green { color: var(--color-green-deep); }
+  .truck-icon.orange { color: var(--color-orange); }
+
+  .truck-label {
+    font-size: 0.625rem;
+    background: white;
+    padding: 0.125rem 0.375rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+
+  /* Shipment List */
+  .shipment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .shipment-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: var(--color-surface);
+    border-radius: 8px;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .shipment-row.alert {
+    border-left: 3px solid var(--color-orange);
+  }
+
+  .shipment-id {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+
+  .shipment-route {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .shipment-sensors {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .sensor-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+  }
+
+  .sensor-badge.green {
+    background: var(--color-green-bg);
+    color: var(--color-green-deep);
+  }
+
+  .sensor-badge.orange {
+    background: var(--color-orange-bg);
+    color: var(--color-orange);
+  }
+
+  /* Recall List */
+  .recall-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .recall-item {
+    padding: 1rem;
+    background: var(--color-surface);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-border);
+  }
+
+  .recall-item.critical { border-left-color: var(--color-rose); }
+  .recall-item.warning { border-left-color: var(--color-orange); }
+  .recall-item.resolved { border-left-color: var(--color-green); }
+
+  .recall-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .recall-id {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+
+  .recall-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+  }
+
+  .recall-progress {
+    font-weight: 500;
+  }
+
+  /* Compliance Grid */
+  .compliance-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .compliance-region {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+
+  .region-name {
+    width: 80px;
+    font-size: 0.8125rem;
+  }
+
+  .progress-bar-mini {
+    flex: 1;
+    height: 8px;
+    background: var(--color-surface-3);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-fill-mini {
+    height: 100%;
+    background: var(--color-green);
+    border-radius: 4px;
+  }
+
+  .progress-fill-mini.warning {
+    background: var(--color-orange);
+  }
+
+  .compliance-pct {
+    width: 40px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  .compliance-pct.green { color: var(--color-green-deep); }
+  .compliance-pct.orange { color: var(--color-orange); }
+
+  /* Dashboard panel transitions */
+  .dashboard-panel {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease-out;
+  }
+
+  .dashboard-panel.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stat value animations */
+  .stat-val.updating {
+    animation: statPulse 0.3s ease-out;
+  }
+
+  @keyframes statPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); color: var(--color-green-deep); }
+    100% { transform: scale(1); }
+  }
+
+  /* Action button feedback */
+  .action-btn.clicked {
+    transform: scale(0.95);
+    border-color: var(--color-green-deep);
+    background: var(--color-green-bg);
+  }
+
+  .action-btn.clicked svg {
+    color: var(--color-green-deep);
+  }
+
+  /* Clickable table rows */
+  .table-row:not(.header) {
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .table-row:not(.header):hover {
+    background: var(--color-green-bg);
+    transform: translateX(4px);
+  }
+
+  /* Live indicator for distributor */
+  .live-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--color-green-bg);
+    border-radius: 4px;
+    font-size: 0.625rem;
+    color: var(--color-green-deep);
+    margin-left: 0.5rem;
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--color-green-deep);
+    border-radius: 50%;
+    animation: livePulse 1.5s infinite;
+  }
+
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  /* Truck animation */
+  .truck-marker {
+    transition: all 0.5s ease-out;
+  }
+
+  .truck-marker:hover {
+    transform: scale(1.1);
+  }
+
+  .truck-marker:hover .truck-label {
+    background: var(--color-green-bg);
+  }
+
+  /* Pulse ring for alert */
+  .pulse-ring::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 2px solid var(--color-orange);
+    border-radius: 50%;
+    animation: pulseRing 2s infinite;
+  }
+
+  @keyframes pulseRing {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+
+  /* Supplier row interaction */
+  .supplier-row {
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .supplier-row:hover {
+    background: var(--color-green-bg);
+    transform: translateX(4px);
+  }
+
+  /* Shipment row interaction */
+  .shipment-row {
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .shipment-row:hover {
+    transform: translateX(4px);
+  }
+
+  /* Batch card interaction */
+  .batch-card {
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .batch-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Progress step animation */
+  .progress-step.active {
+    animation: stepPulse 2s infinite;
+  }
+
+  @keyframes stepPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  /* Recall item interaction */
+  .recall-item {
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .recall-item:hover {
+    transform: translateX(4px);
+  }
+
+  /* Compliance bar animation */
+  .progress-fill-mini {
+    transition: width 1s ease-out;
+  }
+
+  /* Toast notification */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 1rem 1.5rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-green-deep);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    z-index: 1000;
+    animation: toastIn 0.3s ease-out;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .toast.hiding {
+    animation: toastOut 0.3s ease-out forwards;
+  }
+
+  @keyframes toastIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  @keyframes toastOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+  }
+
+  .toast-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--color-green-deep);
+  }
+</style>
+
+<script>
+  // Role tab switching with animation
+  document.querySelectorAll('.role-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Update active tab
+      document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // Fade out current panel
+      const currentPanel = document.querySelector('.dashboard-panel.active');
+      if (currentPanel) {
+        currentPanel.style.opacity = '0';
+        currentPanel.style.transform = 'translateY(10px)';
+      }
+
+      // Show corresponding dashboard with delay
+      const role = tab.getAttribute('data-role');
+      setTimeout(() => {
+        document.querySelectorAll('.dashboard-panel').forEach(panel => {
+          panel.classList.remove('active');
+        });
+        const newPanel = document.getElementById(`${role}-dashboard`);
+        if (newPanel) {
+          newPanel.classList.add('active');
+          newPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 150);
+    });
+  });
+
+  // Toast notification system
+  function showToast(message: string) {
+    const existing = document.querySelector('.toast');
+    if (existing) existing.remove();
+
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `
+      <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+      <span>${message}</span>
+    `;
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+      toast.classList.add('hiding');
+      setTimeout(() => toast.remove(), 300);
+    }, 2500);
+  }
+
+  // Action button interactions
+  document.querySelectorAll('.action-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.add('clicked');
+      setTimeout(() => btn.classList.remove('clicked'), 200);
+
+      const action = btn.querySelector('span')?.textContent || 'Action';
+      showToast(`${action} - Feature coming soon!`);
+    });
+  });
+
+  // Table row interactions
+  document.querySelectorAll('.table-row:not(.header)').forEach(row => {
+    row.addEventListener('click', () => {
+      const batchId = row.querySelector('.font-mono')?.textContent;
+      if (batchId) {
+        showToast(`Viewing details for ${batchId}`);
+      }
+    });
+  });
+
+  // Supplier row interactions
+  document.querySelectorAll('.supplier-row').forEach(row => {
+    row.addEventListener('click', () => {
+      const name = row.querySelector('.supplier-name')?.textContent;
+      if (name) {
+        showToast(`Viewing profile for ${name}`);
+      }
+    });
+  });
+
+  // Shipment row interactions
+  document.querySelectorAll('.shipment-row').forEach(row => {
+    row.addEventListener('click', () => {
+      const id = row.querySelector('.shipment-id')?.textContent;
+      if (id) {
+        showToast(`Tracking shipment ${id}`);
+      }
+    });
+  });
+
+  // Batch card interactions
+  document.querySelectorAll('.batch-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.querySelector('.batch-id')?.textContent;
+      if (id) {
+        showToast(`Viewing batch ${id}`);
+      }
+    });
+  });
+
+  // Recall item interactions
+  document.querySelectorAll('.recall-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const id = item.querySelector('.recall-id')?.textContent;
+      if (id) {
+        showToast(`Opening recall ${id} details`);
+      }
+    });
+  });
+
+  // Live data updates for distributor dashboard
+  function updateDistributorData() {
+    // Update shipment temperatures randomly
+    const tempBadges = document.querySelectorAll('.shipment-row .sensor-badge:first-child');
+    tempBadges.forEach(badge => {
+      const isWarning = badge.classList.contains('orange');
+      if (!isWarning) {
+        const temp = (1.5 + Math.random() * 2).toFixed(1);
+        badge.textContent = `${temp}°C`;
+      }
+    });
+
+    // Update humidity
+    const humidBadges = document.querySelectorAll('.shipment-row .sensor-badge:last-child');
+    humidBadges.forEach(badge => {
+      if (!badge.classList.contains('orange')) {
+        const humid = Math.floor(80 + Math.random() * 15);
+        badge.textContent = `${humid}%`;
+      }
+    });
+  }
+
+  // Live data updates for farmer dashboard
+  function updateFarmerData() {
+    const consumerScans = document.querySelector('#farmer-dashboard .stat-val:last-child');
+    if (consumerScans) {
+      const currentVal = parseInt(consumerScans.textContent?.replace(/,/g, '') || '1234');
+      if (Math.random() > 0.7) {
+        const newVal = currentVal + Math.floor(Math.random() * 5) + 1;
+        consumerScans.textContent = newVal.toLocaleString();
+        consumerScans.classList.add('updating');
+        setTimeout(() => consumerScans.classList.remove('updating'), 300);
+      }
+    }
+  }
+
+  // Live updates for processor dashboard
+  function updateProcessorData() {
+    const qrsGenerated = document.querySelector('#processor-dashboard .stat-card-mini:nth-child(2) .stat-val');
+    if (qrsGenerated) {
+      const currentVal = parseInt(qrsGenerated.textContent?.replace(/,/g, '') || '4280');
+      if (Math.random() > 0.6) {
+        const newVal = currentVal + Math.floor(Math.random() * 10) + 1;
+        qrsGenerated.textContent = newVal.toLocaleString();
+        qrsGenerated.classList.add('updating');
+        setTimeout(() => qrsGenerated.classList.remove('updating'), 300);
+      }
+    }
+  }
+
+  // Animate truck positions periodically
+  function animateTrucks() {
+    const trucks = document.querySelectorAll('.truck-marker');
+    trucks.forEach((truck, index) => {
+      const currentTop = parseFloat(truck.getAttribute('style')?.match(/top:\s*([\d.]+)%/)?.[1] || '30');
+      const currentLeft = parseFloat(truck.getAttribute('style')?.match(/left:\s*([\d.]+)%/)?.[1] || '25');
+
+      // Small random movement
+      const newTop = Math.max(20, Math.min(70, currentTop + (Math.random() - 0.5) * 3));
+      const newLeft = Math.max(15, Math.min(80, currentLeft + (Math.random() - 0.5) * 3));
+
+      truck.setAttribute('style', `top: ${newTop}%; left: ${newLeft}%;`);
+    });
+  }
+
+  // Start live updates
+  setInterval(updateDistributorData, 5000);
+  setInterval(updateFarmerData, 4000);
+  setInterval(updateProcessorData, 3000);
+  setInterval(animateTrucks, 8000);
+
+  // Animate compliance bars on load
+  setTimeout(() => {
+    document.querySelectorAll('.progress-fill-mini').forEach(bar => {
+      const width = bar.getAttribute('style')?.match(/width:\s*([\d.]+)%/)?.[1] || '100';
+      bar.style.width = '0%';
+      setTimeout(() => {
+        bar.style.width = `${width}%`;
+      }, 100);
+    });
+  }, 500);
+</script>

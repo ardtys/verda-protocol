@@ -1,0 +1,35 @@
+---
+interface Props {
+  colspan?: 1 | 2 | 3 | 4;
+  interactive?: boolean;
+  accent?: 'green' | 'amber' | 'red' | 'earth';
+  class?: string;
+  stagger?: number;
+}
+
+const {
+  colspan = 1,
+  interactive = false,
+  accent,
+  class: className = '',
+  stagger
+} = Astro.props;
+
+const interactiveClass = interactive ? 'card-interactive' : '';
+const accentClass = accent ? `card-accent-${accent}` : '';
+const staggerClass = stagger ? `stagger-${stagger}` : '';
+const gridStyle = colspan > 1 ? `grid-column: span ${colspan};` : '';
+---
+
+<div
+  class:list={[
+    'card card-shine',
+    interactiveClass,
+    accentClass,
+    staggerClass,
+    className
+  ]}
+  style={gridStyle}
+>
+  <slot />
+</div>

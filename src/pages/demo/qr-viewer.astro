@@ -1,0 +1,1587 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowLeft, ArrowRight, CheckCircle, MapPin, Calendar, User, Thermometer, Truck, Package, Award, Clock, Shield, ExternalLink, Share2, QrCode } from '@lucide/astro';
+---
+
+<BaseLayout
+  title="QR Journey Viewer Demo"
+  description="Experience what consumers see when they scan a Verda QR code. Follow a coffee bean's complete journey from farm to cup."
+>
+  <div class="container">
+    <!-- Back Link -->
+    <a href="/demo" class="inline-flex items-center gap-2 text-sm text-text-muted hover:text-green-deep mb-6">
+      <ArrowLeft class="icon-sm" />
+      Back to Demos
+    </a>
+
+    <!-- Demo Header -->
+    <section class="reveal">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="feature-icon feature-icon-md cyan feature-icon-animated glow-pulse">
+          <QrCode class="icon-md" />
+        </div>
+        <span class="badge badge-pulse">Live Demo</span>
+      </div>
+      <h1 class="text-shimmer"><span class="gradient-text-animated">QR Journey Viewer</span></h1>
+      <p class="text-base max-w-2xl text-text-secondary">
+        This is exactly what a consumer sees when they scan a QR code on a Verda-enabled product.
+        Below is a real journey for Single Origin Coffee from Da Lat, Vietnam.
+      </p>
+    </section>
+
+    <hr class="divider-gradient" />
+
+    <!-- Product Card (Mobile-style) -->
+    <section class="reveal">
+      <div class="phone-mockup">
+        <div class="phone-header">
+          <span class="text-xs text-text-muted">verda.so/j/PRD-2024-001234</span>
+          <div class="flex gap-2">
+            <Share2 class="icon-sm text-text-muted" />
+          </div>
+        </div>
+
+        <!-- Product Hero -->
+        <div class="product-hero">
+          <div class="product-image">
+            <span class="text-4xl">☕</span>
+          </div>
+          <div class="product-verified">
+            <CheckCircle class="icon-sm" style="color: var(--color-green-deep);" />
+            <span class="text-xs text-green-deep font-medium">Verified Product</span>
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+          <h2 class="text-lg mb-1">Single Origin Coffee - Vietnam</h2>
+          <p class="text-sm text-text-muted mb-3">Arabica • Medium Roast • 250g</p>
+
+          <div class="product-id">
+            <span class="text-xs text-text-muted">Product ID:</span>
+            <code class="text-xs" id="productId">PRD-2024-001234</code>
+            <button class="copy-btn" id="copyBtn" title="Copy Product ID">
+              <svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span class="copy-text">Copy</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Certification Badges -->
+        <div class="cert-badges">
+          <div class="cert-badge green">
+            <Award class="icon-sm" />
+            <span>Organic Certified</span>
+          </div>
+          <div class="cert-badge amber">
+            <Award class="icon-sm" />
+            <span>Fair Trade</span>
+          </div>
+          <div class="cert-badge teal">
+            <Shield class="icon-sm" />
+            <span>Blockchain Verified</span>
+          </div>
+        </div>
+
+        <!-- Status Cards -->
+        <div class="status-grid">
+          <div class="status-card green">
+            <Thermometer class="icon-md" />
+            <div>
+              <p class="text-xs text-text-muted">Cold Chain</p>
+              <p class="text-sm font-medium text-green-deep">Maintained</p>
+            </div>
+          </div>
+          <div class="status-card green">
+            <Clock class="icon-md" />
+            <div>
+              <p class="text-xs text-text-muted">Transit Time</p>
+              <p class="text-sm font-medium">14 days</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Journey Timeline -->
+        <div class="journey-section">
+          <div class="journey-header">
+            <h3 class="text-base flex items-center gap-2">
+              <MapPin class="icon-sm text-green-deep" />
+              Product Journey
+            </h3>
+            <div class="journey-controls">
+              <button class="journey-control-btn active" id="expandAllBtn">Expand All</button>
+              <button class="journey-control-btn" id="collapseAllBtn">Collapse All</button>
+            </div>
+          </div>
+          <p class="text-xs text-text-muted mb-4">Click on any event to see more details</p>
+
+          <div class="journey-timeline" id="journeyTimeline">
+            <!-- Event 1: Harvest -->
+            <div class="journey-event completed expanded" data-event="1">
+              <div class="event-marker">
+                <CheckCircle class="icon-sm" />
+              </div>
+              <div class="event-content">
+                <div class="event-header clickable">
+                  <div class="event-header-left">
+                    <span class="event-title">Harvested</span>
+                    <span class="expand-icon">▼</span>
+                  </div>
+                  <span class="event-date">Mar 15, 2024 • 6:30 AM</span>
+                </div>
+                <div class="event-body">
+                  <div class="event-details">
+                    <div class="event-detail">
+                      <MapPin class="icon-xs" />
+                      <span>Da Lat, Lam Dong, Vietnam</span>
+                    </div>
+                    <div class="event-detail">
+                      <User class="icon-xs" />
+                      <span>Farmer: Nguyen Van Minh</span>
+                    </div>
+                  </div>
+                  <div class="event-tags">
+                    <span class="tag tag-sm tag-green">Altitude: 1,400m</span>
+                    <span class="tag tag-sm">Variety: Typica</span>
+                  </div>
+                  <div class="event-extra">
+                    <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=300&h=150&fit=crop" alt="Coffee harvest" class="event-image" loading="lazy" />
+                    <p class="text-xs text-text-muted mt-2">Hand-picked by local farmers in the highlands of Da Lat using traditional methods.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Event 2: Processing -->
+            <div class="journey-event completed" data-event="2">
+              <div class="event-marker">
+                <CheckCircle class="icon-sm" />
+              </div>
+              <div class="event-content">
+                <div class="event-header clickable">
+                  <div class="event-header-left">
+                    <span class="event-title">Processed</span>
+                    <span class="expand-icon">▶</span>
+                  </div>
+                  <span class="event-date">Mar 16, 2024 • 2:00 PM</span>
+                </div>
+                <div class="event-body">
+                  <div class="event-details">
+                    <div class="event-detail">
+                      <MapPin class="icon-xs" />
+                      <span>Highland Coffee Mill, Da Lat</span>
+                    </div>
+                    <div class="event-detail">
+                      <Package class="icon-xs" />
+                      <span>Washed Process</span>
+                    </div>
+                  </div>
+                  <div class="event-tags">
+                    <span class="tag tag-sm tag-cyan">Batch: FCM-2024-0312</span>
+                    <span class="tag tag-sm tag-orange">Temp: 22°C</span>
+                  </div>
+                  <div class="event-extra">
+                    <div class="process-steps">
+                      <div class="process-step completed"><span>1</span> Pulping</div>
+                      <div class="process-step completed"><span>2</span> Fermentation</div>
+                      <div class="process-step completed"><span>3</span> Washing</div>
+                      <div class="process-step completed"><span>4</span> Drying</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Event 3: Quality Check -->
+            <div class="journey-event completed" data-event="3">
+              <div class="event-marker">
+                <CheckCircle class="icon-sm" />
+              </div>
+              <div class="event-content">
+                <div class="event-header clickable">
+                  <div class="event-header-left">
+                    <span class="event-title">Quality Tested</span>
+                    <span class="expand-icon">▶</span>
+                  </div>
+                  <span class="event-date">Mar 20, 2024 • 10:00 AM</span>
+                </div>
+                <div class="event-body">
+                  <div class="event-details">
+                    <div class="event-detail">
+                      <Award class="icon-xs" />
+                      <span>Cupping Score: 86.5</span>
+                    </div>
+                    <div class="event-detail">
+                      <User class="icon-xs" />
+                      <span>Q-Grader: Tran Duc Anh</span>
+                    </div>
+                  </div>
+                  <div class="event-tags">
+                    <span class="tag tag-sm tag-indigo">Specialty Grade</span>
+                    <span class="tag tag-sm">Notes: Chocolate, Citrus</span>
+                  </div>
+                  <div class="event-extra">
+                    <div class="cupping-scores">
+                      <div class="cupping-score">
+                        <span class="score-label">Aroma</span>
+                        <div class="score-bar"><div class="score-fill" style="width: 85%"></div></div>
+                        <span class="score-value">8.5</span>
+                      </div>
+                      <div class="cupping-score">
+                        <span class="score-label">Flavor</span>
+                        <div class="score-bar"><div class="score-fill" style="width: 87%"></div></div>
+                        <span class="score-value">8.7</span>
+                      </div>
+                      <div class="cupping-score">
+                        <span class="score-label">Acidity</span>
+                        <div class="score-bar"><div class="score-fill" style="width: 88%"></div></div>
+                        <span class="score-value">8.8</span>
+                      </div>
+                      <div class="cupping-score">
+                        <span class="score-label">Body</span>
+                        <div class="score-bar"><div class="score-fill" style="width: 86%"></div></div>
+                        <span class="score-value">8.6</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Event 4: Export -->
+            <div class="journey-event completed" data-event="4">
+              <div class="event-marker">
+                <CheckCircle class="icon-sm" />
+              </div>
+              <div class="event-content">
+                <div class="event-header clickable">
+                  <div class="event-header-left">
+                    <span class="event-title">Exported</span>
+                    <span class="expand-icon">▶</span>
+                  </div>
+                  <span class="event-date">Mar 22, 2024 • 8:00 AM</span>
+                </div>
+                <div class="event-body">
+                  <div class="event-details">
+                    <div class="event-detail">
+                      <Truck class="icon-xs" />
+                      <span>Ho Chi Minh City → Singapore</span>
+                    </div>
+                    <div class="event-detail">
+                      <Package class="icon-xs" />
+                      <span>Container: MSCU-7234561</span>
+                    </div>
+                  </div>
+                  <div class="event-tags">
+                    <span class="tag tag-sm tag-orange">Sensor: Active</span>
+                    <span class="tag tag-sm tag-cyan">GPS: Tracking</span>
+                  </div>
+                  <div class="event-extra">
+                    <div class="route-map">
+                      <div class="route-point start">
+                        <span class="route-dot"></span>
+                        <span class="route-label">Ho Chi Minh</span>
+                      </div>
+                      <div class="route-line"></div>
+                      <div class="route-point">
+                        <span class="route-dot"></span>
+                        <span class="route-label">Singapore</span>
+                      </div>
+                      <div class="route-line"></div>
+                      <div class="route-point end">
+                        <span class="route-dot"></span>
+                        <span class="route-label">Tokyo</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Event 5: Roasting -->
+            <div class="journey-event completed" data-event="5">
+              <div class="event-marker">
+                <CheckCircle class="icon-sm" />
+              </div>
+              <div class="event-content">
+                <div class="event-header clickable">
+                  <div class="event-header-left">
+                    <span class="event-title">Roasted</span>
+                    <span class="expand-icon">▶</span>
+                  </div>
+                  <span class="event-date">Mar 28, 2024 • 3:00 PM</span>
+                </div>
+                <div class="event-body">
+                  <div class="event-details">
+                    <div class="event-detail">
+                      <MapPin class="icon-xs" />
+                      <span>Kurasu Coffee, Tokyo</span>
+                    </div>
+                    <div class="event-detail">
+                      <Thermometer class="icon-xs" />
+                      <span>Medium Roast • 210°C peak</span>
+                    </div>
+                  </div>
+                  <div class="event-tags">
+                    <span class="tag tag-sm tag-rose">Roast ID: TNM-0328-A</span>
+                  </div>
+                  <div class="event-extra">
+                    <div class="roast-profile">
+                      <div class="roast-stage">
+                        <span class="stage-temp">150°C</span>
+                        <span class="stage-name">Yellow</span>
+                      </div>
+                      <div class="roast-stage">
+                        <span class="stage-temp">175°C</span>
+                        <span class="stage-name">Brown</span>
+                      </div>
+                      <div class="roast-stage active">
+                        <span class="stage-temp">210°C</span>
+                        <span class="stage-name">First Crack</span>
+                      </div>
+                      <div class="roast-stage">
+                        <span class="stage-temp">225°C</span>
+                        <span class="stage-name">Medium</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Event 6: Packaged -->
+            <div class="journey-event completed" data-event="6">
+              <div class="event-marker">
+                <CheckCircle class="icon-sm" />
+              </div>
+              <div class="event-content">
+                <div class="event-header clickable">
+                  <div class="event-header-left">
+                    <span class="event-title">Packaged & QR Applied</span>
+                    <span class="expand-icon">▶</span>
+                  </div>
+                  <span class="event-date">Mar 28, 2024 • 5:30 PM</span>
+                </div>
+                <div class="event-body">
+                  <div class="event-details">
+                    <div class="event-detail">
+                      <QrCode class="icon-xs" />
+                      <span>QR: PRD-2024-001234</span>
+                    </div>
+                    <div class="event-detail">
+                      <Calendar class="icon-xs" />
+                      <span>Best Before: Mar 28, 2025</span>
+                    </div>
+                  </div>
+                  <div class="event-extra">
+                    <div class="package-info">
+                      <div class="package-item">
+                        <span class="package-label">Net Weight</span>
+                        <span class="package-value">250g</span>
+                      </div>
+                      <div class="package-item">
+                        <span class="package-label">Packaging</span>
+                        <span class="package-value">Nitrogen-flushed</span>
+                      </div>
+                      <div class="package-item">
+                        <span class="package-label">Material</span>
+                        <span class="package-value">Recyclable</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Event 7: Retail -->
+            <div class="journey-event completed final" data-event="7">
+              <div class="event-marker">
+                <CheckCircle class="icon-sm" />
+              </div>
+              <div class="event-content">
+                <div class="event-header clickable">
+                  <div class="event-header-left">
+                    <span class="event-title">Arrived at Retail</span>
+                    <span class="expand-icon">▶</span>
+                  </div>
+                  <span class="event-date">Mar 29, 2024 • 9:00 AM</span>
+                </div>
+                <div class="event-body">
+                  <div class="event-details">
+                    <div class="event-detail">
+                      <MapPin class="icon-xs" />
+                      <span>Blue Bottle Coffee, Shibuya Tokyo</span>
+                    </div>
+                  </div>
+                  <div class="event-tags">
+                    <span class="tag tag-sm tag-green">Ready for Sale</span>
+                  </div>
+                  <div class="event-extra">
+                    <p class="text-xs text-text-muted">Your coffee is now available! Each scan helps verify authenticity and supports the farmers who grew these beans.</p>
+                    <div class="scan-counter">
+                      <span class="scan-count" id="scanCount">1,247</span>
+                      <span class="scan-label">total scans</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cold Chain Graph -->
+        <div class="coldchain-section">
+          <h3 class="text-base mb-4 flex items-center gap-2">
+            <Thermometer class="icon-sm text-cyan" />
+            Cold Chain Data
+            <span class="live-indicator">
+              <span class="live-dot"></span>
+              Live
+            </span>
+          </h3>
+          <div class="temp-graph">
+            <div class="temp-header">
+              <span class="text-sm font-medium">Temperature During Transit</span>
+              <span class="tag tag-sm tag-green">All readings normal</span>
+            </div>
+            <div class="temp-chart" id="tempChart">
+              <div class="temp-tooltip" id="tempTooltip">18°C</div>
+              <svg class="temp-svg" viewBox="0 0 300 80" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="tempGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:var(--color-cyan);stop-opacity:0.3" />
+                    <stop offset="100%" style="stop-color:var(--color-cyan);stop-opacity:0" />
+                  </linearGradient>
+                </defs>
+                <path class="temp-area" d="M0,40 Q37,35 75,38 T150,32 T225,38 T300,35 L300,80 L0,80 Z" fill="url(#tempGradient)" />
+                <path class="temp-line-path" d="M0,40 Q37,35 75,38 T150,32 T225,38 T300,35" fill="none" stroke="var(--color-cyan)" stroke-width="2" />
+              </svg>
+              <div class="temp-points">
+                <div class="temp-point interactive" style="left: 0%; bottom: 50%;" data-temp="18" data-time="Mar 22, 08:00" data-humidity="65%"></div>
+                <div class="temp-point interactive" style="left: 14%; bottom: 53%;" data-temp="17" data-time="Mar 23, 08:00" data-humidity="62%"></div>
+                <div class="temp-point interactive" style="left: 28%; bottom: 55%;" data-temp="16" data-time="Mar 24, 08:00" data-humidity="60%"></div>
+                <div class="temp-point interactive" style="left: 42%; bottom: 60%;" data-temp="15" data-time="Mar 25, 08:00" data-humidity="58%"></div>
+                <div class="temp-point interactive" style="left: 56%; bottom: 55%;" data-temp="16" data-time="Mar 26, 08:00" data-humidity="61%"></div>
+                <div class="temp-point interactive" style="left: 70%; bottom: 53%;" data-temp="17" data-time="Mar 27, 08:00" data-humidity="63%"></div>
+                <div class="temp-point interactive" style="left: 84%; bottom: 50%;" data-temp="18" data-time="Mar 28, 08:00" data-humidity="64%"></div>
+                <div class="temp-point interactive pulse" style="left: 100%; bottom: 47%;" data-temp="19" data-time="Mar 29, 09:00" data-humidity="66%"></div>
+              </div>
+              <div class="temp-range">
+                <div class="safe-zone"></div>
+                <span class="text-xs text-text-muted">Safe Range: 10-25°C</span>
+              </div>
+            </div>
+            <div class="temp-stats">
+              <div class="temp-stat clickable" data-type="min">
+                <span class="text-xs text-text-muted">Min</span>
+                <span class="text-sm font-medium text-cyan" id="minTemp">15°C</span>
+              </div>
+              <div class="temp-stat clickable" data-type="avg">
+                <span class="text-xs text-text-muted">Avg</span>
+                <span class="text-sm font-medium" id="avgTemp">17°C</span>
+              </div>
+              <div class="temp-stat clickable" data-type="max">
+                <span class="text-xs text-text-muted">Max</span>
+                <span class="text-sm font-medium text-orange" id="maxTemp">19°C</span>
+              </div>
+              <div class="temp-stat clickable" data-type="readings">
+                <span class="text-xs text-text-muted">Readings</span>
+                <span class="text-sm font-medium" id="readingCount">847</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blockchain Verification -->
+        <div class="verification-section">
+          <h3 class="text-base mb-4 flex items-center gap-2">
+            <Shield class="icon-sm text-indigo" />
+            Blockchain Verification
+          </h3>
+          <div class="verification-card">
+            <div class="verification-status">
+              <CheckCircle class="icon-md" style="color: var(--color-green-deep);" />
+              <div>
+                <p class="text-sm font-medium text-green-deep">Verified on Blockchain</p>
+                <p class="text-xs text-text-muted">All 7 events cryptographically anchored</p>
+              </div>
+            </div>
+            <div class="verification-details">
+              <div class="verification-row">
+                <span class="text-xs text-text-muted">Merkle Root</span>
+                <code class="text-xs">0x7f3a...8b2c</code>
+              </div>
+              <div class="verification-row">
+                <span class="text-xs text-text-muted">Block</span>
+                <code class="text-xs">#198,234,567</code>
+              </div>
+              <div class="verification-row">
+                <span class="text-xs text-text-muted">Timestamp</span>
+                <code class="text-xs">Mar 29, 2024 09:05:23 UTC</code>
+              </div>
+            </div>
+            <a href="#" class="verification-link">
+              <ExternalLink class="icon-sm" />
+              <span class="text-sm">View on Blockchain Explorer</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Phone Footer -->
+        <div class="phone-footer">
+          <p class="text-xs text-text-muted text-center">
+            Powered by <strong>Verda Protocol</strong> • <a href="/" class="text-green-deep">Learn More</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Info Section -->
+    <section class="reveal">
+      <span class="section-label section-label-animated">how it works</span>
+      <h2><span class="highlight">Behind the Scenes</span></h2>
+
+      <div class="grid-3 mt-6 stagger-children">
+        <div class="card card-3d glass">
+          <div class="feature-icon feature-icon-md cyan mb-3 glow-pulse">
+            <span class="text-lg">1</span>
+          </div>
+          <h3 class="text-base mb-2">Consumer Scans QR</h3>
+          <p class="text-sm mb-0">No app needed. Standard camera app opens our mobile-optimized web page instantly.</p>
+        </div>
+        <div class="card card-3d glass">
+          <div class="feature-icon feature-icon-md indigo mb-3">
+            <span class="text-lg">2</span>
+          </div>
+          <h3 class="text-base mb-2">Journey Retrieved</h3>
+          <p class="text-sm mb-0">API fetches all events, sensor data, and certifications in under 200ms.</p>
+        </div>
+        <div class="card card-3d glass">
+          <div class="feature-icon feature-icon-md green mb-3">
+            <span class="text-lg">3</span>
+          </div>
+          <h3 class="text-base mb-2">Blockchain Verified</h3>
+          <p class="text-sm mb-0">Merkle proof validates data integrity against Blockchain anchor. Tamper-proof.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- CTA -->
+    <section class="reveal pb-8">
+      <h2><span class="gradient-text-animated">Try More Demos</span></h2>
+      <div class="flex flex-wrap gap-3 mt-4">
+        <a href="/demo/cold-chain" class="btn btn-lg glow-green ripple">
+          Cold Chain Demo
+          <ArrowRight class="icon-sm" />
+        </a>
+        <a href="/demo" class="btn btn-outline btn-lg ripple">
+          All Demos
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Phone Mockup */
+  .phone-mockup {
+    max-width: 420px;
+    margin: 0 auto;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    padding: 1rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  }
+
+  .phone-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 1rem;
+  }
+
+  .product-hero {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, var(--color-cyan-bg), var(--color-indigo-bg));
+    border-radius: 16px;
+    margin-bottom: 1rem;
+  }
+
+  .product-image {
+    width: 80px;
+    height: 80px;
+    background: var(--color-surface);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  .product-verified {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-green-bg);
+    padding: 0.375rem 0.75rem;
+    border-radius: 20px;
+  }
+
+  .product-info {
+    padding: 0 0.5rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 1rem;
+  }
+
+  .product-id {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .cert-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0 0.5rem 1rem;
+  }
+
+  .cert-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.625rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .cert-badge.green {
+    background: var(--color-green-bg);
+    color: var(--color-green-deep);
+  }
+
+  .cert-badge.amber {
+    background: var(--color-amber-bg);
+    color: var(--color-amber);
+  }
+
+  .cert-badge.teal {
+    background: var(--color-teal-bg);
+    color: var(--color-teal);
+  }
+
+  .status-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    padding: 0 0.5rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 1rem;
+  }
+
+  .status-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--color-surface-2);
+    border-radius: 8px;
+  }
+
+  .status-card.green svg {
+    color: var(--color-green-deep);
+  }
+
+  /* Journey Timeline */
+  .journey-section {
+    padding: 1rem 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 1rem;
+  }
+
+  .journey-timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .journey-event {
+    position: relative;
+    padding-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--color-border);
+  }
+
+  .journey-event.completed {
+    border-left-color: var(--color-green-light);
+  }
+
+  .journey-event.final {
+    border-left-color: transparent;
+    padding-bottom: 0;
+  }
+
+  .event-marker {
+    position: absolute;
+    left: -0.75rem;
+    top: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: var(--color-surface);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .event-marker svg {
+    color: var(--color-green-deep);
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .event-content {
+    background: var(--color-surface-2);
+    padding: 0.75rem;
+    border-radius: 8px;
+  }
+
+  .event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .event-title {
+    font-weight: 500;
+    font-size: 0.875rem;
+  }
+
+  .event-date {
+    font-size: 0.6875rem;
+    color: var(--color-text-muted);
+  }
+
+  .event-details {
+    margin-bottom: 0.5rem;
+  }
+
+  .event-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.25rem;
+  }
+
+  .event-detail svg {
+    width: 0.75rem;
+    height: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .event-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+
+  .tag-sm {
+    font-size: 0.625rem;
+    padding: 0.125rem 0.375rem;
+  }
+
+  /* Cold Chain Section */
+  .coldchain-section {
+    padding: 1rem 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 1rem;
+  }
+
+  .temp-graph {
+    background: var(--color-surface-2);
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .temp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .temp-chart {
+    height: 100px;
+    background: linear-gradient(to top, var(--color-cyan-bg), transparent);
+    border-radius: 8px;
+    position: relative;
+    margin-bottom: 0.75rem;
+  }
+
+  .temp-line {
+    position: absolute;
+    inset: 10px;
+    background: linear-gradient(90deg, var(--color-cyan), var(--color-green-light), var(--color-cyan));
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 50'%3E%3Cpath d='M0,25 Q12,20 25,22 T50,18 T75,22 T100,20' stroke='black' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+    mask-size: 100% 100%;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 50'%3E%3Cpath d='M0,25 Q12,20 25,22 T50,18 T75,22 T100,20' stroke='black' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+  }
+
+  .temp-point {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--color-cyan);
+    border: 2px solid var(--color-surface);
+    border-radius: 50%;
+    transform: translate(-50%, 50%);
+  }
+
+  .temp-range {
+    text-align: center;
+  }
+
+  .temp-stats {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .temp-stat {
+    text-align: center;
+  }
+
+  /* Verification Section */
+  .verification-section {
+    padding: 1rem 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .verification-card {
+    background: var(--color-surface-2);
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .verification-status {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 0.75rem;
+  }
+
+  .verification-details {
+    margin-bottom: 0.75rem;
+  }
+
+  .verification-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.375rem 0;
+  }
+
+  .verification-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: var(--color-indigo-bg);
+    color: var(--color-indigo);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .verification-link:hover {
+    background: var(--color-indigo);
+    color: white;
+  }
+
+  .phone-footer {
+    padding: 1rem;
+    text-align: center;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .icon-xs {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* Copy Button */
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-size: 0.625rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-left: 0.5rem;
+  }
+
+  .copy-btn:hover {
+    background: var(--color-green-bg);
+    border-color: var(--color-green-light);
+    color: var(--color-green-deep);
+  }
+
+  .copy-btn.copied {
+    background: var(--color-green-bg);
+    border-color: var(--color-green-deep);
+    color: var(--color-green-deep);
+  }
+
+  /* Journey Controls */
+  .journey-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .journey-controls {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .journey-control-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.625rem;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .journey-control-btn:hover,
+  .journey-control-btn.active {
+    background: var(--color-green-bg);
+    border-color: var(--color-green-light);
+    color: var(--color-green-deep);
+  }
+
+  /* Expandable Events */
+  .event-header.clickable {
+    cursor: pointer;
+    transition: background 0.2s;
+    margin: -0.75rem;
+    padding: 0.75rem;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .event-header.clickable:hover {
+    background: var(--color-surface);
+  }
+
+  .event-header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .expand-icon {
+    font-size: 0.625rem;
+    color: var(--color-text-muted);
+    transition: transform 0.3s;
+  }
+
+  .journey-event.expanded .expand-icon {
+    transform: rotate(0deg);
+  }
+
+  .journey-event:not(.expanded) .expand-icon {
+    transform: rotate(-90deg);
+  }
+
+  .event-body {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    margin-top: 0;
+  }
+
+  .journey-event.expanded .event-body {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 0.5rem;
+  }
+
+  .event-extra {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .event-image {
+    width: 100%;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+
+  /* Process Steps */
+  .process-steps {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .process-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.625rem;
+    color: var(--color-text-muted);
+    gap: 0.25rem;
+  }
+
+  .process-step span {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    font-weight: 600;
+  }
+
+  .process-step.completed span {
+    background: var(--color-green-bg);
+    border-color: var(--color-green-light);
+    color: var(--color-green-deep);
+  }
+
+  /* Cupping Scores */
+  .cupping-scores {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .cupping-score {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .score-label {
+    font-size: 0.625rem;
+    color: var(--color-text-muted);
+    width: 3rem;
+  }
+
+  .score-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--color-surface);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .score-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-green-light), var(--color-cyan));
+    border-radius: 3px;
+    transition: width 0.5s ease-out;
+  }
+
+  .score-value {
+    font-size: 0.625rem;
+    font-weight: 600;
+    color: var(--color-text);
+    width: 1.5rem;
+  }
+
+  /* Route Map */
+  .route-map {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background: var(--color-surface);
+    border-radius: 6px;
+  }
+
+  .route-point {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .route-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    background: var(--color-surface-2);
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+  }
+
+  .route-point.start .route-dot {
+    border-color: var(--color-green-deep);
+    background: var(--color-green-bg);
+  }
+
+  .route-point.end .route-dot {
+    border-color: var(--color-cyan);
+    background: var(--color-cyan-bg);
+    animation: pulse 2s infinite;
+  }
+
+  .route-label {
+    font-size: 0.625rem;
+    color: var(--color-text-muted);
+  }
+
+  .route-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-green-light), var(--color-cyan));
+    margin: 0 0.5rem;
+    position: relative;
+  }
+
+  .route-line::after {
+    content: '✈';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.75rem;
+    animation: moveShip 3s infinite ease-in-out;
+  }
+
+  @keyframes moveShip {
+    0%, 100% { left: 30%; }
+    50% { left: 70%; }
+  }
+
+  /* Roast Profile */
+  .roast-profile {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background: var(--color-surface);
+    border-radius: 6px;
+  }
+
+  .roast-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .roast-stage.active {
+    background: var(--color-orange-bg);
+  }
+
+  .stage-temp {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .roast-stage.active .stage-temp {
+    color: var(--color-orange);
+  }
+
+  .stage-name {
+    font-size: 0.5rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+  }
+
+  /* Package Info */
+  .package-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .package-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    background: var(--color-surface);
+    border-radius: 6px;
+  }
+
+  .package-label {
+    font-size: 0.5rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+  }
+
+  .package-value {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  /* Scan Counter */
+  .scan-counter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding: 0.5rem;
+    background: var(--color-green-bg);
+    border-radius: 6px;
+  }
+
+  .scan-count {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-green-deep);
+    font-family: monospace;
+  }
+
+  .scan-label {
+    font-size: 0.625rem;
+    color: var(--color-green-deep);
+  }
+
+  /* Live Indicator */
+  .live-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--color-green-bg);
+    border-radius: 4px;
+    font-size: 0.625rem;
+    color: var(--color-green-deep);
+    margin-left: auto;
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--color-green-deep);
+    border-radius: 50%;
+    animation: livePulse 1.5s infinite;
+  }
+
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  /* Interactive Temp Chart */
+  .temp-chart {
+    position: relative;
+    height: 100px;
+    background: linear-gradient(to top, var(--color-cyan-bg), transparent);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+  }
+
+  .temp-svg {
+    position: absolute;
+    inset: 10px;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+  }
+
+  .temp-line-path {
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    animation: drawLine 2s ease-out forwards;
+  }
+
+  @keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+  }
+
+  .temp-points {
+    position: absolute;
+    inset: 10px;
+  }
+
+  .temp-point.interactive {
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 2;
+  }
+
+  .temp-point.interactive:hover {
+    transform: translate(-50%, 50%) scale(1.5);
+    box-shadow: 0 0 10px var(--color-cyan);
+  }
+
+  .temp-point.pulse {
+    animation: pointPulse 2s infinite;
+  }
+
+  @keyframes pointPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(var(--color-cyan-rgb), 0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(var(--color-cyan-rgb), 0); }
+  }
+
+  .temp-tooltip {
+    position: absolute;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 0.375rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    white-space: nowrap;
+  }
+
+  .temp-tooltip.visible {
+    opacity: 1;
+  }
+
+  .safe-zone {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 15%;
+    height: 60%;
+    background: rgba(var(--color-green-rgb), 0.05);
+    border-top: 1px dashed var(--color-green-light);
+    border-bottom: 1px dashed var(--color-green-light);
+  }
+
+  .temp-stat.clickable {
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    padding: 0.25rem;
+    border-radius: 4px;
+  }
+
+  .temp-stat.clickable:hover {
+    transform: scale(1.05);
+    background: var(--color-surface);
+  }
+
+  /* Pulse animation for scan count */
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+
+  /* Animation for event appearance */
+  .journey-event {
+    animation: slideIn 0.3s ease-out;
+    animation-fill-mode: both;
+  }
+
+  .journey-event:nth-child(1) { animation-delay: 0.1s; }
+  .journey-event:nth-child(2) { animation-delay: 0.2s; }
+  .journey-event:nth-child(3) { animation-delay: 0.3s; }
+  .journey-event:nth-child(4) { animation-delay: 0.4s; }
+  .journey-event:nth-child(5) { animation-delay: 0.5s; }
+  .journey-event:nth-child(6) { animation-delay: 0.6s; }
+  .journey-event:nth-child(7) { animation-delay: 0.7s; }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>
+
+<script>
+  // Copy Product ID functionality
+  const copyBtn = document.getElementById('copyBtn');
+  const productId = document.getElementById('productId');
+
+  if (copyBtn && productId) {
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(productId.textContent || '');
+        copyBtn.classList.add('copied');
+        const copyText = copyBtn.querySelector('.copy-text');
+        if (copyText) copyText.textContent = 'Copied!';
+
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          if (copyText) copyText.textContent = 'Copy';
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+    });
+  }
+
+  // Expandable timeline events
+  const journeyEvents = document.querySelectorAll('.journey-event');
+
+  journeyEvents.forEach(event => {
+    const header = event.querySelector('.event-header.clickable');
+    const expandIcon = event.querySelector('.expand-icon');
+
+    if (header) {
+      header.addEventListener('click', () => {
+        const isExpanded = event.classList.contains('expanded');
+        event.classList.toggle('expanded');
+
+        if (expandIcon) {
+          expandIcon.textContent = isExpanded ? '▶' : '▼';
+        }
+      });
+    }
+  });
+
+  // Expand/Collapse all buttons
+  const expandAllBtn = document.getElementById('expandAllBtn');
+  const collapseAllBtn = document.getElementById('collapseAllBtn');
+
+  if (expandAllBtn) {
+    expandAllBtn.addEventListener('click', () => {
+      journeyEvents.forEach(event => {
+        event.classList.add('expanded');
+        const expandIcon = event.querySelector('.expand-icon');
+        if (expandIcon) expandIcon.textContent = '▼';
+      });
+      expandAllBtn.classList.add('active');
+      collapseAllBtn?.classList.remove('active');
+    });
+  }
+
+  if (collapseAllBtn) {
+    collapseAllBtn.addEventListener('click', () => {
+      journeyEvents.forEach(event => {
+        event.classList.remove('expanded');
+        const expandIcon = event.querySelector('.expand-icon');
+        if (expandIcon) expandIcon.textContent = '▶';
+      });
+      collapseAllBtn.classList.add('active');
+      expandAllBtn?.classList.remove('active');
+    });
+  }
+
+  // Interactive temperature chart tooltips
+  const tempPoints = document.querySelectorAll('.temp-point.interactive');
+  const tempTooltip = document.getElementById('tempTooltip');
+  const tempChart = document.getElementById('tempChart');
+
+  if (tempChart && tempTooltip) {
+    tempPoints.forEach(point => {
+      point.addEventListener('mouseenter', (e) => {
+        const temp = point.getAttribute('data-temp');
+        const time = point.getAttribute('data-time');
+        const humidity = point.getAttribute('data-humidity');
+
+        tempTooltip.innerHTML = `
+          <strong>${temp}°C</strong><br>
+          <span style="font-size: 0.625rem; color: var(--color-text-muted);">
+            ${time}<br>
+            Humidity: ${humidity}
+          </span>
+        `;
+        tempTooltip.classList.add('visible');
+
+        const rect = point.getBoundingClientRect();
+        const chartRect = tempChart.getBoundingClientRect();
+
+        tempTooltip.style.left = `${rect.left - chartRect.left + rect.width / 2 - tempTooltip.offsetWidth / 2}px`;
+        tempTooltip.style.top = `${rect.top - chartRect.top - tempTooltip.offsetHeight - 10}px`;
+      });
+
+      point.addEventListener('mouseleave', () => {
+        tempTooltip.classList.remove('visible');
+      });
+    });
+  }
+
+  // Animate scan counter
+  const scanCount = document.getElementById('scanCount');
+  if (scanCount) {
+    let count = 1247;
+    setInterval(() => {
+      if (Math.random() > 0.7) {
+        count += Math.floor(Math.random() * 3) + 1;
+        scanCount.textContent = count.toLocaleString();
+        scanCount.style.transform = 'scale(1.1)';
+        setTimeout(() => {
+          scanCount.style.transform = 'scale(1)';
+        }, 200);
+      }
+    }, 3000);
+  }
+
+  // Animate cupping scores on visibility
+  const cuppingScores = document.querySelectorAll('.score-fill');
+  const observerOptions = { threshold: 0.5 };
+
+  const scoreObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const fills = entry.target.querySelectorAll('.score-fill');
+        fills.forEach(fill => {
+          const width = fill.style.width;
+          fill.style.width = '0%';
+          setTimeout(() => {
+            fill.style.width = width;
+          }, 100);
+        });
+      }
+    });
+  }, observerOptions);
+
+  const cuppingSection = document.querySelector('.cupping-scores');
+  if (cuppingSection) {
+    scoreObserver.observe(cuppingSection.parentElement || cuppingSection);
+  }
+
+  // Reading counter animation
+  const readingCount = document.getElementById('readingCount');
+  if (readingCount) {
+    let readings = 847;
+    setInterval(() => {
+      readings += Math.floor(Math.random() * 5) + 1;
+      readingCount.textContent = readings.toLocaleString();
+    }, 5000);
+  }
+</script>

@@ -1,0 +1,372 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ArrowRight, QrCode, Thermometer, Shield, Zap, Users, BarChart, Package } from '@lucide/astro';
+---
+
+<BaseLayout
+  title="Product"
+  description="Discover Verda's complete food transparency stack: from IoT cold chain monitoring to consumer QR scanning and blockchain verification."
+>
+  <div class="container">
+    <!-- Hero -->
+    <section class="hero hero-animated particles reveal">
+      <span class="badge badge-pulse mb-4">Product Suite</span>
+      <h1 class="text-shimmer"><span class="gradient-text-animated">The complete food transparency</span> stack.</h1>
+      <p class="text-base max-w-2xl">
+        End-to-end supply chain visibility — from IoT hardware that monitors conditions
+        in transit, to the consumer app that reveals the full story behind every product.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-6">
+        <a href="mailto:hello@verda.so" class="btn btn-lg glow-green ripple">
+          Request Demo
+          <ArrowRight class="icon-sm" />
+        </a>
+        <a href="/technology" class="btn btn-outline btn-lg ripple">
+          Technical Specs
+        </a>
+      </div>
+    </section>
+
+    <hr class="divider-gradient" />
+
+    <!-- Products Overview -->
+    <section class="reveal">
+      <span class="section-label section-label-animated">our products</span>
+      <h2><span class="highlight">Explore Our Solutions</span></h2>
+
+      <div class="grid-4 mt-6 stagger-children">
+        <a href="/product/qr-viewer" class="card feature-card feature-card-vertical card-3d glow-hover">
+          <div class="feature-icon feature-icon-lg cyan feature-icon-animated float-slow mx-auto mb-4 glow-pulse">
+            <QrCode class="icon-lg" />
+          </div>
+          <div>
+            <h3 class="text-base mb-2 underline-animated">QR Journey Viewer</h3>
+            <p class="text-sm mb-0">Consumer scans, full journey in 2 seconds. No app required.</p>
+          </div>
+        </a>
+
+        <a href="/product/cold-chain" class="card feature-card feature-card-vertical card-3d glow-hover">
+          <div class="feature-icon feature-icon-lg orange feature-icon-animated float-slow mx-auto mb-4">
+            <Thermometer class="icon-lg" />
+          </div>
+          <div>
+            <h3 class="text-base mb-2 underline-animated">Cold Chain Monitoring</h3>
+            <p class="text-sm mb-0">Real-time IoT sensors track temperature and humidity throughout transit.</p>
+          </div>
+        </a>
+
+        <a href="/product/recall" class="card feature-card feature-card-vertical card-3d glow-hover">
+          <div class="feature-icon feature-icon-lg rose feature-icon-animated float-slow mx-auto mb-4">
+            <Shield class="icon-lg" />
+          </div>
+          <div>
+            <h3 class="text-base mb-2 underline-animated">Smart Recall System</h3>
+            <p class="text-sm mb-0">Surgical precision recalls in minutes. Only affected items pulled.</p>
+          </div>
+        </a>
+
+        <a href="/technology/security" class="card feature-card feature-card-vertical card-3d glow-hover">
+          <div class="feature-icon feature-icon-lg indigo feature-icon-animated float-slow mx-auto mb-4">
+            <Zap class="icon-lg" />
+          </div>
+          <div>
+            <h3 class="text-base mb-2 underline-animated">Blockchain Verification</h3>
+            <p class="text-sm mb-0">Immutable proof on Blockchain. Tamper-proof records.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- QR Journey Viewer -->
+    <section class="reveal">
+      <span class="section-label section-label-animated">consumer experience</span>
+      <h2>QR Journey Viewer</h2>
+      <p>
+        Consumer scans QR code on any product and sees the full journey in <strong class="text-text">2 seconds</strong>.
+        No app download required. No login. No wallet. Works on any smartphone browser.
+      </p>
+
+      <div class="card card-dark gradient-border mt-6">
+        <div class="flow">
+          <div class="flow-item" style="background: rgba(250,248,244,0.1); border-color: rgba(250,248,244,0.2)">
+            <span>📱</span> <span style="color: #faf8f4">Scan</span>
+          </div>
+          <span class="flow-arrow" style="color: rgba(250,248,244,0.5)">→</span>
+          <div class="flow-item" style="background: rgba(250,248,244,0.1); border-color: rgba(250,248,244,0.2)">
+            <span>🔍</span> <span style="color: #faf8f4">Verify</span>
+          </div>
+          <span class="flow-arrow" style="color: rgba(250,248,244,0.5)">→</span>
+          <div class="flow-item" style="background: rgba(250,248,244,0.1); border-color: rgba(250,248,244,0.2)">
+            <span>📊</span> <span style="color: #faf8f4">View</span>
+          </div>
+          <span class="flow-arrow" style="color: rgba(250,248,244,0.5)">→</span>
+          <div class="flow-item" style="background: rgba(250,248,244,0.1); border-color: rgba(250,248,244,0.2)">
+            <span>✅</span> <span style="color: #faf8f4">Trust</span>
+          </div>
+        </div>
+      </div>
+
+      <ul class="list-dash mt-6">
+        <li>Instant verification without friction</li>
+        <li>Full provenance data: origin, handlers, conditions</li>
+        <li>Certification badges: organic, halal, fair trade</li>
+        <li>Cold chain status with visual timeline</li>
+      </ul>
+
+      <a href="/product/qr-viewer" class="btn btn-outline mt-4">
+        Explore QR Viewer
+        <ArrowRight class="icon-sm" />
+      </a>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- IoT Cold Chain -->
+    <section class="reveal">
+      <span class="section-label">hardware</span>
+      <h2>IoT Cold Chain Monitoring</h2>
+      <p>
+        Temperature loggers, GPS trackers, humidity sensors embedded in shipments.
+        Real-time alerts when cold chain breaks. Data is immutable — even the
+        distributor can't delete a temperature spike.
+      </p>
+
+      <div class="grid-2 mt-6 stagger-children">
+        <div class="card">
+          <div class="grid-2">
+            <div>
+              <p class="text-xs text-text-muted mb-1">Temperature Range</p>
+              <p class="text-base font-medium mb-0 text-text">-40°C to +85°C</p>
+            </div>
+            <div>
+              <p class="text-xs text-text-muted mb-1">Battery Life</p>
+              <p class="text-base font-medium mb-0 text-text">2+ years</p>
+            </div>
+            <div>
+              <p class="text-xs text-text-muted mb-1">Connectivity</p>
+              <p class="text-base font-medium mb-0 text-text">BLE + LoRaWAN</p>
+            </div>
+            <div>
+              <p class="text-xs text-text-muted mb-1">IP Rating</p>
+              <p class="text-base font-medium mb-0 text-text">IP67</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-no-hover">
+          <h3 class="text-base mb-3">Real-time Monitoring</h3>
+          <div class="progress-bar mb-2">
+            <div class="progress-fill" style="width: 75%"></div>
+          </div>
+          <p class="text-xs text-text-muted mb-0">Current: 2.5°C (Target: 0-4°C)</p>
+        </div>
+      </div>
+
+      <a href="/product/cold-chain" class="btn btn-outline mt-4">
+        Explore Cold Chain
+        <ArrowRight class="icon-sm" />
+      </a>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Smart Recall -->
+    <section class="reveal">
+      <span class="section-label">safety</span>
+      <h2>Smart Recall System</h2>
+
+      <div class="grid-2 mt-6 stagger-children">
+        <div class="card card-no-hover">
+          <h3 class="text-base mb-2 text-red-soft">Traditional Recall</h3>
+          <ul class="list-dash">
+            <li>2-3 weeks to execute</li>
+            <li>Entire batches destroyed</li>
+            <li>20% notification rate</li>
+            <li>Paper-based documentation</li>
+          </ul>
+        </div>
+        <div class="card" style="border-color: var(--color-green-deep);">
+          <h3 class="text-base mb-2 text-green-deep">Verda Recall</h3>
+          <ul class="list-dash">
+            <li>Hours to complete</li>
+            <li>Only affected items pulled</li>
+            <li>Direct consumer notification</li>
+            <li>Blockchain audit trail</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-3 mt-6 stagger-children">
+        <div class="card card-shine text-center">
+          <span class="stat-number cyan text-shimmer">96%</span>
+          <p class="text-sm mt-2 mb-0">Faster execution</p>
+        </div>
+        <div class="card card-shine text-center">
+          <span class="stat-number orange">89%</span>
+          <p class="text-sm mt-2 mb-0">Less waste</p>
+        </div>
+        <div class="card card-shine text-center">
+          <span class="stat-number indigo">4x</span>
+          <p class="text-sm mt-2 mb-0">Higher notification</p>
+        </div>
+      </div>
+
+      <a href="/product/recall" class="btn btn-outline mt-4">
+        Explore Smart Recall
+        <ArrowRight class="icon-sm" />
+      </a>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Anomaly Detection -->
+    <section class="reveal">
+      <span class="section-label">intelligence</span>
+      <h2>Anomaly Detection</h2>
+      <p>
+        ML-powered fraud detection that learns from your supply chain patterns.
+        Flags suspicious activity before it becomes a problem.
+      </p>
+
+      <div class="timeline mt-6">
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Pattern Learning</h3>
+          <p class="text-sm mb-0">System learns normal supply chain patterns from your data.</p>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Real-time Scoring</h3>
+          <p class="text-sm mb-0">Every event scored against learned patterns.</p>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Alert Generation</h3>
+          <p class="text-sm mb-0">Anomalies flagged immediately with confidence scores.</p>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Continuous Improvement</h3>
+          <p class="text-sm mb-0">Feedback loop improves detection accuracy over time.</p>
+        </div>
+      </div>
+
+      <div class="callout mt-6">
+        <p class="text-sm mb-0">
+          <strong>Detects:</strong> Unusual routes, timeline gaps, suspicious batch sizes,
+          certification mismatches, temperature pattern anomalies.
+        </p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Brand Widget -->
+    <section class="reveal">
+      <span class="section-label">integration</span>
+      <h2>Brand Transparency Widget</h2>
+      <p>
+        Embeddable widget for brand websites and e-commerce pages. Shows interactive
+        supply chain map for each product. Turn transparency into a consumer engagement
+        tool and competitive advantage.
+      </p>
+
+      <div class="card mt-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded bg-green-deep flex items-center justify-center">
+            <Package class="icon-sm" style="color: #faf8f4" />
+          </div>
+          <div>
+            <p class="text-sm mb-0 text-text"><strong>Single Origin Coffee - Flores</strong></p>
+            <p class="text-xs text-text-muted mb-0">PRD-2024-001234</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="tag">✓ Origin Verified</span>
+          <span class="tag">✓ Cold Chain OK</span>
+          <span class="tag">✓ Organic Certified</span>
+          <span class="tag">✓ Fair Trade</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 100%"></div>
+        </div>
+        <p class="text-xs text-text-muted mt-2 mb-0">Journey complete: Farm → Roaster → Distribution → Retail</p>
+      </div>
+
+      <div class="code-block mt-4">
+        <pre><code set:text={`<!-- Embed Verda Widget -->
+<script src="https://cdn.verda.so/widget.js"></script>
+<div data-verda-product="PRD-2024-001234"></div>`} /></pre>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Multi-Actor Dashboards -->
+    <section class="reveal gradient-bg-animated section-full">
+      <span class="section-label section-label-animated">dashboards</span>
+      <h2><span class="gradient-text">Built for Every Stakeholder</span></h2>
+
+      <div class="grid-4 mt-6 stagger-children">
+        <div class="card card-shine">
+          <div class="feature-icon green feature-icon-animated mb-3 glow-pulse">
+            <Users class="icon-md" />
+          </div>
+          <h3 class="text-base mb-2 underline-animated">Farmers</h3>
+          <p class="text-sm mb-0">Mobile app, offline-capable, local languages. Works on $50 smartphones.</p>
+        </div>
+
+        <div class="card card-shine">
+          <div class="feature-icon amber feature-icon-animated mb-3">
+            <Package class="icon-md" />
+          </div>
+          <h3 class="text-base mb-2 underline-animated">Processors</h3>
+          <p class="text-sm mb-0">Factory web portal with batch management and QR generation.</p>
+        </div>
+
+        <div class="card card-shine">
+          <div class="feature-icon teal feature-icon-animated mb-3">
+            <Thermometer class="icon-md" />
+          </div>
+          <h3 class="text-base mb-2 underline-animated">Distributors</h3>
+          <p class="text-sm mb-0">Fleet tracking, cold chain dashboard, and handoff interface.</p>
+        </div>
+
+        <div class="card card-shine">
+          <div class="feature-icon purple feature-icon-animated mb-3">
+            <BarChart class="icon-md" />
+          </div>
+          <h3 class="text-base mb-2 underline-animated">Regulators</h3>
+          <p class="text-sm mb-0">Real-time oversight dashboard for BPOM, FDA, and other agencies.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- CTA -->
+    <section class="reveal pb-8">
+      <span class="section-label section-label-animated">get started</span>
+      <h2><span class="gradient-text-animated">Ready to Transform Your Supply Chain?</span></h2>
+      <p class="max-w-2xl">
+        See how Verda can work for your supply chain. Start with a pilot
+        and scale from there. Join the <span class="highlight">transparency revolution</span>.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-4">
+        <a href="mailto:hello@verda.so" class="btn btn-lg glow-green ripple">
+          Request a Demo
+          <ArrowRight class="icon-sm" />
+        </a>
+        <a href="/technology" class="btn btn-outline btn-lg ripple">
+          Technical Details
+        </a>
+      </div>
+
+      <!-- Status indicator -->
+      <div class="flex items-center gap-2 mt-6 text-sm text-text-muted">
+        <span class="status-dot online"></span>
+        <span>Platform operational</span>
+        <span class="mx-2">•</span>
+        <span>Response time: &lt;100ms</span>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,41 @@
+---
+import Card from '../shared/Card.astro';
+import SectionLabel from '../shared/SectionLabel.astro';
+
+interface Props {
+  stat: string;
+  label: string;
+  detail?: string;
+  color?: 'green' | 'amber' | 'red' | 'earth';
+  colspan?: 1 | 2 | 3;
+  stagger?: number;
+}
+
+const {
+  stat,
+  label,
+  detail,
+  color = 'green',
+  colspan = 1,
+  stagger
+} = Astro.props;
+
+const colorClasses = {
+  green: 'text-green-deep',
+  amber: 'text-amber',
+  red: 'text-red',
+  earth: 'text-earth'
+};
+---
+
+<Card colspan={colspan} accent={color} stagger={stagger} class="flex flex-col gap-3">
+  <span class:list={['stat-number', colorClasses[color]]}>
+    {stat}
+  </span>
+  <SectionLabel label={label} class="mt-1" />
+  {detail && (
+    <p class="text-text-secondary text-xs leading-relaxed mt-2">
+      {detail}
+    </p>
+  )}
+</Card>

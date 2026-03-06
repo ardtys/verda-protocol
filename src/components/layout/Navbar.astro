@@ -1,0 +1,40 @@
+---
+const navLinks = [
+  { href: '/', label: '/' },
+  { href: '/about', label: 'about' },
+  { href: '/product', label: 'product' },
+  { href: '/technology', label: 'tech' },
+  { href: '/demo', label: 'demo' },
+  { href: '/docs', label: 'docs' }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="py-6">
+  <div class="container">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="font-display text-lg italic text-text hover:text-green-deep">
+        verda
+      </a>
+
+      <!-- Navigation links -->
+      <div class="flex items-center gap-4">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'text-sm transition-colors',
+              currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+                ? 'text-text'
+                : 'text-text-muted hover:text-text'
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</nav>

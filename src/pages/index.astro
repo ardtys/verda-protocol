@@ -1,0 +1,909 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Github, Twitter, Mail, Linkedin, ArrowRight, QrCode, Thermometer, Shield, Zap, Globe, Users, Leaf, Database, Cpu, Wifi, Lock, Smartphone, TrendingUp, CheckCircle, BarChart3, Activity, Copy, ExternalLink, FileCode, Coins } from '@lucide/astro';
+
+// Import decorative and card components
+import BotanicalPattern from '../components/decorative/BotanicalPattern.astro';
+import Mascot from '../components/decorative/Mascot.astro';
+import BentoGrid from '../components/shared/BentoGrid.astro';
+import HeatmapCard from '../components/cards/HeatmapCard.astro';
+import TechBarChart from '../components/cards/TechBarChart.astro';
+import JourneyCard from '../components/cards/JourneyCard.astro';
+import CTACard from '../components/cards/CTACard.astro';
+import LogoCard from '../components/cards/LogoCard.astro';
+---
+
+<BaseLayout
+  title="Home"
+  description="Verda is a supply chain transparency protocol for the global food industry. Every product gets a verifiable journey from soil to shelf."
+>
+  <div class="container">
+    <!-- Hero Section with Botanical Decorations -->
+    <section class="hero hero-animated particles relative overflow-visible">
+      <!-- Floating circles background -->
+      <div class="floating-circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+      </div>
+
+      <!-- Decorative botanical patterns -->
+      <div class="absolute -left-20 top-0 w-48 h-72 opacity-30 pointer-events-none hidden lg:block float-slow">
+        <BotanicalPattern variant="leaf" />
+      </div>
+      <div class="absolute -right-16 top-10 w-40 h-64 opacity-20 pointer-events-none hidden lg:block float" style="animation-delay: 1s;">
+        <BotanicalPattern variant="grain" />
+      </div>
+
+      <!-- Animated dots -->
+      <div class="absolute top-20 left-1/4 w-2 h-2 bg-green-light rounded-full opacity-40 float-fast hidden md:block"></div>
+      <div class="absolute top-40 right-1/3 w-3 h-3 bg-teal rounded-full opacity-30 float hidden md:block" style="animation-delay: 0.5s;"></div>
+      <div class="absolute bottom-20 left-1/3 w-2 h-2 bg-amber rounded-full opacity-40 float-slow hidden md:block" style="animation-delay: 1s;"></div>
+
+      <!-- Mascot waving -->
+      <div class="absolute -right-4 bottom-0 hidden md:block float-slow">
+        <Mascot pose="waving" size="lg" />
+      </div>
+
+      <span class="badge badge-pulse mb-4 pop-in">Now in Beta</span>
+      <h1 class="text-3xl md:text-4xl text-shimmer">
+        <span class="gradient-text-animated">Supply chain transparency</span> protocol for food.
+      </h1>
+      <p class="text-text-secondary max-w-2xl text-base">
+        Verda lets consumers scan a QR code on any food product and instantly see its full journey:
+        who grew it, when it was harvested, how it was processed, and whether the cold chain was maintained.
+      </p>
+
+      <!-- Social links -->
+      <div class="social-links">
+        <a href="https://github.com/verda-protocol" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="tooltip" data-tooltip="GitHub">
+          <Github class="icon-md" />
+        </a>
+        <a href="https://twitter.com/verda_protocol" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="tooltip" data-tooltip="Twitter">
+          <Twitter class="icon-md" />
+        </a>
+        <a href="https://linkedin.com/company/verda" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="tooltip" data-tooltip="LinkedIn">
+          <Linkedin class="icon-md" />
+        </a>
+        <a href="mailto:hello@verda.so" aria-label="Email" class="tooltip" data-tooltip="Email">
+          <Mail class="icon-md" />
+        </a>
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-6">
+        <a href="mailto:hello@verda.so" class="btn btn-lg ripple scale-bounce glow-green">
+          Request a Demo
+          <ArrowRight class="icon-sm" />
+        </a>
+        <a href="/technology" class="btn btn-outline btn-lg ripple scale-bounce">
+          View Documentation
+        </a>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 opacity-50">
+        <span class="text-xs text-text-muted">Scroll to explore</span>
+        <div class="w-6 h-10 border-2 border-text-muted rounded-full flex justify-center pt-2">
+          <div class="w-1.5 h-3 bg-green rounded-full bounce"></div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Trusted By Section -->
+    <section class="reveal text-center">
+      <span class="section-label section-label-animated mx-auto flex justify-center">trusted by</span>
+      <p class="text-text-muted text-sm mb-6">Partnering with industry leaders in food supply chain</p>
+
+      <div class="flex flex-wrap justify-center items-center gap-10 md:gap-14 stagger-children">
+        <!-- Nestlé -->
+        <div class="opacity-50 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0">
+          <img src="/Nestle-Logo.png" alt="Nestlé" class="h-10 w-auto object-contain" />
+        </div>
+        <!-- Unilever -->
+        <div class="opacity-50 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0">
+          <img src="/Unilever.png" alt="Unilever" class="h-10 w-auto object-contain" />
+        </div>
+        <!-- Walmart -->
+        <div class="opacity-50 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0">
+          <img src="/Walmart_spark_(2025).svg.png" alt="Walmart" class="h-10 w-auto object-contain" />
+        </div>
+        <!-- Carrefour -->
+        <div class="opacity-50 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0">
+          <img src="/carrefour-logo-symbol-sign-free-png-701751694712984id5ddixd58.png" alt="Carrefour" class="h-10 w-auto object-contain" />
+        </div>
+        <!-- Cargill -->
+        <div class="opacity-50 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0">
+          <img src="/png-clipart-cargill-logo-icons-logos-emojis-iconic-brands.png" alt="Cargill" class="h-10 w-auto object-contain" />
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- About Section -->
+    <section class="reveal relative">
+      <!-- Mascot speaking -->
+      <div class="absolute -right-20 top-0 hidden xl:block float-slow">
+        <Mascot pose="speaking" size="md" />
+      </div>
+
+      <span class="section-label section-label-animated">about</span>
+      <p class="text-base slide-in-left" style="animation-delay: 0.1s;">
+        We're solving a <strong class="text-text highlight">$40 billion food fraud problem</strong> that affects
+        every person who eats. From fake organic labels to adulterated olive oil, from mislabeled
+        seafood to compromised cold chains — the global food system was designed for opacity.
+      </p>
+      <p class="slide-in-left" style="animation-delay: 0.2s;">
+        Verda makes transparency the default. Our protocol combines IoT sensors, blockchain verification,
+        and simple QR scanning to create an immutable record of every product's journey from farm to shelf.
+      </p>
+
+      <div class="callout mt-6 gradient-border hover-lift">
+        <p class="text-sm">
+          <strong class="gradient-text">Our mission:</strong> Every product should have a verifiable story. Every consumer should have access to the truth.
+        </p>
+      </div>
+    </section>
+
+    <hr class="divider-gradient" />
+
+    <!-- Stats Section with Animation -->
+    <section class="reveal">
+      <span class="section-label section-label-animated">the problem</span>
+      <div class="grid-3 stagger-children">
+        <div class="stat-card card card-3d gradient-border glow-hover pulse-ring">
+          <span class="stat-number rose text-shimmer heartbeat">$40B+</span>
+          <p class="text-sm mt-2 mb-0">annual food fraud globally</p>
+          <div class="progress-bar progress-bar-animated mt-3">
+            <div class="progress-fill" style="width: 85%; background: var(--color-rose);"></div>
+          </div>
+        </div>
+        <div class="stat-card card card-3d gradient-border glow-hover-amber">
+          <span class="stat-number orange breathing">600M</span>
+          <p class="text-sm mt-2 mb-0">people sick from contaminated food</p>
+          <div class="progress-bar progress-bar-animated mt-3">
+            <div class="progress-fill" style="width: 70%; background: var(--color-orange);"></div>
+          </div>
+        </div>
+        <div class="stat-card card card-3d gradient-border glow-hover-teal">
+          <span class="stat-number cyan scale-pulse">73%</span>
+          <p class="text-sm mt-2 mb-0">consumers want verified transparency</p>
+          <div class="progress-bar progress-bar-animated mt-3">
+            <div class="progress-fill" style="width: 73%; background: var(--color-cyan);"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Live Platform Metrics - Bento Grid -->
+    <section class="reveal">
+      <span class="section-label section-label-animated">live metrics</span>
+      <h2><span class="highlight">Platform Activity</span></h2>
+
+      <BentoGrid class="mt-6">
+        <!-- Heatmap showing verification activity -->
+        <HeatmapCard
+          message="1,247 products verified today"
+          colspan={2}
+          stagger={1}
+        />
+
+        <!-- Journey visualization -->
+        <JourneyCard
+          title="Data Flow Pipeline"
+          colspan={2}
+          stagger={2}
+        />
+
+        <!-- Tech comparison chart -->
+        <TechBarChart
+          title="System Performance"
+          items={[
+            { name: 'Verification', percentage: 98, description: '< 100ms' },
+            { name: 'Uptime', percentage: 99, description: '99.9% SLA' },
+            { name: 'Coverage', percentage: 85, description: '12 countries' },
+            { name: 'Adoption', percentage: 72, description: '500+ brands' }
+          ]}
+          colspan={2}
+          stagger={3}
+        />
+
+        <!-- Quick stats cards -->
+        <div class="card card-shine flex flex-col justify-center items-center text-center p-5">
+          <div class="w-12 h-12 rounded-xl bg-green-bg flex items-center justify-center mb-3">
+            <Activity class="w-6 h-6 text-green" />
+          </div>
+          <span class="text-2xl font-bold text-green">2.4M</span>
+          <p class="text-xs text-text-muted mt-1 mb-0">Events daily</p>
+        </div>
+
+        <div class="card card-shine flex flex-col justify-center items-center text-center p-5">
+          <div class="w-12 h-12 rounded-xl bg-teal-bg flex items-center justify-center mb-3">
+            <BarChart3 class="w-6 h-6 text-teal" />
+          </div>
+          <span class="text-2xl font-bold text-teal">847K</span>
+          <p class="text-xs text-text-muted mt-1 mb-0">Supply chains</p>
+        </div>
+      </BentoGrid>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Features Grid -->
+    <section class="reveal gradient-mesh-animated relative">
+      <span class="section-label section-label-animated">capabilities</span>
+      <h2><span class="highlight">What Verda Enables</span></h2>
+
+      <div class="grid-4 mt-6 stagger-children">
+        <a href="/product/qr-viewer" class="card feature-card feature-card-vertical card-3d glow-hover spotlight jelly">
+          <div class="feature-icon feature-icon-lg cyan feature-icon-animated float-slow mx-auto mb-4 glow-pulse icon-spin-hover">
+            <QrCode class="icon-lg" />
+          </div>
+          <div>
+            <h3 class="text-base mb-2 underline-animated">QR Journey Viewer</h3>
+            <p class="text-sm mb-0">Scan any product and see its complete journey in 2 seconds. No app required.</p>
+          </div>
+          <span class="tag tag-animated tag-cyan mt-3">Instant</span>
+        </a>
+
+        <a href="/product/cold-chain" class="card feature-card feature-card-vertical card-3d glow-hover-amber spotlight jelly">
+          <div class="feature-icon feature-icon-lg orange feature-icon-animated float-slow mx-auto mb-4 icon-spin-hover">
+            <Thermometer class="icon-lg" />
+          </div>
+          <div>
+            <h3 class="text-base mb-2 underline-animated">Cold Chain Monitoring</h3>
+            <p class="text-sm mb-0">Real-time IoT sensors track temperature, humidity, and location throughout transit.</p>
+          </div>
+          <span class="tag tag-animated tag-orange mt-3">Real-time</span>
+        </a>
+
+        <a href="/product/recall" class="card feature-card feature-card-vertical card-3d glow-hover spotlight jelly">
+          <div class="feature-icon feature-icon-lg rose feature-icon-animated float-slow mx-auto mb-4 icon-spin-hover">
+            <Shield class="icon-lg" />
+          </div>
+          <div>
+            <h3 class="text-base mb-2 underline-animated">Smart Recall System</h3>
+            <p class="text-sm mb-0">Surgical precision recalls in minutes instead of weeks. Only affected items pulled.</p>
+          </div>
+          <span class="tag tag-animated tag-rose mt-3">Precision</span>
+        </a>
+
+        <a href="/technology/security" class="card feature-card feature-card-vertical card-3d glow-hover-purple spotlight jelly">
+          <div class="feature-icon feature-icon-lg indigo feature-icon-animated float-slow mx-auto mb-4 icon-spin-hover">
+            <Zap class="icon-lg" />
+          </div>
+          <div>
+            <h3 class="text-base mb-2 underline-animated">Blockchain Verification</h3>
+            <p class="text-sm mb-0">Immutable proof on Blockchain. Tamper-proof records that even distributors can't delete.</p>
+          </div>
+          <span class="tag tag-animated tag-indigo mt-3">Immutable</span>
+        </a>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- How it works -->
+    <section class="reveal relative">
+      <!-- Decorative dots -->
+      <div class="absolute -left-10 top-20 w-3 h-3 bg-green rounded-full opacity-20 float hidden lg:block"></div>
+      <div class="absolute -right-8 top-40 w-2 h-2 bg-teal rounded-full opacity-30 float-slow hidden lg:block"></div>
+
+      <span class="section-label section-label-animated">how it works</span>
+      <h2 class="gradient-text">From Seed to Shelf to Scan</h2>
+
+      <div class="timeline mt-6 stagger-children">
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">01. Farm Registration</h3>
+          <p class="text-sm mb-2">Farmer logs crop, location, and inputs via mobile app. Works offline in remote areas.</p>
+          <div class="flex gap-1">
+            <span class="tag tag-animated tag-cyan">Mobile App</span>
+            <span class="tag tag-animated tag-indigo">Offline-first</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">02. Harvest & Handoff</h3>
+          <p class="text-sm mb-2">NFC scan records custody transfer. Temperature logger activated. Multi-party signature required.</p>
+          <div class="flex gap-1">
+            <span class="tag tag-animated tag-orange">NFC</span>
+            <span class="tag tag-animated tag-teal">IoT Sensors</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">03. Processing</h3>
+          <p class="text-sm mb-2">Factory logs transformation events. QR code generated and printed on packaging.</p>
+          <div class="flex gap-1">
+            <span class="tag tag-animated tag-indigo">QR Generation</span>
+            <span class="tag tag-animated tag-cyan">Batch Tracking</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">04. Cold Chain Transit</h3>
+          <p class="text-sm mb-2">Continuous monitoring: temperature, humidity, GPS. Real-time alerts on excursions.</p>
+          <div class="flex gap-1">
+            <span class="tag tag-animated tag-cyan">GPS</span>
+            <span class="tag tag-animated tag-orange">Temperature</span>
+            <span class="tag tag-animated tag-rose">Alerts</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">05. Retail Arrival</h3>
+          <p class="text-sm mb-2">Receiving scan verifies cold chain integrity. Status badge assigned to product.</p>
+          <div class="flex gap-1">
+            <span class="tag tag-animated">Verification</span>
+            <span class="tag tag-animated tag-gradient">Status Badge</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">06. Consumer Scan</h3>
+          <p class="text-sm mb-2">Any smartphone. Any browser. Full journey revealed in 2 seconds. No app download.</p>
+          <div class="flex gap-1">
+            <span class="tag tag-animated tag-purple">Web-based</span>
+            <span class="tag tag-animated">Instant</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">07. On-Chain Proof</h3>
+          <p class="text-sm mb-2">Merkle batch anchored to Blockchain every 60 seconds. Cryptographic verification available.</p>
+          <div class="flex gap-1">
+            <span class="tag tag-animated tag-teal">Blockchain</span>
+            <span class="tag tag-animated tag-gradient">Merkle Proofs</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Tech Stack -->
+    <section class="reveal gradient-bg-animated section-full relative">
+      <!-- Decorative botanical pattern -->
+      <div class="absolute right-0 top-0 w-32 h-48 opacity-10 pointer-events-none hidden md:block">
+        <BotanicalPattern variant="root" />
+      </div>
+
+      <span class="section-label section-label-animated">technology</span>
+      <h2><span class="gradient-text">Built for Scale</span></h2>
+
+      <div class="grid-6 mt-6 stagger-children">
+        <div class="card card-no-hover card-shine text-center p-4 border-animated">
+          <div class="feature-icon feature-icon-md indigo mx-auto mb-3 float">
+            <Database class="icon-md" />
+          </div>
+          <p class="text-sm font-medium mb-1 text-text">Blockchain</p>
+          <p class="text-xs text-text-muted mb-0">Immutable ledger</p>
+        </div>
+        <div class="card card-no-hover card-shine text-center p-4 border-animated">
+          <div class="feature-icon feature-icon-md cyan mx-auto mb-3 float" style="animation-delay: 0.3s">
+            <Cpu class="icon-md" />
+          </div>
+          <p class="text-sm font-medium mb-1 text-text">Go + Rust</p>
+          <p class="text-xs text-text-muted mb-0">Backend</p>
+        </div>
+        <div class="card card-no-hover card-shine text-center p-4 border-animated">
+          <div class="feature-icon feature-icon-md purple mx-auto mb-3 float" style="animation-delay: 0.6s">
+            <TrendingUp class="icon-md" />
+          </div>
+          <p class="text-sm font-medium mb-1 text-text">TimescaleDB</p>
+          <p class="text-xs text-text-muted mb-0">Time-series</p>
+        </div>
+        <div class="card card-no-hover card-shine text-center p-4 border-animated">
+          <div class="feature-icon feature-icon-md teal mx-auto mb-3 float" style="animation-delay: 0.9s">
+            <Wifi class="icon-md" />
+          </div>
+          <p class="text-sm font-medium mb-1 text-text">LoRaWAN</p>
+          <p class="text-xs text-text-muted mb-0">IoT Network</p>
+        </div>
+        <div class="card card-no-hover card-shine text-center p-4 border-animated">
+          <div class="feature-icon feature-icon-md rose mx-auto mb-3 float" style="animation-delay: 1.2s">
+            <Lock class="icon-md" />
+          </div>
+          <p class="text-sm font-medium mb-1 text-text">Ed25519</p>
+          <p class="text-xs text-text-muted mb-0">Cryptography</p>
+        </div>
+        <div class="card card-no-hover card-shine text-center p-4 border-animated">
+          <div class="feature-icon feature-icon-md orange mx-auto mb-3 float" style="animation-delay: 1.5s">
+            <Smartphone class="icon-md" />
+          </div>
+          <p class="text-sm font-medium mb-1 text-text">React Native</p>
+          <p class="text-xs text-text-muted mb-0">Mobile</p>
+        </div>
+      </div>
+
+      <!-- Additional tech highlights with LogoCard -->
+      <div class="grid-3 mt-6 stagger-children">
+        <LogoCard
+          title="Built on Blockchain"
+          subtitle="Immutable & Trustless"
+          href="/technology/architecture"
+          stagger={1}
+        />
+        <div class="card card-dark flex items-center gap-4 p-4">
+          <div class="feature-icon feature-icon-lg green glow-pulse">
+            <CheckCircle class="icon-lg" />
+          </div>
+          <div>
+            <p class="text-sm font-medium mb-1" style="color: #faf8f4;">99.99% Uptime</p>
+            <p class="text-xs mb-0" style="color: rgba(250,248,244,0.6);">Enterprise-grade reliability</p>
+          </div>
+        </div>
+        <div class="card card-dark flex items-center gap-4 p-4">
+          <div class="feature-icon feature-icon-lg amber">
+            <Zap class="icon-lg" />
+          </div>
+          <div>
+            <p class="text-sm font-medium mb-1" style="color: #faf8f4;">Sub-100ms</p>
+            <p class="text-xs mb-0" style="color: rgba(250,248,244,0.6);">Lightning fast verification</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-sm mt-6 max-w-2xl">
+        Millions of daily events. Sub-second verification. Offline-capable mobile apps for rural areas.
+        <a href="/technology" class="link-underline underline-animated">Learn more about our architecture →</a>
+      </p>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Use Case -->
+    <section class="reveal">
+      <span class="section-label">example</span>
+      <h2 class="mb-4"><span class="highlight">Real-World Application</span></h2>
+
+      <div class="grid-2 gap-6">
+        <!-- Main case study card -->
+        <div class="card card-dark relative overflow-hidden" style="grid-column: span 2;">
+          <!-- Decorative elements -->
+          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-green-light/10 to-transparent rounded-bl-full"></div>
+
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="flex-1">
+              <span class="badge new mb-3">Case Study</span>
+              <h3 class="text-lg mb-2" style="color: #faf8f4">Trace Your Morning Coffee</h3>
+              <p class="text-sm mb-4">
+                From a single-origin farm in Flores, Indonesia to your local café.
+                Every bean's journey — altitude grown, harvest date, roasting profile,
+                transport conditions — verified and immutable.
+              </p>
+
+              <!-- Journey flow -->
+              <div class="flow">
+                <div class="flow-item" style="background: rgba(250,248,244,0.1); border-color: rgba(250,248,244,0.2)">
+                  <span>🌱</span> <span style="color: #faf8f4">Farm</span>
+                </div>
+                <span class="flow-arrow" style="color: rgba(250,248,244,0.5)">→</span>
+                <div class="flow-item" style="background: rgba(250,248,244,0.1); border-color: rgba(250,248,244,0.2)">
+                  <span>🏭</span> <span style="color: #faf8f4">Roaster</span>
+                </div>
+                <span class="flow-arrow" style="color: rgba(250,248,244,0.5)">→</span>
+                <div class="flow-item" style="background: rgba(250,248,244,0.1); border-color: rgba(250,248,244,0.2)">
+                  <span>🚛</span> <span style="color: #faf8f4">Transit</span>
+                </div>
+                <span class="flow-arrow" style="color: rgba(250,248,244,0.5)">→</span>
+                <div class="flow-item" style="background: rgba(250,248,244,0.1); border-color: rgba(250,248,244,0.2)">
+                  <span>☕</span> <span style="color: #faf8f4">Café</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats sidebar -->
+            <div class="flex flex-col gap-3 md:border-l md:border-white/10 md:pl-6 min-w-[180px]">
+              <div>
+                <p class="text-xs text-white/50 mb-1">Origin</p>
+                <p class="text-sm font-medium mb-0" style="color: #faf8f4">Flores, Indonesia</p>
+              </div>
+              <div>
+                <p class="text-xs text-white/50 mb-1">Altitude</p>
+                <p class="text-sm font-medium mb-0" style="color: #faf8f4">1,450m</p>
+              </div>
+              <div>
+                <p class="text-xs text-white/50 mb-1">Processing</p>
+                <p class="text-sm font-medium mb-0" style="color: #faf8f4">Washed</p>
+              </div>
+              <div>
+                <p class="text-xs text-white/50 mb-1">Verification</p>
+                <div class="flex items-center gap-1">
+                  <CheckCircle class="w-3 h-3 text-green-light" />
+                  <span class="text-sm font-medium" style="color: var(--color-green-light)">Verified</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional use case cards -->
+        <div class="card card-shine p-5">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">🥩</span>
+            <div>
+              <h4 class="text-sm font-medium mb-1">Premium Beef</h4>
+              <p class="text-xs text-text-secondary mb-0">Track grass-fed cattle from ranch to table with full cold chain visibility.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-shine p-5">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">🫒</span>
+            <div>
+              <h4 class="text-sm font-medium mb-1">Olive Oil</h4>
+              <p class="text-xs text-text-secondary mb-0">Verify single-estate origin and prevent adulteration with blockchain proof.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Stakeholders -->
+    <section class="reveal relative">
+      <!-- Decorative pattern -->
+      <div class="absolute right-0 top-0 w-24 h-36 opacity-15 pointer-events-none hidden md:block">
+        <BotanicalPattern variant="leaf" />
+      </div>
+
+      <span class="section-label section-label-animated">who it's for</span>
+      <h2><span class="highlight">Built for Every Stakeholder</span></h2>
+
+      <div class="grid-3 mt-6 stagger-children">
+        <div class="card card-shine card-3d relative overflow-hidden group">
+          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-deep to-green-light transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+          <div class="feature-icon feature-icon-lg green feature-icon-animated mb-4 glow-pulse">
+            <Users class="icon-lg" />
+          </div>
+          <h3 class="text-base mb-2 underline-animated">Food Brands</h3>
+          <p class="text-sm mb-3">Prove your quality claims. Differentiate with transparency. Build consumer trust.</p>
+          <div class="flex flex-wrap gap-1">
+            <span class="tag tag-animated">Premium positioning</span>
+            <span class="tag tag-animated tag-teal">Trust building</span>
+          </div>
+        </div>
+        <div class="card card-shine card-3d relative overflow-hidden group">
+          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber to-amber-light transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+          <div class="feature-icon feature-icon-lg amber feature-icon-animated mb-4">
+            <Shield class="icon-lg" />
+          </div>
+          <h3 class="text-base mb-2 underline-animated">Regulators</h3>
+          <p class="text-sm mb-3">Real-time oversight. Data-driven enforcement. Instant outbreak tracing.</p>
+          <div class="flex flex-wrap gap-1">
+            <span class="tag tag-animated tag-amber">Compliance</span>
+            <span class="tag tag-animated tag-rose">Rapid response</span>
+          </div>
+        </div>
+        <div class="card card-shine card-3d relative overflow-hidden group">
+          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal to-teal-light transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+          <div class="feature-icon feature-icon-lg teal feature-icon-animated mb-4">
+            <Globe class="icon-lg" />
+          </div>
+          <h3 class="text-base mb-2 underline-animated">Consumers</h3>
+          <p class="text-sm mb-3">Know what you're eating. Verify claims instantly. Make informed choices.</p>
+          <div class="flex flex-wrap gap-1">
+            <span class="tag tag-animated tag-cyan">Transparency</span>
+            <span class="tag tag-animated tag-purple">Empowerment</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional stakeholder highlights -->
+      <div class="grid-4 mt-4 stagger-children">
+        <div class="card card-no-hover p-4 text-center">
+          <span class="text-2xl mb-2 block">🌾</span>
+          <p class="text-xs font-medium mb-0">Farmers</p>
+        </div>
+        <div class="card card-no-hover p-4 text-center">
+          <span class="text-2xl mb-2 block">🏭</span>
+          <p class="text-xs font-medium mb-0">Processors</p>
+        </div>
+        <div class="card card-no-hover p-4 text-center">
+          <span class="text-2xl mb-2 block">🚚</span>
+          <p class="text-xs font-medium mb-0">Distributors</p>
+        </div>
+        <div class="card card-no-hover p-4 text-center">
+          <span class="text-2xl mb-2 block">🏪</span>
+          <p class="text-xs font-medium mb-0">Retailers</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Roadmap -->
+    <section class="reveal">
+      <span class="section-label">roadmap</span>
+      <h2>Where We're Going</h2>
+
+      <div class="grid-4 mt-6 stagger-children">
+        <div class="card card-shine relative overflow-hidden group">
+          <div class="absolute top-0 left-0 w-full h-1 bg-green-deep"></div>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-8 h-8 rounded-full bg-green-bg flex items-center justify-center text-sm font-bold text-green-deep">1</span>
+            <span class="tag tag-animated mb-0">Current</span>
+          </div>
+          <h4 class="text-sm font-medium mb-2">Foundation</h4>
+          <p class="text-xs text-text-secondary mb-3">Single chain pilot with 100 products. Prove the technology end-to-end.</p>
+          <div class="progress-bar mt-auto">
+            <div class="progress-fill" style="width: 75%; background: var(--color-green-deep);"></div>
+          </div>
+          <span class="text-[10px] text-text-muted mt-1 block">75% complete</span>
+        </div>
+
+        <div class="card card-shine relative overflow-hidden group">
+          <div class="absolute top-0 left-0 w-full h-1 bg-cyan"></div>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-8 h-8 rounded-full bg-cyan-bg flex items-center justify-center text-sm font-bold text-cyan">2</span>
+            <span class="tag tag-animated tag-cyan mb-0">Next</span>
+          </div>
+          <h4 class="text-sm font-medium mb-2">Expansion</h4>
+          <p class="text-xs text-text-secondary mb-3">Multi-brand expansion to 10K products. Additional food categories.</p>
+          <div class="progress-bar mt-auto">
+            <div class="progress-fill" style="width: 20%; background: var(--color-cyan);"></div>
+          </div>
+          <span class="text-[10px] text-text-muted mt-1 block">20% complete</span>
+        </div>
+
+        <div class="card card-shine relative overflow-hidden group">
+          <div class="absolute top-0 left-0 w-full h-1 bg-purple"></div>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-8 h-8 rounded-full bg-purple-bg flex items-center justify-center text-sm font-bold text-purple">3</span>
+            <span class="tag tag-animated tag-purple mb-0">Year 2</span>
+          </div>
+          <h4 class="text-sm font-medium mb-2">Platform</h4>
+          <p class="text-xs text-text-secondary mb-3">Industry platform serving 100+ brands. API marketplace live.</p>
+          <div class="progress-bar mt-auto">
+            <div class="progress-fill" style="width: 5%; background: var(--color-purple);"></div>
+          </div>
+          <span class="text-[10px] text-text-muted mt-1 block">Planning</span>
+        </div>
+
+        <div class="card card-shine relative overflow-hidden group">
+          <div class="absolute top-0 left-0 w-full h-1 bg-amber"></div>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-8 h-8 rounded-full bg-amber-bg flex items-center justify-center text-sm font-bold text-amber">4</span>
+            <span class="tag tag-animated tag-amber mb-0">Year 3+</span>
+          </div>
+          <h4 class="text-sm font-medium mb-2">Global</h4>
+          <p class="text-xs text-text-secondary mb-3">Open protocol across 20+ countries. Full interoperability.</p>
+          <div class="progress-bar mt-auto">
+            <div class="progress-fill" style="width: 0%; background: var(--color-amber);"></div>
+          </div>
+          <span class="text-[10px] text-text-muted mt-1 block">Future</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Contract Address -->
+    <section class="reveal particles relative">
+      <!-- Floating elements -->
+      <div class="absolute top-10 right-20 w-4 h-4 bg-indigo rounded-full opacity-20 float-fast hidden md:block"></div>
+      <div class="absolute bottom-20 left-10 w-3 h-3 bg-purple rounded-full opacity-30 float hidden md:block"></div>
+
+      <span class="section-label section-label-animated">contract</span>
+      <h2><span class="gradient-text-animated">Contract Address</span></h2>
+      <p class="text-text-secondary max-w-2xl">
+        Verda Protocol smart contracts are deployed on blockchain. Verify our contracts on the block explorer.
+      </p>
+
+      <div class="grid-2 mt-6 gap-6">
+        <!-- Main Contract -->
+        <div class="card card-dark relative overflow-hidden gradient-border hover-lift" style="grid-column: span 2;">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-green-light/10 to-transparent rounded-bl-full morph"></div>
+          <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-indigo/5 to-transparent rounded-tr-full"></div>
+
+          <div class="flex items-start gap-4 mb-4">
+            <div class="feature-icon feature-icon-lg green glow-pulse">
+              <FileCode class="icon-lg" />
+            </div>
+            <div>
+              <span class="badge new mb-2">Mainnet</span>
+              <h3 class="text-base mb-1" style="color: var(--color-text) !important;">VERDA Token Contract</h3>
+              <p class="text-xs mb-0" style="color: var(--color-text-secondary) !important;">Official Token Contract</p>
+            </div>
+          </div>
+
+          <!-- Contract Address Display -->
+          <div class="bg-surface-darker rounded-lg p-4">
+            <code class="font-mono text-sm text-green-light break-all">
+              0x0000000000000000000000000000000000000000
+            </code>
+          </div>
+        </div>
+
+        <!-- Additional Contracts -->
+        <div class="card card-shine card-3d p-5 hover-lift spotlight">
+          <div class="flex items-start gap-3 mb-3">
+            <div class="feature-icon indigo feature-icon-animated float-slow">
+              <Coins class="icon-md" />
+            </div>
+            <div>
+              <h4 class="text-sm font-medium mb-1 underline-animated">Staking Contract</h4>
+              <p class="text-xs text-text-muted mb-0">Coming Soon</p>
+            </div>
+          </div>
+          <div class="bg-surface-2 rounded p-3 border-animated">
+            <code class="font-mono text-xs text-text-muted">
+              TBA
+            </code>
+          </div>
+          <span class="tag tag-animated tag-indigo mt-3">Q2 2026</span>
+        </div>
+
+        <div class="card card-shine card-3d p-5 hover-lift spotlight">
+          <div class="flex items-start gap-3 mb-3">
+            <div class="feature-icon purple feature-icon-animated float-slow" style="animation-delay: 0.3s;">
+              <Database class="icon-md" />
+            </div>
+            <div>
+              <h4 class="text-sm font-medium mb-1 underline-animated">Registry Contract</h4>
+              <p class="text-xs text-text-muted mb-0">Coming Soon</p>
+            </div>
+          </div>
+          <div class="bg-surface-2 rounded p-3 border-animated">
+            <code class="font-mono text-xs text-text-muted">
+              TBA
+            </code>
+          </div>
+          <span class="tag tag-animated tag-purple mt-3">Q3 2026</span>
+        </div>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="callout mt-6 gradient-border">
+        <div class="flex items-center gap-3">
+          <div class="feature-icon amber feature-icon-animated wiggle">
+            <Shield class="icon-md" />
+          </div>
+          <p class="text-xs text-text-muted mb-0">
+            <strong class="text-text">Security Notice:</strong> Always verify contract addresses before interacting. Only use official links from verda.so.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Newsletter Section -->
+    <section class="reveal gradient-bg-animated section-full relative">
+      <!-- Floating elements -->
+      <div class="floating-circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+      </div>
+
+      <div class="text-center max-w-xl mx-auto relative z-10">
+        <div class="feature-icon feature-icon-xl green mx-auto mb-4 glow-pulse float-slow">
+          <Mail class="icon-xl" />
+        </div>
+        <h2 class="gradient-text mb-2">Stay Updated</h2>
+        <p class="text-text-secondary text-sm mb-6">
+          Get the latest updates on Verda Protocol, new features, and industry insights delivered to your inbox.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            class="px-4 py-3 bg-surface border border-border rounded-lg text-sm font-mono focus:border-green focus:outline-none focus-glow flex-1 max-w-sm"
+          />
+          <button class="btn btn-lg ripple glow-green scale-bounce">
+            Subscribe
+            <ArrowRight class="icon-sm" />
+          </button>
+        </div>
+
+        <p class="text-xs text-text-muted mt-4">
+          No spam, unsubscribe anytime. Read our <a href="#" class="underline-animated text-green-deep">Privacy Policy</a>
+        </p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- CTA -->
+    <section class="reveal pb-8 relative particles">
+      <!-- Floating circles -->
+      <div class="floating-circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-3"></div>
+      </div>
+
+      <!-- Decorative botanical pattern -->
+      <div class="absolute -left-16 bottom-0 w-40 h-60 opacity-15 pointer-events-none hidden lg:block float-slow">
+        <BotanicalPattern variant="grain" />
+      </div>
+      <div class="absolute -right-12 top-10 w-32 h-48 opacity-10 pointer-events-none hidden lg:block float" style="animation-delay: 1s;">
+        <BotanicalPattern variant="root" />
+      </div>
+
+      <span class="section-label section-label-animated">get started</span>
+      <h2><span class="gradient-text-animated">Ready to Make Your Supply Chain Transparent?</span></h2>
+      <p>
+        We're working with food brands, processors, and regulators across Southeast Asia.
+        Join the <span class="highlight">transparency revolution</span>.
+      </p>
+
+      <!-- CTA Cards Grid -->
+      <div class="grid-3 mt-6 stagger-children">
+        <CTACard
+          title="Ready to transform your supply chain?"
+          buttonText="Request a Demo"
+          buttonHref="mailto:hello@verda.so"
+          email="hello@verda.so"
+          colspan={1}
+          stagger={1}
+        />
+
+        <div class="card card-shine border-animated p-6 flex flex-col justify-between">
+          <div>
+            <div class="feature-icon feature-icon-lg green mb-4 glow-pulse">
+              <Leaf class="icon-lg" />
+            </div>
+            <h3 class="text-base mb-2">For Food Brands</h3>
+            <p class="text-sm text-text-secondary mb-0">Prove your quality claims with verifiable data. Build consumer trust.</p>
+          </div>
+          <a href="/product" class="btn btn-outline mt-4 w-fit">
+            Explore Products
+            <ArrowRight class="icon-sm" />
+          </a>
+        </div>
+
+        <div class="card card-shine border-animated p-6 flex flex-col justify-between">
+          <div>
+            <div class="feature-icon feature-icon-lg purple mb-4">
+              <Shield class="icon-lg" />
+            </div>
+            <h3 class="text-base mb-2">For Developers</h3>
+            <p class="text-sm text-text-secondary mb-0">Integrate with our API. Build on our open protocol.</p>
+          </div>
+          <a href="/docs" class="btn btn-outline mt-4 w-fit">
+            Read the Docs
+            <ArrowRight class="icon-sm" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Status indicator with enhanced styling -->
+      <div class="card card-no-hover mt-6 p-4 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2">
+            <span class="status-dot online"></span>
+            <span class="text-sm text-text">Platform operational</span>
+          </div>
+          <span class="text-text-muted hidden sm:inline">•</span>
+          <span class="text-sm text-text-muted hidden sm:inline">Response time: &lt;100ms</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <Mascot pose="standing" size="sm" />
+          <span class="text-xs text-text-muted">Powered by Verda Protocol</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  // Scroll reveal animation
+  document.addEventListener('DOMContentLoaded', () => {
+    const reveals = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    reveals.forEach(el => observer.observe(el));
+  });
+</script>

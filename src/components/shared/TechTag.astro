@@ -1,0 +1,12 @@
+---
+interface Props {
+  label: string;
+  class?: string;
+}
+
+const { label, class: className = '' } = Astro.props;
+---
+
+<span class:list={['tech-tag', className]}>
+  {label}
+</span>

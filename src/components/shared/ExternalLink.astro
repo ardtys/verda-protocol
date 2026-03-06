@@ -1,0 +1,41 @@
+---
+import { ArrowUpRight } from '@lucide/astro';
+
+interface Props {
+  href: string;
+  colspan?: 1 | 2 | 3;
+  dark?: boolean;
+  class?: string;
+  stagger?: number;
+}
+
+const {
+  href,
+  colspan = 1,
+  dark = false,
+  class: className = '',
+  stagger
+} = Astro.props;
+
+const colspanClass = `col-span-${colspan}`;
+const cardClass = dark ? 'card card-dark' : 'card';
+const staggerClass = stagger ? `stagger-${stagger}` : '';
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={[
+    cardClass,
+    'card-interactive reveal block no-underline relative',
+    colspanClass,
+    staggerClass,
+    className
+  ]}
+>
+  <slot />
+  <div class="external-link-arrow absolute bottom-4 right-4">
+    <ArrowUpRight class="w-4 h-4" />
+  </div>
+</a>

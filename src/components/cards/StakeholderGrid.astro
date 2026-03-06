@@ -1,0 +1,40 @@
+---
+import Card from '../shared/Card.astro';
+import SectionLabel from '../shared/SectionLabel.astro';
+import { Tractor, Factory, Truck, ShoppingCart, User, Building2 } from '@lucide/astro';
+
+interface Props {
+  title?: string;
+  colspan?: 1 | 2 | 3;
+  stagger?: number;
+}
+
+const { title = 'Designed for Every Node', colspan = 1, stagger } = Astro.props;
+
+const stakeholders = [
+  { icon: Tractor, label: 'Farmers', value: 'Provenance' },
+  { icon: Factory, label: 'Processors', value: 'Compliance' },
+  { icon: Truck, label: 'Distributors', value: 'Proof' },
+  { icon: ShoppingCart, label: 'Retailers', value: 'Trust' },
+  { icon: User, label: 'Consumers', value: 'Truth' },
+  { icon: Building2, label: 'Regulators', value: 'Oversight' }
+];
+---
+
+<Card colspan={colspan} stagger={stagger}>
+  <SectionLabel label={title} class="mb-4" />
+
+  <div class="grid grid-cols-2 gap-3">
+    {stakeholders.map(({ icon: Icon, label, value }) => (
+      <div class="flex items-center gap-2 p-2 rounded-lg bg-surface-2/50">
+        <div class="w-7 h-7 rounded-md bg-green-bg flex items-center justify-center shrink-0">
+          <Icon class="w-3.5 h-3.5 text-green-deep" />
+        </div>
+        <div class="min-w-0">
+          <span class="font-mono text-[10px] text-text block truncate">{label}</span>
+          <span class="font-mono text-[9px] text-text-muted block truncate">{value}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</Card>

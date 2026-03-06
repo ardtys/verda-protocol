@@ -1,0 +1,30 @@
+---
+import Card from '../shared/Card.astro';
+import SectionLabel from '../shared/SectionLabel.astro';
+
+interface Props {
+  title: string;
+  label?: string;
+  colspan?: 1 | 2 | 3;
+  stagger?: number;
+}
+
+const { title, label, colspan = 2, stagger } = Astro.props;
+---
+
+<Card colspan={colspan} stagger={stagger} class="relative overflow-hidden">
+  {label && <SectionLabel label={label} class="mb-3" />}
+
+  <h3 class="font-display text-lg font-medium text-text mb-3">
+    {title}
+  </h3>
+
+  <div class="text-text-secondary text-sm leading-relaxed">
+    <slot />
+  </div>
+
+  <!-- Visual journey indicator -->
+  <div class="mt-4 flex items-center gap-2 flex-wrap">
+    <slot name="journey" />
+  </div>
+</Card>

@@ -1,0 +1,231 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowRight, QrCode, Thermometer, Shield, BarChart, Play, Eye } from '@lucide/astro';
+---
+
+<BaseLayout
+  title="Live Demos"
+  description="Experience Verda's supply chain transparency platform in action. Interactive demos of QR scanning, cold chain monitoring, smart recalls, and stakeholder dashboards."
+>
+  <div class="container">
+    <!-- Hero -->
+    <section class="hero hero-animated particles reveal">
+      <span class="badge badge-pulse mb-4">Interactive Demos</span>
+      <h1 class="text-shimmer"><span class="gradient-text-animated">See Verda in Action</span></h1>
+      <p class="text-base max-w-2xl">
+        Experience our supply chain transparency platform through interactive demos.
+        No signup required — explore how Verda works for consumers, producers, and regulators.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-6">
+        <a href="#demos" class="btn btn-lg glow-green ripple">
+          Explore Demos
+          <ArrowRight class="icon-sm" />
+        </a>
+        <a href="mailto:hello@verda.so" class="btn btn-outline btn-lg ripple">
+          Request Full Access
+        </a>
+      </div>
+    </section>
+
+    <hr class="divider-gradient" />
+
+    <!-- Demo Cards -->
+    <section id="demos" class="reveal">
+      <span class="section-label section-label-animated">choose a demo</span>
+      <h2><span class="highlight">Interactive Demonstrations</span></h2>
+
+      <div class="grid-2 mt-6 stagger-children" style="gap: 2rem;">
+        <!-- QR Journey Demo -->
+        <a href="/demo/qr-viewer" class="demo-card card card-3d glow-hover">
+          <div class="demo-card-header">
+            <div class="feature-icon feature-icon-xl cyan feature-icon-animated glow-pulse">
+              <QrCode class="icon-xl" />
+            </div>
+            <span class="badge badge-pulse new">Most Popular</span>
+          </div>
+          <h3 class="text-lg mb-2 underline-animated">QR Journey Viewer</h3>
+          <p class="text-sm text-text-secondary mb-4">
+            Experience what consumers see when they scan a product's QR code.
+            Follow a coffee bean's journey from a farm in Da Lat, Vietnam to your local cafe.
+          </p>
+          <div class="demo-features">
+            <span class="tag tag-cyan">Real Product Data</span>
+            <span class="tag tag-indigo">Interactive Map</span>
+            <span class="tag tag-orange">Timeline View</span>
+          </div>
+          <div class="demo-cta mt-4">
+            <span class="btn btn-sm">
+              <Play class="icon-sm" />
+              Launch Demo
+            </span>
+          </div>
+        </a>
+
+        <!-- Cold Chain Demo -->
+        <a href="/demo/cold-chain" class="demo-card card card-3d glow-hover">
+          <div class="demo-card-header">
+            <div class="feature-icon feature-icon-xl orange feature-icon-animated">
+              <Thermometer class="icon-xl" />
+            </div>
+            <span class="tag tag-orange">Live Data</span>
+          </div>
+          <h3 class="text-lg mb-2 underline-animated">Cold Chain Monitoring</h3>
+          <p class="text-sm text-text-secondary mb-4">
+            Watch real-time temperature and humidity data from IoT sensors.
+            See how we detect and alert on cold chain breaches instantly.
+          </p>
+          <div class="demo-features">
+            <span class="tag tag-orange">Temperature Graphs</span>
+            <span class="tag tag-rose">Alert System</span>
+            <span class="tag tag-cyan">GPS Tracking</span>
+          </div>
+          <div class="demo-cta mt-4">
+            <span class="btn btn-sm btn-outline">
+              <Play class="icon-sm" />
+              Launch Demo
+            </span>
+          </div>
+        </a>
+
+        <!-- Smart Recall Demo -->
+        <a href="/demo/recall" class="demo-card card card-3d glow-hover">
+          <div class="demo-card-header">
+            <div class="feature-icon feature-icon-xl rose feature-icon-animated">
+              <Shield class="icon-xl" />
+            </div>
+            <span class="tag tag-rose">Safety Critical</span>
+          </div>
+          <h3 class="text-lg mb-2 underline-animated">Smart Recall System</h3>
+          <p class="text-sm text-text-secondary mb-4">
+            See how Verda enables surgical-precision recalls in minutes instead of weeks.
+            Trace contaminated products instantly and notify affected consumers.
+          </p>
+          <div class="demo-features">
+            <span class="tag tag-rose">Batch Tracing</span>
+            <span class="tag tag-indigo">Consumer Alerts</span>
+            <span class="tag tag-cyan">Audit Trail</span>
+          </div>
+          <div class="demo-cta mt-4">
+            <span class="btn btn-sm btn-outline">
+              <Play class="icon-sm" />
+              Launch Demo
+            </span>
+          </div>
+        </a>
+
+        <!-- Dashboard Demo -->
+        <a href="/demo/dashboard" class="demo-card card card-3d glow-hover">
+          <div class="demo-card-header">
+            <div class="feature-icon feature-icon-xl indigo feature-icon-animated">
+              <BarChart class="icon-xl" />
+            </div>
+            <span class="tag tag-indigo">Multi-Role</span>
+          </div>
+          <h3 class="text-lg mb-2 underline-animated">Stakeholder Dashboards</h3>
+          <p class="text-sm text-text-secondary mb-4">
+            Explore role-specific dashboards for farmers, processors, distributors,
+            and regulators. See how each actor interacts with the platform.
+          </p>
+          <div class="demo-features">
+            <span class="tag tag-green">Farmer View</span>
+            <span class="tag tag-orange">Processor View</span>
+            <span class="tag tag-indigo">Regulator View</span>
+          </div>
+          <div class="demo-cta mt-4">
+            <span class="btn btn-sm btn-outline">
+              <Play class="icon-sm" />
+              Launch Demo
+            </span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Demo Stats -->
+    <section class="reveal">
+      <span class="section-label section-label-animated">demo data</span>
+      <h2><span class="gradient-text">What You'll Explore</span></h2>
+
+      <div class="grid-4 mt-6 stagger-children">
+        <div class="card card-3d glass text-center">
+          <span class="stat-number cyan text-shimmer">12</span>
+          <p class="text-sm mt-2 mb-0">Sample Products</p>
+        </div>
+        <div class="card card-3d glass text-center">
+          <span class="stat-number orange">847</span>
+          <p class="text-sm mt-2 mb-0">Journey Events</p>
+        </div>
+        <div class="card card-3d glass text-center">
+          <span class="stat-number indigo">5</span>
+          <p class="text-sm mt-2 mb-0">Supply Chains</p>
+        </div>
+        <div class="card card-3d glass text-center">
+          <span class="stat-number rose">24/7</span>
+          <p class="text-sm mt-2 mb-0">Live Monitoring</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- CTA -->
+    <section class="reveal pb-8 gradient-bg-animated section-full">
+      <span class="section-label section-label-animated">ready for more?</span>
+      <h2><span class="gradient-text-animated">Want to See Your Own Data?</span></h2>
+      <p class="max-w-2xl">
+        These demos use sample data. Schedule a personalized demo with your actual
+        supply chain data and see exactly how Verda would work for your business.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-4">
+        <a href="mailto:hello@verda.so" class="btn btn-lg glow-green ripple">
+          Schedule Personalized Demo
+          <ArrowRight class="icon-sm" />
+        </a>
+        <a href="/docs" class="btn btn-outline btn-lg ripple">
+          <Eye class="icon-sm" />
+          API Documentation
+        </a>
+      </div>
+
+      <div class="flex items-center gap-2 mt-6 text-sm text-text-muted">
+        <span class="status-dot online"></span>
+        <span>All demos use live sample data</span>
+        <span class="mx-2">•</span>
+        <span>No signup required</span>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .demo-card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+
+  .demo-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+
+  .demo-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .demo-cta {
+    margin-top: auto;
+  }
+
+  .icon-xl {
+    width: 32px;
+    height: 32px;
+  }
+</style>

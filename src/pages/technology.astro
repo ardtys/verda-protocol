@@ -1,0 +1,278 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Github, ExternalLink, ArrowRight, Layers, Shield, Database, Cpu } from '@lucide/astro';
+---
+
+<BaseLayout
+  title="Technology"
+  description="Deep dive into Verda's technical architecture: Blockchain, Go services, TimescaleDB, IoT sensors, and ML-powered anomaly detection."
+>
+  <div class="container">
+    <!-- Hero -->
+    <section class="hero hero-animated particles reveal">
+      <span class="badge badge-pulse mb-4">Engineering</span>
+      <h1 class="text-shimmer"><span class="gradient-text-animated">Technical architecture</span> for the future.</h1>
+      <p class="text-base max-w-2xl">
+        A deep dive into the technology powering Verda's supply chain transparency protocol.
+        Built for scale, security, and real-world constraints.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-6">
+        <a href="/technology/architecture" class="btn btn-lg glow-green ripple">
+          System Architecture
+          <ArrowRight class="icon-sm" />
+        </a>
+        <a href="/technology/security" class="btn btn-outline btn-lg ripple">
+          Security Model
+        </a>
+      </div>
+    </section>
+
+    <hr class="divider-gradient" />
+
+    <!-- Deep Dive Links -->
+    <section class="reveal">
+      <span class="section-label section-label-animated">explore</span>
+      <h2><span class="highlight">Technical Deep Dives</span></h2>
+
+      <div class="grid-2 mt-6 stagger-children">
+        <a href="/technology/architecture" class="card feature-card card-3d glow-hover">
+          <div class="feature-icon feature-icon-md cyan feature-icon-animated float-slow glow-pulse">
+            <Layers class="icon-md" />
+          </div>
+          <div>
+            <h3 class="text-base mb-1 underline-animated">System Architecture</h3>
+            <p class="text-sm mb-2">Microservices, event sourcing, and multi-region deployment.</p>
+            <span class="tag tag-animated">Deep Dive</span>
+          </div>
+        </a>
+
+        <a href="/technology/security" class="card feature-card card-3d glow-hover">
+          <div class="feature-icon feature-icon-md rose feature-icon-animated float-slow">
+            <Shield class="icon-md" />
+          </div>
+          <div>
+            <h3 class="text-base mb-1 underline-animated">Security Architecture</h3>
+            <p class="text-sm mb-2">Cryptographic primitives, Merkle proofs, and threat model.</p>
+            <span class="tag tag-animated tag-red">Deep Dive</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Architecture Overview -->
+    <section class="reveal">
+      <span class="section-label section-label-animated">architecture</span>
+      <h2><span class="gradient-text">System Layers</span></h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Consumer Interface Layer</h3>
+          <p class="text-sm mb-2">QR scanning app, web portal, embeddable brand widgets</p>
+          <div class="flex flex-wrap gap-1">
+            <span class="tag">React Native</span>
+            <span class="tag">SvelteKit</span>
+            <span class="tag">PWA</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Supply Chain Actor Layer</h3>
+          <p class="text-sm mb-2">Farmer mobile app, factory portal, distributor interface, retailer POS</p>
+          <div class="flex flex-wrap gap-1">
+            <span class="tag">Offline-first</span>
+            <span class="tag">Multi-language</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">IoT & Sensor Layer</h3>
+          <p class="text-sm mb-2">Temperature loggers, GPS trackers, humidity sensors, NFC/RFID readers</p>
+          <div class="flex flex-wrap gap-1">
+            <span class="tag">BLE 5.0</span>
+            <span class="tag">LoRaWAN</span>
+            <span class="tag">NB-IoT</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Business Logic Layer</h3>
+          <p class="text-sm mb-2">Product registry, journey composer, certification engine, anomaly detector</p>
+          <div class="flex flex-wrap gap-1">
+            <span class="tag">Go</span>
+            <span class="tag">gRPC</span>
+            <span class="tag">Event-driven</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Data & Storage Layer</h3>
+          <p class="text-sm mb-2">Relational data, time-series IoT readings, documents, event streaming</p>
+          <div class="flex flex-wrap gap-1">
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">TimescaleDB</span>
+            <span class="tag">IPFS</span>
+            <span class="tag">Kafka</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3 class="text-base mb-1">Blockchain Verification Layer</h3>
+          <p class="text-sm mb-2">On-chain anchoring, Merkle proofs, verification contracts</p>
+          <div class="flex flex-wrap gap-1">
+            <span class="tag">Blockchain</span>
+            <span class="tag">Rust</span>
+            <span class="tag">Anchor</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Tech Stack Rationale -->
+    <section class="reveal gradient-bg-animated section-full">
+      <span class="section-label section-label-animated">stack decisions</span>
+      <h2><span class="highlight">Why We Chose Each Technology</span></h2>
+
+      <div class="grid-3 stagger-children">
+        <div class="card card-3d glass mb-0">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl float jelly">⛓️</span>
+            <h3 class="text-base mb-0 text-indigo">Blockchain</h3>
+          </div>
+          <p class="text-sm mb-0">
+            400ms finality, &lt;$0.001 per transaction. We anchor millions of events daily —
+            Cost-efficient blockchain transaction fees.
+          </p>
+        </div>
+
+        <div class="card card-3d glass mb-0">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl float jelly" style="animation-delay: 0.2s">🔧</span>
+            <h3 class="text-base mb-0 text-orange">Go + Rust</h3>
+          </div>
+          <p class="text-sm mb-0">
+            Go for business logic: fast compilation, excellent concurrency.
+            Rust for cryptographic operations and the blockchain program.
+          </p>
+        </div>
+
+        <div class="card card-3d glass mb-0">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl float jelly" style="animation-delay: 0.4s">📊</span>
+            <h3 class="text-base mb-0 text-cyan">TimescaleDB</h3>
+          </div>
+          <p class="text-sm mb-0">
+            Billions of IoT time-series readings. Native compression (10x storage reduction),
+            and it's just PostgreSQL underneath.
+          </p>
+        </div>
+
+        <div class="card card-3d glass mb-0">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl float jelly" style="animation-delay: 0.6s">📡</span>
+            <h3 class="text-base mb-0 text-rose">Kafka</h3>
+          </div>
+          <p class="text-sm mb-0">
+            Real-time event streaming with at-least-once delivery. During harvest season,
+            we see 100x traffic spikes. Kafka absorbs the burst.
+          </p>
+        </div>
+
+        <div class="card card-3d glass mb-0">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl float jelly" style="animation-delay: 0.8s">📱</span>
+            <h3 class="text-base mb-0 text-green">React Native</h3>
+          </div>
+          <p class="text-sm mb-0">
+            Consumer app (Android-first, offline SQLite sync for rural areas).
+            Works on $50 smartphones in low-bandwidth regions.
+          </p>
+        </div>
+
+        <div class="card card-3d glass mb-0">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl float jelly" style="animation-delay: 1s">🎨</span>
+            <h3 class="text-base mb-0 text-purple">SvelteKit</h3>
+          </div>
+          <p class="text-sm mb-0">
+            Admin dashboards — smallest bundle size, critical for low-bandwidth regions.
+            Fast and reactive UI.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Security Model -->
+    <section class="reveal">
+      <span class="section-label section-label-animated">security</span>
+      <h2><span class="gradient-text">Trust Architecture</span></h2>
+      <ul class="list-dash">
+        <li><strong>Device-level signing:</strong> Every IoT sensor has a unique key pair. Data signed at the edge before transmission.</li>
+        <li><strong>Merkle proofs:</strong> Batch anchoring to blockchain every 60 seconds. Verify individual records without downloading chain state.</li>
+        <li><strong>Multi-party verification:</strong> Handoff events require signatures from both sender and receiver.</li>
+        <li><strong>Tamper detection:</strong> Physical tamper-evident seals on sensors. Device health monitoring detects interference.</li>
+        <li><strong>Zero-knowledge proofs:</strong> Coming in Phase 3 — verify claims without revealing supplier identities.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- API Preview -->
+    <section class="reveal">
+      <span class="section-label section-label-animated">api</span>
+      <h2><span class="highlight">Developer Interface</span></h2>
+      <p>RESTful API with webhook support. GraphQL coming in Phase 2.</p>
+
+      <div class="code-block">
+        <pre><code set:text={`// Get product journey
+GET /api/v1/products/:qr_code/journey
+
+{
+  "product_id": "PRD-2024-001234",
+  "name": "Single Origin Coffee - Flores",
+  "journey": [
+    {
+      "event": "harvest",
+      "timestamp": "2024-03-15T06:30:00Z",
+      "location": { "lat": -8.5, "lng": 121.1 },
+      "actor": "Farmer: Made Wirata",
+      "verified": true
+    }
+  ],
+  "certifications": ["organic", "fair-trade"],
+  "cold_chain_status": "maintained",
+  "merkle_proof": "0x7f3a..."
+}`} /></pre>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Open Source -->
+    <section class="reveal pb-8">
+      <span class="section-label section-label-animated">open source</span>
+      <h2><span class="gradient-text-animated">Building in the Open</span></h2>
+      <p class="max-w-2xl">
+        Core protocol will be open-sourced in Phase 3. We believe food traceability
+        should be a public good, not a walled garden. <span class="highlight">Interoperability is a feature</span>.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="https://github.com/verda-protocol" target="_blank" rel="noopener noreferrer" class="btn btn-lg glow-green ripple">
+          <Github class="icon-sm" />
+          GitHub
+        </a>
+        <a href="/docs" class="btn btn-outline btn-lg ripple">
+          <ExternalLink class="icon-sm" />
+          Documentation
+        </a>
+      </div>
+
+      <!-- Status indicator -->
+      <div class="flex items-center gap-2 mt-6 text-sm text-text-muted">
+        <span class="status-dot online"></span>
+        <span>API operational</span>
+        <span class="mx-2">•</span>
+        <span>99.9% uptime</span>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
